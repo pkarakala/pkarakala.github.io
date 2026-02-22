@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coursework — Pranav Reddy</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .coursework-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        .course-category h3 {
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .course-category h3::before {
+            content: '';
+            width: 4px;
+            height: 22px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+        .course-list {
+            list-style: none;
+            padding: 0;
+        }
+        .course-list li {
+            margin-bottom: 0.6rem;
+        }
+        .course-list a {
+            color: var(--text-medium);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+        .course-list a:hover {
+            color: var(--primary);
+        }
+        .course-list .course-id {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        .download-card {
+            background: linear-gradient(135deg, #0d9488 0%, #7c3aed 100%);
+            border-radius: 16px;
+            padding: 2.5rem;
+            text-align: center;
+            color: white;
+        }
+        .download-card h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        .download-card .btn {
+            background: white;
+            color: #1e1b4b;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .download-card .btn:hover {
+            background: #f1f5f9;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li class="nav-logo"><a href="index.html">PR</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="index.html#research">Research</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="index.html#skills">Skills</a></li>
+            <li><a href="index.html#labs">Labs</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <span class="icon-moon">🌙</span>
+                    <span class="icon-sun">☀️</span>
+                </button>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="page-header">
+        <h1>Coursework</h1>
+        <p><a href="https://www.ece.ucsb.edu/" target="_blank" rel="noopener noreferrer" class="hover-link" style="color: inherit;">Electrical &amp; Computer Engineering</a> · <a href="https://www.ucsb.edu/" target="_blank" rel="noopener noreferrer" class="hover-link" style="color: inherit;">UC Santa Barbara</a></p>
+    </div>
+
+    <section>
+        <div class="coursework-grid">
+            <div class="course-category">
+                <h3>Quantum &amp; Photonics</h3>
+                <ul class="course-list">
+                    <li><a href="https://catalog.ucsb.edu/courses/ECE%20136A" target="_blank" rel="noopener noreferrer"><span class="course-id">ECE 136A</span> — Optical Systems &amp; Photonics</a></li>
+                    <li><a href="https://catalog.ucsb.edu/courses/ECE%20136B" target="_blank" rel="noopener noreferrer"><span class="course-id">ECE 136B</span> — Photonic Imaging &amp; Design</a></li>
+                    <li><a href="https://catalog.ucsb.edu/courses/ECE%20136C" target="_blank" rel="noopener noreferrer"><span class="course-id">ECE 136C</span> — Quantum Computing &amp; Photonics</a></li>
+                </ul>
+            </div>
+            <div class="course-category">
+                <h3>Signals, Systems &amp; ML</h3>
+                <ul class="course-list">
+                    <li><a href="https://catalog.ucsb.edu/courses/ECE%20130A" target="_blank" rel="noopener noreferrer"><span class="course-id">ECE 130A</span> — Signal Processing &amp; Linear Systems</a></li>
+                    <li><a href="https://catalog.ucsb.edu/courses/ECE%20130B" target="_blank" rel="noopener noreferrer"><span class="course-id">ECE 130B</span> — Discrete-Time Signals &amp; Systems</a></li>
+                    <li><a href="https://catalog.ucsb.edu/courses/ECE%20133" target="_blank" rel="noopener noreferrer"><span class="course-id">ECE 133</span> — Optimization &amp; Machine Learning</a></li>
+                </ul>
+            </div>
+            <div class="course-category">
+                <h3>Hardware &amp; Architecture</h3>
+                <ul class="course-list">
+                    <li><a href="https://catalog.ucsb.edu/courses/ECE%20152A" target="_blank" rel="noopener noreferrer"><span class="course-id">ECE 152A</span> — Digital Design Principles</a></li>
+                    <li><a href="https://catalog.ucsb.edu/courses/ECE%20132" target="_blank" rel="noopener noreferrer"><span class="course-id">ECE 132</span> — Semiconductor Devices</a></li>
+                    <li><a href="https://catalog.ucsb.edu/courses/ECE%20134" target="_blank" rel="noopener noreferrer"><span class="course-id">ECE 134</span> — Electromagnetics &amp; Wave Phenomena</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="download-card">
+            <h2>Resume</h2>
+            <a href="assets/pdfs/resume.pdf" class="btn" download>Download PDF</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="social-links">
+            <a href="https://linkedin.com/in/pranav-reddy" aria-label="LinkedIn">in</a>
+            <a href="mailto:preddy@ucsb.edu" aria-label="Email">✉</a>
+        </div>
+        <p>&copy; 2026 Pranav Reddy. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const toggle = document.getElementById('themeToggle');
+        const root = document.documentElement;
+        const saved = localStorage.getItem('theme');
+        if (saved === 'dark') root.setAttribute('data-theme', 'dark');
+        else if (!saved) root.setAttribute('data-theme', 'dark');
+        toggle.addEventListener('click', () => {
+            const isDark = root.getAttribute('data-theme') === 'dark';
+            if (isDark) { root.removeAttribute('data-theme'); localStorage.setItem('theme', 'light'); }
+            else { root.setAttribute('data-theme', 'dark'); localStorage.setItem('theme', 'dark'); }
+        });
+    </script>
+</body>
+</html>

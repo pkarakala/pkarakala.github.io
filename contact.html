@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact — Pranav Reddy</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1rem;
+            max-width: 100%;
+        }
+        .contact-card {
+            padding: 1.5rem 1rem;
+        }
+        .contact-icon {
+            font-size: 2rem;
+            margin-bottom: 0.8rem;
+        }
+        .contact-card h4 {
+            font-size: 1rem;
+        }
+        .contact-card a {
+            font-size: 0.85rem;
+            word-break: break-word;
+        }
+        @media (max-width: 900px) {
+            .contact-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (max-width: 550px) {
+            .contact-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li class="nav-logo"><a href="index.html">PR</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="index.html#research">Research</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="index.html#skills">Skills</a></li>
+            <li><a href="index.html#labs">Labs</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+            <li>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <span class="icon-moon">🌙</span>
+                    <span class="icon-sun">☀️</span>
+                </button>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="page-header">
+        <h1>Contact</h1>
+        <p>Open to intern opportunities and research in hardware-focused software engineering, computer architecture, HPC, ML/AI, Photonics and Quantum Systems.</p>
+    </div>
+
+    <section>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-icon">✉️</div>
+                <h4>Email</h4>
+                <a href="mailto:preddy@ucsb.edu">preddy@ucsb.edu</a>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">📞</div>
+                <h4>Phone</h4>
+                <a href="tel:+15105799141">(510) 579-9141</a>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">💼</div>
+                <h4>LinkedIn</h4>
+                <a href="https://linkedin.com/in/pranav-reddy" target="_blank" rel="noopener noreferrer">linkedin.com/in/pranav-reddy</a>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">📄</div>
+                <h4>Resume</h4>
+                <a href="assets/pdfs/resume.pdf" target="_blank" rel="noopener noreferrer">Download Resume (PDF)</a>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">📚</div>
+                <h4>Coursework</h4>
+                <a href="coursework.html">View Courses</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="social-links">
+            <a href="https://linkedin.com/in/pranav-reddy" aria-label="LinkedIn">in</a>
+            <a href="mailto:preddy@ucsb.edu" aria-label="Email">✉</a>
+        </div>
+        <p>&copy; 2026 Pranav Reddy. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const toggle = document.getElementById('themeToggle');
+        const root = document.documentElement;
+        const saved = localStorage.getItem('theme');
+        if (saved === 'dark') root.setAttribute('data-theme', 'dark');
+        else if (!saved) root.setAttribute('data-theme', 'dark');
+        toggle.addEventListener('click', () => {
+            const isDark = root.getAttribute('data-theme') === 'dark';
+            if (isDark) { root.removeAttribute('data-theme'); localStorage.setItem('theme', 'light'); }
+            else { root.setAttribute('data-theme', 'dark'); localStorage.setItem('theme', 'dark'); }
+        });
+    </script>
+</body>
+</html>

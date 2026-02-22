@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects — Pranav Reddy</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .card-img {
+            width: 85%;
+            height: auto;
+            object-fit: contain;
+            border-radius: 12px;
+            margin: 0 auto 1.2rem;
+            display: block;
+        }
+        .grid-2 .card {
+            display: flex;
+            flex-direction: column;
+        }
+        .grid-2 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .card-links {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 1.2rem;
+            flex-wrap: wrap;
+        }
+        .card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .card-link-pdf {
+            background: var(--bg-light);
+            color: var(--primary);
+            border: 1px solid var(--border);
+        }
+        .card-link-pdf:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        .card-link-github {
+            background: var(--bg-light);
+            color: var(--primary);
+            border: 1px solid var(--border);
+        }
+        .card-link-github:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        [data-theme="dark"] .card-link-pdf {
+            background: var(--bg-light);
+            border-color: var(--border);
+        }
+        [data-theme="dark"] .card-link-pdf:hover {
+            background: var(--primary);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li class="nav-logo"><a href="index.html">PR</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="index.html#research">Research</a></li>
+            <li><a href="projects.html" class="active">Projects</a></li>
+            <li><a href="index.html#skills">Skills</a></li>
+            <li><a href="index.html#labs">Labs</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <span class="icon-moon">🌙</span>
+                    <span class="icon-sun">☀️</span>
+                </button>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="page-header">
+        <h1>Projects</h1>
+        <p>A selection of engineering work across Quantum Computing, Photonics, and performance-oriented systems. Some research is shown at a high level due to confidentiality.</p>
+    </div>
+
+    <section>
+        <div class="grid-2">
+
+            <!-- Optical Systems -->
+            <div class="card">
+                <img src="assets/images/optics.webp" alt="Optical Systems Lab" class="card-img">
+                <h3>Optical Systems &amp; Imaging Labs (<a href="https://catalog.ucsb.edu/courses/ECE%20136A" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-decoration-color: var(--primary); text-underline-offset: 2px;">ECE 136A</a>)</h3>
+                <p>Completed experimental optics and photonics lab reports covering lens imaging, telescopes, Fourier optics, and aperture-based spatial filtering.</p>
+                <ul>
+                    <li>Thin lens imaging and magnification measurements</li>
+                    <li>Keplerian telescope construction and beam collimation</li>
+                </ul>
+                <div class="tech-tags">
+                    <span class="tech-tag">Optics</span>
+                    <span class="tech-tag">Photonics</span>
+                    <span class="tech-tag">Lab Reports</span>
+                </div>
+                <div class="card-links">
+                    <a href="assets/pdfs/ece136a/lab1.pdf" target="_blank" class="card-link card-link-pdf">📄 Lab 1 PDF</a>
+                    <a href="assets/pdfs/ece136a/lab2.pdf" target="_blank" class="card-link card-link-pdf">📄 Lab 2 PDF</a>
+                    <a href="assets/pdfs/ece136a/lab3.pdf" target="_blank" class="card-link card-link-pdf">📄 Lab 3 PDF</a>
+                </div>
+            </div>
+
+            <!-- Quantum Computing & Photonics Labs -->
+            <div class="card">
+                <img src="assets/images/quantum-photonics.webp" alt="Quantum Photonics Lab" class="card-img">
+                <h3>Quantum Computing &amp; Photonics Labs (<a href="https://catalog.ucsb.edu/courses/ECE%20136C" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-decoration-color: var(--primary); text-underline-offset: 2px;">ECE 136C</a>)</h3>
+                <p>Simulated quantum information experiments using Strawberry Fields, polarization-based circuits, and photonic quantum gate modeling.</p>
+                <ul>
+                    <li>Visualized squeezing, displacement, and rotation gates in phase space</li>
+                    <li>Simulated time-domain ring circuits with homodyne measurement</li>
+                </ul>
+                <div class="tech-tags">
+                    <span class="tech-tag">Quantum Computing</span>
+                    <span class="tech-tag">Photonics</span>
+                    <span class="tech-tag">Simulation</span>
+                </div>
+                <div class="card-links">
+                    <a href="assets/pdfs/ece136c/lab1.pdf" target="_blank" class="card-link card-link-pdf">📄 Lab 1 PDF</a>
+                    <a href="assets/pdfs/ece136c/lab2.pdf" target="_blank" class="card-link card-link-pdf">📄 Lab 2 PDF</a>
+                    <a href="assets/pdfs/ece136c/lab3.pdf" target="_blank" class="card-link card-link-pdf">📄 Lab 3 PDF</a>
+                    <a href="assets/pdfs/ece136c/lab4.pdf" target="_blank" class="card-link card-link-pdf">📄 Lab 4 PDF</a>
+                    <a href="assets/pdfs/ece136c/lab5.pdf" target="_blank" class="card-link card-link-pdf">📄 Lab 5 PDF</a>
+                    <a href="assets/pdfs/ece136c/lab6.pdf" target="_blank" class="card-link card-link-pdf">📄 Lab 6 PDF</a>
+                    <a href="assets/pdfs/ece136c/lab7.pdf" target="_blank" class="card-link card-link-pdf">📄 Lab 7 PDF</a>
+                    <a href="assets/pdfs/ece136c/lab8.pdf" target="_blank" class="card-link card-link-pdf">📄 Lab 8 PDF</a>
+                </div>
+            </div>
+
+            <!-- CQEC ML Decoder -->
+            <div class="card">
+                <img src="assets/images/qec.webp" alt="Quantum Error Correction Decoder" class="card-img">
+                <h3>Data-Driven Quantum Error Correction Decoder (CQEC ML Decoder)</h3>
+                <p>Built a simulation + decoding pipeline for 3-qubit QEC under noisy syndrome measurements, comparing rule-based, Bayesian, and ML decoders.</p>
+                <ul>
+                    <li>Baseline rule-based decoder (lookup/majority vote) for comparison</li>
+                    <li>Bayesian inference decoder for hidden-state error estimation</li>
+                </ul>
+                <div class="tech-tags">
+                    <span class="tech-tag">QEC</span>
+                    <span class="tech-tag">Machine Learning</span>
+                    <span class="tech-tag">Bayesian Inference</span>
+                    <span class="tech-tag">Python</span>
+                </div>
+                <div class="card-links">
+                    <a href="https://github.com/pkarakala/cqec-ml-decoder" target="_blank" class="card-link card-link-github"><svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor" style="vertical-align: middle; margin-right: 4px;"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg> GitHub Repo</a>
+                </div>
+            </div>
+
+            <!-- Raman Spectroscopy -->
+            <div class="card">
+                <img src="assets/images/raman.webp" alt="Raman Spectroscopy" class="card-img">
+                <h3>Mineral Identification via Raman Spectroscopy</h3>
+                <p>Analyzed Raman spectroscopy measurements to identify mineral composition using peak detection, spectral fitting, and comparison to reference signatures.</p>
+                <ul>
+                    <li>Detected spectral peaks and normalized experimental Raman shifts</li>
+                    <li>Fit measured spectra against known mineral reference profiles</li>
+                </ul>
+                <div class="tech-tags">
+                    <span class="tech-tag">Signal Processing</span>
+                    <span class="tech-tag">Spectroscopy</span>
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Optimization</span>
+                </div>
+                <div class="card-links">
+                    <a href="assets/pdfs/ece133/raman.pdf" target="_blank" class="card-link card-link-pdf">📄 Project Report PDF</a>
+                </div>
+            </div>
+            <!-- Lyapunov Optimization -->
+            <div class="card">
+                <img src="assets/images/lyapunov.webp" alt="Quantum Control Research" class="card-img">
+                <h3>Feedback-Based Quantum Control via Lyapunov Optimization</h3>
+                <p>Optimized an explicit time-dependent Lyapunov control law to accelerate convergence to low-energy states in the Transverse Field Ising Model (TFIM) using a circuit-based FQA workflow (implementation details confidential).</p>
+                <ul>
+                    <li>Designed explicit time-dependent control schedule β(t) with learnable parameters</li>
+                    <li>Defined stopping criteria using energy tolerance and gradient tolerance</li>
+                </ul>
+                <p class="note">Summary only (lab / unpublished work).</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">Quantum Control</span>
+                    <span class="tech-tag">Optimization</span>
+                    <span class="tech-tag">Research</span>
+                    <span class="tech-tag">TFIM</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="social-links">
+            <a href="https://linkedin.com/in/pranav-reddy" aria-label="LinkedIn">in</a>
+            <a href="mailto:preddy@ucsb.edu" aria-label="Email">✉</a>
+        </div>
+        <p>&copy; 2026 Pranav Reddy. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const toggle = document.getElementById('themeToggle');
+        const root = document.documentElement;
+        const saved = localStorage.getItem('theme');
+        if (saved === 'dark') root.setAttribute('data-theme', 'dark');
+        else if (!saved) root.setAttribute('data-theme', 'dark');
+        toggle.addEventListener('click', () => {
+            const isDark = root.getAttribute('data-theme') === 'dark';
+            if (isDark) { root.removeAttribute('data-theme'); localStorage.setItem('theme', 'light'); }
+            else { root.setAttribute('data-theme', 'dark'); localStorage.setItem('theme', 'dark'); }
+        });
+    </script>
+</body>
+</html>
