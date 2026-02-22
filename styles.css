@@ -1057,3 +1057,8 @@ footer .social-links a:hover {
 .hover-link:hover {
     color: var(--primary);
 }
+
+/* Force hero profile image framing */
+.hero .profile-card .profile-image {
+  object-position: center !important;
+}
