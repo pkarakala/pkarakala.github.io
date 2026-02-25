@@ -376,8 +376,8 @@ nav a:hover::after, nav a.active::after {
 
 /* Circular Profile Wrapper */
 .profile-image-wrap {
-    width: 420px;
-    height: 420px;
+    width: 350px;
+    height: 350px;
     border-radius: 50%;
     overflow: hidden;         /* Ensures the image stays inside the circle */
     border: 6px solid rgba(255, 255, 255, 0.3); 
