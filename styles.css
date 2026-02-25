@@ -374,28 +374,29 @@ nav a:hover::after, nav a.active::after {
     text-align: center;
 }
 
-/* Optimized Profile Image for Hero */
+/* Circular Profile Wrapper */
 .profile-image-wrap {
     width: 420px;
     height: 420px;
     border-radius: 50%;
-    overflow: hidden;
-    border: 6px solid rgba(255, 255, 255, 0.3); /* Softer, thicker border */
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    overflow: hidden;         /* Ensures the image stays inside the circle */
+    border: 6px solid rgba(255, 255, 255, 0.3); 
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.2);
     margin: 0 auto 1.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: transparent; /* Remove the grey background */
+    background: none;        /* Removed the grey background */
 }
 
+/* Image inside the circle */
 .profile-image {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* This is the secret sauce */
+    object-fit: cover;       /* Fills the circle perfectly without distortion */
     object-position: center; /* Adjust to 'top' if your head is cut off */
-    transform: none; /* Remove the 0.82 scale */
-    border-radius: 0;
+    transform: none;         /* Removed the 0.82 zoom out */
+    display: block;
 }
 
 /* Page Header (for sub-pages) */
