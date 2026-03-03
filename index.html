@@ -12,6 +12,8 @@
     <nav>
         <ul>
             <li class="nav-logo"><a href="index.html">PR</a></li>
+            <li><button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button></li>
+            <div class="nav-links" id="navLinks">
             <li><a href="about.html">About</a></li>
             <li><a href="#research">Research</a></li>
             <li><a href="projects.html">Projects</a></li>
@@ -24,6 +26,7 @@
                     <span class="icon-sun">☀️</span>
                 </button>
             </li>
+            </div>
         </ul>
     </nav>
 
@@ -57,9 +60,7 @@
             </div>
             <div class="hero-visual">
                 <div class="profile-card">
-                    <div class="profile-image-wrap">
-                      <img src="profile.jpg" alt="Pranav Reddy" class="profile-image">
-                    </div>
+                    <img src="profile.jpg" alt="Pranav Reddy" class="profile-image">
                     <div class="tech-tags" style="justify-content: center;">
                         <span class="tech-tag">Quantum Computing</span>
                         <span class="tech-tag">Photonics</span>
@@ -304,6 +305,11 @@
     </footer>
 
     <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+        navLinks.addEventListener('click', (e) => { if (e.target.tagName === 'A') navLinks.classList.remove('open'); });
+
         const toggle = document.getElementById('themeToggle');
         const root = document.documentElement;
         const saved = localStorage.getItem('theme');

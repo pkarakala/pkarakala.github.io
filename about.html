@@ -21,6 +21,7 @@
             object-position: center 20%;
             box-shadow: 0 12px 40px var(--shadow);
             border: 3px solid var(--border);
+            filter: brightness(1.25) contrast(1.08);
         }
         .about-intro h2 {
             font-size: 1.8rem;
@@ -197,8 +198,17 @@
                 grid-template-columns: 1fr;
                 justify-items: center;
                 text-align: center;
+                gap: 2rem;
             }
-            .about-photo { width: 200px; height: 200px; }
+            .about-photo { width: 180px; height: 225px; }
+            .about-intro h2 { font-size: 1.5rem; }
+            .about-intro p { font-size: 0.95rem; }
+            .impact-grid { grid-template-columns: 1fr; }
+            .impact-section h2 { font-size: 1.3rem; }
+            .values-strip { flex-direction: column; gap: 1.5rem; }
+            .cta-banner { padding: 2rem 1.5rem; }
+            .cta-banner h2 { font-size: 1.2rem; }
+            .cta-banner p { font-size: 0.95rem; }
         }
     </style>
 </head>
@@ -206,6 +216,8 @@
     <nav>
         <ul>
             <li class="nav-logo"><a href="index.html">PR</a></li>
+            <li><button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button></li>
+            <div class="nav-links" id="navLinks">
             <li><a href="about.html" class="active">About</a></li>
             <li><a href="index.html#research">Research</a></li>
             <li><a href="projects.html">Projects</a></li>
@@ -218,6 +230,7 @@
                     <span class="icon-sun">☀️</span>
                 </button>
             </li>
+            </div>
         </ul>
     </nav>
 
@@ -321,6 +334,11 @@
     </footer>
 
     <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+        navLinks.addEventListener('click', (e) => { if (e.target.tagName === 'A') navLinks.classList.remove('open'); });
+
         const toggle = document.getElementById('themeToggle');
         const root = document.documentElement;
         const saved = localStorage.getItem('theme');
