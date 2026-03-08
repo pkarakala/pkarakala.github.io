@@ -12,7 +12,7 @@ Each section below is a common interview question with a ready-to-deliver STAR r
 
 ## 1. "Tell me about yourself."
 
-I'm Pranav Reddy, an Electrical & Computer Engineering student at UC Santa Barbara. I work at the intersection of Quantum Computing, High Performance Computing, and Machine Learning. Currently I'm an undergraduate researcher in Professor Murphy Niu's Quantum Codesign Lab — he's also a senior research scientist at Google Quantum AI — where I build feedback-based quantum algorithms and parallel simulation infrastructure across 40+ CPU cores. Before that, I interned at Pando.ai building real-time LLM-powered automation pipelines for enterprise supply chains. I'm looking for opportunities where I can apply my HPC and ML skills to hard engineering problems.
+I'm Pranav Reddy, an Electrical & Computer Engineering student at UC Santa Barbara. I work at the intersection of Quantum Computing, High Performance Computing, and Machine Learning. Currently I'm an undergraduate researcher in Professor Murphy Niu's Quantum Codesign Lab — she's also a senior research scientist at Google Quantum AI — where I build feedback-based quantum algorithms and parallel simulation infrastructure across 40+ CPU cores. Before that, I interned at Pando.ai building real-time LLM-powered automation pipelines for enterprise supply chains. I'm looking for opportunities where I can apply my HPC and ML skills to hard engineering problems.
 
 ---
 
