@@ -19,9 +19,9 @@ This document preserves the full context of decisions, structure, and content so
 ```
 ├── index.html          # Homepage — hero, research, skills, labs
 ├── about.html          # About page — photo, intro, impact cards, values, CTA
-├── projects.html       # Projects page — 5 project cards with PDFs and GitHub links
+├── projects.html       # Projects page — 7 project cards with PDFs and GitHub links
 ├── contact.html        # Contact page — email, phone, LinkedIn, resume, coursework
-├── coursework.html     # Coursework page — 3 course categories + resume download
+├── coursework.html     # Coursework page — 4 course categories + resume download
 ├── styles.css          # Shared stylesheet — all themes, components, responsive
 ├── profile.jpg         # Profile photo used on index.html and about.html
 ├── .gitignore          # Excludes .DS_Store, cqec-ml-decoder/, .vscode/
@@ -34,6 +34,8 @@ This document preserves the full context of decisions, structure, and content so
 │   │   └── lyapunov.webp
 │   └── pdfs/           # All PDFs served locally (no external links)
 │       ├── resume.pdf
+│       ├── ece133/raman.pdf
+│       ├── ece135/HCF_and_an_Analytic_Model.pdf
 │       ├── ece136a/lab1.pdf, lab2.pdf, lab3.pdf
 │       ├── ece136c/lab1.pdf through lab8.pdf
 │       └── ece133/raman.pdf
@@ -124,6 +126,7 @@ This document preserves the full context of decisions, structure, and content so
 
 
 ### Coursework (from UCSB catalog)
+- ECE 135 — Fiber Optic Communication Systems: https://catalog.ucsb.edu/courses/ECE%20135
 - ECE 136A — Optical Systems & Photonics: https://catalog.ucsb.edu/courses/ECE%20136A
 - ECE 136B — Photonic Imaging & Design: https://catalog.ucsb.edu/courses/ECE%20136B
 - ECE 136C — Quantum Computing & Photonics: https://catalog.ucsb.edu/courses/ECE%20136C
@@ -349,6 +352,43 @@ This section captures every significant prompt and action from the build session
 85. **Projects page 480px breakpoint** — Added rules for wider card images (90%), smaller card link buttons
 86. **Project card word wrap** — Added `word-wrap: break-word` and `overflow-wrap: break-word` to `.project-card` to prevent text overflow
 
+### Phase 21: ECE 135 Fiber Optic Communication Project
+
+87. **New project card** — Added "Photonic Fiber Optic Communication (ECE 135)" tile to projects.html with inline SVG diagram showing AR-HCF cross-section and signal chain
+88. **Content from final report** — AR-HCF group report (Group 4: Nicholas Shand, Pranav Reddy, Dash Franklin, Gavin Kesler). Key results: confinement loss ∝ 1/R⁴, BER ≈ 0 at 100 mW and 350 THz, nonlinear overlap η ≈ 10⁻³
+89. **PDF linked** — assets/pdfs/ece135/HCF_and_an_Analytic_Model.pdf
+90. **Coursework page updated** — Added ECE 135 — Fiber Optic Communication Systems to Quantum & Photonics category
+
+### Phase 22: Projects Page Reorder & Content Updates
+
+91. **Projects page reorder** — New order: CQEC → ML Systems Lab → ECE 136C → ECE 135 Fiber Optics → Lyapunov → ECE 136A → Raman Spectroscopy
+92. **Research Focus subtitle** — Updated to include "ML system accelerators, quantum computing, computer architecture"
+93. **ML Systems card rename** — "ML Systems Acceleration Lab" → "ML Systems Accelerator Lab" on index.html
+94. **GitHub links green** — ML Systems and CQEC cards on index.html: GitHub logo fill changed to `var(--primary)`, link text shortened to "GitHub", styled green with font-weight 500
+95. **Skills section overhaul** — Renamed "Machine Learning" → "ML Systems", added torch.fx/Kernel Optimization/Accelerator Simulation; moved CUDA and Graph IR/Compilers to "Programming & Systems"; renamed "Quantum & Physics" → "Quantum & Photonics"; added VPI Photonics and Quantum Error Correction
+96. **Skills subtitle** — Updated to "Quantum, Photonics, ML System Compilers, Photonic Inference Systems, Hardware computing and software"
+97. **Labs subtitle** — Updated to include "ML accelerator systems and computer architecture"
+
+### Phase 23: About Page Overhaul
+
+98. **About intro rewrite** — Two new paragraphs covering ML accelerator stack, torch.fx, CUDA codegen, AR-HCF fiber analysis, and RAG pipelines
+99. **About page header** — Updated tagline to "Quantum Computing, Photonics, ML Accelerator Systems, and Fiber Optics"
+100. **Impact card: Engineering Scalable Systems** — Rewritten to highlight ML accelerator stack (torch.fx, Triton-style kernel optimization, cycle-accurate simulation)
+101. **Impact card: Next-Gen Architecture** — Rewritten with concrete references to ML compiler IRs, CUDA codegen, AR-HCF modeling, memory planning
+102. **Impact card: Bridging Theory and Practice** — Added AR-HCF analytic model vs simulation reference
+103. **Impact card: Experimental Rigor** — Added VPI Photonics simulation validation reference
+104. **Impact card: Collaborative Research** — Added ECE 135 group project (4-person team) reference
+105. **CTA paragraph** — Added "ML accelerator systems" to opportunities list
+106. **About footer LinkedIn** — Fixed to https://www.linkedin.com/in/pranav-reddy-98bb962b9/
+
+### Phase 24: Coursework Page Expansion
+
+107. **5 missing courses added** — ECE 144 (Waveguide Physics), ECE 139 (Probability & Stats), ECE 153B (Interface Design), ECE 10 (Digital Circuit Design), CS 24 (C++)
+108. **New category: Systems Programming** — CS 16, CS 24, ECE 154A (Fall 2026), ECE 154B (Fall 2026), CS 160 (Fall 2026)
+109. **Category renames** — "Signals, Systems & ML" → "ML Systems & Signals", "Hardware & Architecture" → "Hardware Architecture"
+110. **Coursework footer LinkedIn** — Fixed to https://www.linkedin.com/in/pranav-reddy-98bb962b9/
+111. **Projects footer LinkedIn** — Fixed to https://www.linkedin.com/in/pranav-reddy-98bb962b9/
+
 ---
 
 ---
@@ -359,9 +399,9 @@ This section captures every significant prompt and action from the build session
 |------|---------|
 | index.html | Homepage — hero, research, skills, labs |
 | about.html | About page — redesigned with impact cards |
-| projects.html | Projects — 5 cards with local PDFs |
+| projects.html | Projects — 7 cards with local PDFs |
 | contact.html | Contact — 5 tiles in one row |
-| coursework.html | Coursework — 3 categories + resume download |
+| coursework.html | Coursework — 4 categories + resume download |
 | styles.css | Shared stylesheet (rebuilt from scratch after accidental deletion) |
 | .gitignore | Excludes cqec-ml-decoder/, .DS_Store, .vscode/ |
 | cqec-ml-decoder/README.md | Updated with 4-phase content |
@@ -380,6 +420,9 @@ This section captures every significant prompt and action from the build session
 - Profile image (profile.jpg) background is dark — CSS brightness filter compensates but user may want to edit the actual image
 - The old Vercel site (pranavkarakala.vercel.app) is the original Next.js portfolio — this static site replaces it
 - INTERVIEW-PREP.html must be regenerated after any changes to INTERVIEW-PREP.md (use the Python markdown+styled HTML script)
-- LinkedIn URL is now https://www.linkedin.com/in/pranav-reddy-98bb962b9/ — update any new pages accordingly
-- about.html and projects.html footer LinkedIn links still point to old URL (linkedin.com/in/pranav-reddy) — update when touching those footers
+- LinkedIn URL is now https://www.linkedin.com/in/pranav-reddy-98bb962b9/ — all pages updated
 - All Research Focus tile headings are normalized to 1.5rem — maintain this if adding new cards
+- Skills section has 3 categories: Quantum & Photonics, ML Systems, Programming & Systems
+- Coursework page has 4 categories: Quantum & Photonics, ML Systems & Signals, Hardware Architecture, Systems Programming
+- ECE 154A, ECE 154B, and CS 160 are listed as Fall 2026 (upcoming)
+- Projects page has 7 cards in order: CQEC → ML Systems → ECE 136C → ECE 135 → Lyapunov → ECE 136A → Raman
