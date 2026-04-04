@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Pranav Reddy - Resume</title>
+<style>
+  @page { size: letter; margin: 0.5in 0.6in; }
+  @media print { body { margin: 0; } .page-break { page-break-before: always; } }
+  body { font-family: 'Times New Roman', Times, serif; font-size: 11pt; line-height: 1.3; color: #000; max-width: 7.5in; margin: 0 auto; padding: 0.5in 0.6in; }
+  h1 { font-size: 18pt; margin: 0 0 2px 0; text-align: center; }
+  .contact { text-align: center; font-size: 10pt; margin-bottom: 10px; }
+  h2 { font-size: 12pt; text-transform: uppercase; border-bottom: 1px solid #000; margin: 12px 0 6px 0; padding-bottom: 2px; }
+  .entry { margin-bottom: 8px; }
+  .entry-header { display: flex; justify-content: space-between; font-weight: bold; margin-bottom: 1px; }
+  .entry-sub { display: flex; justify-content: space-between; font-style: italic; margin-bottom: 3px; }
+  .entry-lang { font-style: italic; margin-bottom: 3px; }
+  ul { margin: 2px 0 0 0; padding-left: 18px; }
+  li { margin-bottom: 2px; }
+  .courses { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px 10px; font-size: 9pt; }
+  .courses span { white-space: nowrap; }
+  .skills-row { margin-bottom: 2px; }
+</style>
+</head>
+<body>
+
+<!-- ==================== PAGE 1 ==================== -->
+
+<h1>Pranav Reddy</h1>
+<div class="contact">510-579-9141 | <a href="https://www.linkedin.com/in/pranav-reddy-98bb962b9/">LinkedIn</a> | preddy@ucsb.edu</div>
+
+<h2>Projects &amp; Experience</h2>
+
+<div class="entry">
+  <div class="entry-header">
+    <span>Quantum Codesign Lab</span>
+    <span>June 2025 — present</span>
+  </div>
+  <div class="entry-sub"><span>Niu Group, UCSB Undergraduate Researcher</span></div>
+  <ul>
+    <li>Designed time-dependent Lyapunov control schedules with learnable parameters to accelerate ground state convergence in the Transverse Field Ising Model (TFIM) via feedback-based quantum algorithms (FQAs)</li>
+    <li>Benchmarked GRU, Bayesian, and threshold decoders on continuous stabilizer readout across four hardware-realistic simulation phases; GRU achieved 96% accuracy under colored noise, measurement backaction, and drift</li>
+  </ul>
+</div>
+
+<div class="entry">
+  <div class="entry-header">
+    <span>Pando.AI</span>
+    <span>July 2024–January 2025</span>
+  </div>
+  <div class="entry-sub"><span>Engineer Intern</span><span><a href="https://pando.ai">https://pando.ai</a></span></div>
+  <ul>
+    <li>Built a real time retrieval-augmented automation pipeline with LLM-based inference to supply chain workflows</li>
+    <li>Developed scalable alerting infrastructure and orchestration logic to improve response reliability and operational throughput in production enterprise environments</li>
+  </ul>
+</div>
+
+<div class="entry">
+  <div class="entry-header">
+    <span>TensorDescent</span>
+    <span>January 2026 - April 2026</span>
+  </div>
+  <div class="entry-lang">Language: Python</div>
+  <ul>
+    <li>Built multi-stage ML compiler pipeline using PyTorch FX by implementing ShapeProp, DCE, and operator fusion passes, reducing op count and eliminating intermediate memory roundtrips.</li>
+    <li>Designed a lifetime-based memory planner for on-chip buffer reuse, mirroring memory tradeoff constraints</li>
+  </ul>
+</div>
+
+<div class="entry">
+  <div class="entry-header">
+    <span>KernelForge</span>
+    <span>February 2026 - April 2026</span>
+  </div>
+  <div class="entry-lang">Language: Python</div>
+  <ul>
+    <li>Built a Triton-inspired kernel compiler that lowers tensor ops through loop tiling (32x32) and CUDA-style codegen, mapping work across GPU thread hierarchies via block/threading indexing</li>
+    <li>Implemented fusion and tiling optimization passes that eliminate kernel launch overhead and keep intermediate tensors in shared memory rather than global DRAM</li>
+  </ul>
+</div>
+
+<div class="entry">
+  <div class="entry-header">
+    <span>AccelSim</span>
+    <span>February 2026 - April 2026</span>
+  </div>
+  <div class="entry-lang">Language: Python</div>
+  <ul>
+    <li>Built a cycle accurate neural accelerator simulator modeling 5-instruction ISA with configurable latency, on-chip buffer management, and memory traffic tracking</li>
+    <li>Implemented bottleneck detection classifying workloads as compute-bound, memory-bound, or buffer limited</li>
+  </ul>
+</div>
+
+<div class="entry">
+  <div class="entry-header">
+    <span>Real-Time Quantum Error Decoding (3-Qubit Bit-Flip Code)</span>
+    <span>January 2026–Current</span>
+  </div>
+  <div class="entry-lang">Language: Python</div>
+  <ul>
+    <li>Simulated continuous noisy measurement signals from a 3-qubit error-detecting code, modeling hardware realistic error processes for fault-tolerant quantum systems</li>
+    <li>Developed decoding pipelines to identify and correct bit-flip events in real time, benchmarking learned models against optimal Bayesian inference baselines</li>
+    <li>Engineered scalable experimental infrastructure to evaluate performance across stochastic noise regimes, emphasizing latency, reliability, and hardware-constrained signal decoding</li>
+    <li>Explored sequence based and graph based ML approaches (RNNs, GNNs) to improve error classification accuracy under compute constraints</li>
+  </ul>
+</div>
+
+<div class="entry">
+  <div class="entry-header">
+    <span>Application of Graphs to Machine Learning</span>
+    <span>January 2024–March 2024</span>
+  </div>
+  <div class="entry-lang">Language: C++</div>
+  <ul>
+    <li>Implemented graph algorithms (BFS, DFS) to traverse and manage neural network structures, developed methods for node and connection management and applied graph traversal algorithms for prediction and back-propagation</li>
+  </ul>
+</div>
+
+<h2>Education</h2>
+
+<div class="entry">
+  <div class="entry-header">
+    <span>BS Electrical and Computer Engineering | University of California, Santa Barbara</span>
+    <span>September 2023 — Present</span>
+  </div>
+  <p>Pursuing electrical engineering major with an emphasis on Photonics, ML System Accelerators, High Performance Computing, Computer Architecture, Quantum Error Correction, ML/AI optimizations.</p>
+</div>
+
+<h2>Course Work</h2>
+
+<div class="courses">
+  <span>Intro to Photonics (ECE136A)</span>
+  <span>Probability and Stats (ECE139)</span>
+  <span>Computer Architecture (ECE152)</span>
+  <span>Quantum Photonics (ECE 136C)</span>
+  <span>Intro to Fields &amp; Waves (ECE134)</span>
+  <span>Fiber Optic Systems (ECE 135)</span>
+  <span>Intro Solid State Devices (ECE132)</span>
+  <span>Intro to Optimizations (ECE 133)</span>
+  <span>Digital Circuit Design (ECE 10)</span>
+  <span>Problem Solving in C++ (CS 24)</span>
+  <span>Signal Processing (ECE 130A)</span>
+  <span>Discrete Processing (ECE 130B)</span>
+  <span>Interface Design (ECE153B)</span>
+  <span>Digital Design (ECE152)</span>
+  <span>Waveguide Physics (ECE 144)</span>
+</div>
+
+<h2>Skills &amp; Leadership</h2>
+
+<div class="skills-row"><strong>Languages:</strong> C++, C, Python, Java, Arduino, LATEX, SystemVerilog, low-level Linux</div>
+<div class="skills-row"><strong>Tools:</strong> Unix, Git/Github, LangChain, Tavily, OpenAI, Claude, Gemini, Quartus, Logisim, FPGA</div>
+<div class="skills-row" style="margin-top: 6px;"><strong>Sigma Phi Epsilon</strong> - Vice President / Housing Manager / Siblinghood Chair &nbsp;&nbsp; September 2023 - present</div>
+
+</body>
+</html>
