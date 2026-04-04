@@ -42,6 +42,7 @@ body {
     color: var(--text-dark);
     background: var(--bg-body);
     transition: background 0.3s, color 0.3s;
+    overflow-x: hidden;
 }
 
 /* Navigation */
@@ -748,6 +749,8 @@ footer .social-links a:hover {
     box-shadow: 0 4px 20px var(--shadow);
     transition: all 0.4s;
     margin-bottom: 2.5rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .project-card:hover {
@@ -761,7 +764,7 @@ footer .social-links a:hover {
 }
 
 .project-header h3 {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     color: var(--text-dark);
     margin-bottom: 0.8rem;
 }
@@ -1061,4 +1064,19 @@ nav.scrolled .hamburger { color: white; }
     .metrics-grid { grid-template-columns: 1fr; }
     .tech-tags { gap: 0.3rem; }
     .tech-tag { font-size: 0.7rem; padding: 0.2rem 0.6rem; }
+    .research-grid { grid-template-columns: 1fr; }
+    .research-card [style*="grid-column"] { grid-column: auto; }
+    .timeline { padding-left: 1.5rem; }
+    .timeline-item::before { left: -2rem; width: 10px; height: 10px; }
+    .timeline-item { padding: 1.2rem; }
+    .timeline-item h4 { font-size: 1rem; }
+    .project-header { padding: 1.2rem; }
+    .project-body { padding: 0.8rem 1.2rem 1.2rem; }
+    .project-meta { flex-direction: column; gap: 0.5rem; }
+    .hero-stats { gap: 0.5rem; }
+    .stat-number { font-size: 1.2rem; }
+    .card-icon { width: 44px; height: 44px; border-radius: 10px; }
+    .card-icon svg { width: 22px; height: 22px; }
+    .btn { padding: 0.7rem 1.4rem; font-size: 0.85rem; }
+    .contact-grid { grid-template-columns: 1fr; }
 }

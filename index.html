@@ -101,6 +101,35 @@
 
         <div class="project-card" style="margin-top: 2rem;">
             <div class="project-header">
+                <div class="card-icon" style="margin-bottom: 1.2rem;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20V8l4 4 5-8 5 8 4-4v12"/><circle cx="7" cy="12" r="1.5" fill="white" stroke="none"/><circle cx="12" cy="4" r="1.5" fill="white" stroke="none"/><circle cx="17" cy="12" r="1.5" fill="white" stroke="none"/></svg></div>
+                <h3><a href="https://github.com/pkarakala/ml-systems-lab" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">ML Systems Acceleration Lab</a></h3>
+                <div class="project-meta">
+                    <span>🔧 <a href="https://www.ece.ucsb.edu/" target="_blank" rel="noopener noreferrer" class="hover-link">UC Santa Barbara</a> — Full Accelerator Stack</span>
+                    <span><svg height="14" width="14" viewBox="0 0 16 16" fill="currentColor" style="vertical-align: middle; margin-right: 3px;"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg> <a href="https://github.com/pkarakala/ml-systems-lab" target="_blank" rel="noopener noreferrer" class="hover-link">GitHub Repository</a></span>
+                </div>
+                <p>Built the full ML accelerator software stack from scratch — from PyTorch model capture to compiled kernels to cycle-accurate hardware simulation. A miniature version of what TVM, Triton, and real accelerator SDKs do at scale.</p>
+            </div>
+            <div class="project-body">
+                <h4>Three-Layer Stack</h4>
+                <ul>
+                    <li><a href="https://github.com/pkarakala/FX2Accel" target="_blank" rel="noopener noreferrer" class="hover-link"><strong>TensorDescent</strong></a> — Captures PyTorch models via torch.fx, propagates tensor shapes, fuses Linear+ReLU into single kernels, eliminates dead code, and plans memory for buffer reuse on on-chip SRAM. NumPy backend validates at 0.0 difference vs PyTorch.</li>
+                    <li><a href="https://github.com/pkarakala/KernelForge" target="_blank" rel="noopener noreferrer" class="hover-link"><strong>KernelForge</strong></a> — Takes fused ops, applies loop tiling (32×32 blocks) to keep data in fast shared memory, and emits CUDA-style kernels. Inspired by how Triton approaches GPU programming.</li>
+                    <li><a href="https://github.com/pkarakala/AccelSim" target="_blank" rel="noopener noreferrer" class="hover-link"><strong>AccelSim</strong></a> — Cycle-accurate simulation of a 5-instruction stream (LOAD/MATMUL/RELU/STORE/ADD), tracks memory traffic, measures compute vs memory utilization, and identifies bottlenecks. A 2-layer MLP comes out compute-bound at 77.8% — the signal that tells a compiler where to optimize.</li>
+                </ul>
+                <p style="margin-top: 1rem; color: var(--text-light); font-size: 0.95rem;">Together: compile the graph → optimize the kernels → simulate the hardware → feed insights back to readjust optimization budgets.</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">ML Compilers</span>
+                    <span class="tech-tag">PyTorch FX</span>
+                    <span class="tech-tag">Kernel Optimization</span>
+                    <span class="tech-tag">CUDA Codegen</span>
+                    <span class="tech-tag">Accelerator Simulation</span>
+                    <span class="tech-tag">Memory Planning</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-card" style="margin-top: 2rem;">
+            <div class="project-header">
                 <div class="card-icon" style="margin-bottom: 1.2rem;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2a10 10 0 0 1 0 20 10 10 0 0 1 0-20"/><path d="M2 12h20"/><ellipse cx="12" cy="12" rx="10" ry="4"/></svg></div>
                 <h3>Continuous Quantum Error Correction with ML Decoders</h3>
                 <div class="project-meta">
@@ -292,6 +321,11 @@
                 <h4>Bell Inequality & Entanglement Experiments</h4>
                 <div class="lab-meta"><a href="https://www.ucsb.edu/" target="_blank" rel="noopener noreferrer" class="hover-link"></a>UC Santa Barbara</a> · Experimental</div>
                 <p>Demonstrated Bell inequality violations (S=2.35±0.09) and single-photon antibunching (g²(0)=0.094) using SPDC-generated entangled photon pairs.</p>
+            </div>
+            <div class="timeline-item">
+                <h4><a href="https://github.com/pkarakala/ml-systems-lab" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">ML Systems Lab — AI Accelerator Stack</a></h4>
+                <div class="lab-meta">Independent Project · <a href="https://github.com/pkarakala/ml-systems-lab" target="_blank" rel="noopener noreferrer" class="hover-link"><svg height="14" width="14" viewBox="0 0 16 16" fill="currentColor" style="vertical-align: middle; margin-right: 3px;"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg> GitHub</a></div>
+                <p>Built a 3-layer ML accelerator software stack: TensorDescent (PyTorch-to-IR graph compiler with operator fusion), KernelForge (Triton-style kernel compiler with tiling and CUDA code generation), and AccelSim (cycle-level neural accelerator simulator for performance analysis).</p>
             </div>
         </div>
     </section>

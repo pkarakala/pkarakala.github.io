@@ -3,38 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact — Pranav Reddy</title>
+    <title>Resume — Pranav Reddy</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
+        .resume-viewer {
+            width: 100%;
+            height: 80vh;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+        .resume-actions {
+            display: flex;
             gap: 1rem;
-            max-width: 100%;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
         }
-        .contact-card {
-            padding: 1.5rem 1rem;
+        .resume-actions .btn {
+            font-size: 0.9rem;
         }
-        .contact-icon {
-            font-size: 2rem;
-            margin-bottom: 0.8rem;
-        }
-        .contact-card h4 {
-            font-size: 1rem;
-        }
-        .contact-card a {
-            font-size: 0.85rem;
-            word-break: break-word;
-        }
-        @media (max-width: 900px) {
-            .contact-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-        @media (max-width: 550px) {
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
+        @media (max-width: 768px) {
+            .resume-viewer { height: 60vh; }
+            .resume-actions { flex-direction: column; align-items: center; }
         }
     </style>
 </head>
@@ -49,7 +40,7 @@
             <li><a href="projects.html">Projects</a></li>
             <li><a href="index.html#skills">Skills</a></li>
             <li><a href="index.html#labs">Labs</a></li>
-            <li><a href="contact.html" class="active">Contact</a></li>
+            <li><a href="contact.html">Contact</a></li>
             <li>
                 <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
                     <span class="icon-moon">🌙</span>
@@ -61,43 +52,22 @@
     </nav>
 
     <div class="page-header">
-        <h1>Contact</h1>
-        <p>Open to intern opportunities and research in hardware-focused software engineering, computer architecture, HPC, ML/AI, Photonics and Quantum Systems.</p>
+        <h1>Resume</h1>
+        <p><a href="https://www.ece.ucsb.edu/" target="_blank" rel="noopener noreferrer" class="hover-link" style="color: inherit;">Electrical &amp; Computer Engineering</a> · <a href="https://www.ucsb.edu/" target="_blank" rel="noopener noreferrer" class="hover-link" style="color: inherit;">UC Santa Barbara</a></p>
     </div>
 
     <section>
-        <div class="contact-grid">
-            <div class="contact-card">
-                <div class="contact-icon">✉️</div>
-                <h4>Email</h4>
-                <a href="mailto:preddy@ucsb.edu">preddy@ucsb.edu</a>
-            </div>
-            <div class="contact-card">
-                <div class="contact-icon">📞</div>
-                <h4>Phone</h4>
-                <a href="tel:+15105799141">(510) 579-9141</a>
-            </div>
-            <div class="contact-card">
-                <div class="contact-icon">💼</div>
-                <h4>LinkedIn</h4>
-                <a href="https://www.linkedin.com/in/pranav-reddy-98bb962b9/" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a>
-            </div>
-            <div class="contact-card">
-                <div class="contact-icon">📄</div>
-                <h4>Resume</h4>
-                <a href="assets/pdfs/resume.pdf" target="_blank" rel="noopener noreferrer">Download Resume (PDF)</a>
-            </div>
-            <div class="contact-card">
-                <div class="contact-icon">📚</div>
-                <h4>Coursework</h4>
-                <a href="coursework.html">View Courses</a>
-            </div>
+        <div class="resume-actions">
+            <a href="assets/pdfs/resume.pdf" class="btn btn-primary" download>Download Resume (PDF)</a>
+            <a href="assets/pdfs/resume2.pdf" class="btn btn-outline" download>Download Resume v2 (PDF)</a>
         </div>
+
+        <iframe src="assets/pdfs/resume2.pdf" class="resume-viewer" title="Pranav Reddy Resume"></iframe>
     </section>
 
     <footer>
         <div class="social-links">
-            <a href="https://www.linkedin.com/in/pranav-reddy-98bb962b9/" aria-label="LinkedIn">in</a>
+            <a href="https://linkedin.com/in/pranav-reddy" aria-label="LinkedIn">in</a>
             <a href="mailto:preddy@ucsb.edu" aria-label="Email">✉</a>
         </div>
         <p>&copy; 2026 Pranav Reddy. All rights reserved.</p>
