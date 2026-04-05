@@ -3,8 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Projects by Pranav Reddy — Quantum Error Correction, ML Accelerator Stack, Photonic Fiber Optics, and more.">
+    <meta property="og:title" content="Projects — Pranav Reddy">
+    <meta property="og:description" content="Quantum Error Correction, ML Accelerator Stack, Photonic Fiber Optics, and more.">
+    <meta property="og:type" content="website">
     <title>Projects — Pranav Reddy</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' stop-color='%230d9488'/><stop offset='100%25' stop-color='%237c3aed'/></linearGradient></defs><rect width='100' height='100' rx='20' fill='url(%23g)'/><text x='50' y='68' font-family='system-ui' font-size='50' font-weight='700' fill='white' text-anchor='middle'>PR</text></svg>">
     <style>
         .card-img {
             width: 85%;
@@ -109,8 +114,8 @@
 
             <!-- 1. CQEC ML Decoder -->
             <div class="card">
-                <img src="assets/images/qec.webp" alt="Quantum Error Correction Decoder" class="card-img">
-                <h3>Continuous Quantum Error Correction with ML Decoders</h3>
+                <img src="assets/images/qec.webp" alt="Quantum Error Correction Decoder" class="card-img" loading="lazy">
+                <h3>Continuous Quantum Error Correction with ML Decoders <span class="featured-badge">Featured</span></h3>
                 <p>4-phase pipeline: static syndromes → Hamiltonian dynamics → non-ideal effects (colored noise, transients, drift) → adaptive online decoding. GRU achieves 96% accuracy; adaptive GRU maintains 82% under hardware drift vs 70% for Bayesian filter. 244 unit tests across all phases.</p>
                 <ul>
                     <li>Threshold, Bayesian, static GRU, and adaptive GRU decoders compared</li>
@@ -154,7 +159,7 @@
                     <path d="M265 50 L270 32" stroke="url(#stackGrad)" stroke-width="1.5"/>
                     <path d="M265 70 L270 87" stroke="url(#stackGrad)" stroke-width="1.5"/>
                 </svg>
-                <h3>ML Systems Lab — Accelerator Stack</h3>
+                <h3>ML Systems Lab — Accelerator Stack <span class="featured-badge">Featured</span></h3>
                 <p>A collection of ML systems projects exploring the software stack behind modern AI accelerators: graph compilation, kernel generation, and runtime simulation.</p>
                 <ul>
                     <li><a href="https://github.com/pkarakala/FX2Accel" target="_blank" rel="noopener noreferrer" class="hover-link"><strong>TensorDescent</strong></a> — PyTorch FX-to-IR compiler with graph optimization, memory planning, and toy accelerator codegen</li>
@@ -175,7 +180,7 @@
 
             <!-- 3. Quantum Computing & Photonics Labs -->
             <div class="card">
-                <img src="assets/images/quantum-photonics.webp" alt="Quantum Photonics Lab" class="card-img">
+                <img src="assets/images/quantum-photonics.webp" alt="Quantum Photonics Lab" class="card-img" loading="lazy">
                 <h3>Quantum Computing &amp; Photonics Labs (<a href="https://catalog.ucsb.edu/courses/ECE%20136C" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-decoration-color: var(--primary); text-underline-offset: 2px;">ECE 136C</a>)</h3>
                 <p>Simulated quantum information experiments using Strawberry Fields, polarization-based circuits, and photonic quantum gate modeling.</p>
                 <ul>
@@ -255,7 +260,7 @@
 
             <!-- 5. Lyapunov Optimization -->
             <div class="card">
-                <img src="assets/images/lyapunov.webp" alt="Quantum Control Research" class="card-img">
+                <img src="assets/images/lyapunov.webp" alt="Quantum Control Research" class="card-img" loading="lazy">
                 <h3>Feedback-Based Quantum Control via Lyapunov Optimization</h3>
                 <p>Optimized an explicit time-dependent Lyapunov control law to accelerate convergence to low-energy states in the Transverse Field Ising Model (TFIM) using a circuit-based FQA workflow (implementation details confidential).</p>
                 <ul>
@@ -273,7 +278,7 @@
 
             <!-- 6. Optical Systems -->
             <div class="card">
-                <img src="assets/images/optics.webp" alt="Optical Systems Lab" class="card-img">
+                <img src="assets/images/optics.webp" alt="Optical Systems Lab" class="card-img" loading="lazy">
                 <h3>Optical Systems &amp; Imaging Labs (<a href="https://catalog.ucsb.edu/courses/ECE%20136A" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-decoration-color: var(--primary); text-underline-offset: 2px;">ECE 136A</a>)</h3>
                 <p>Completed experimental optics and photonics lab reports covering lens imaging, telescopes, Fourier optics, and aperture-based spatial filtering.</p>
                 <ul>
@@ -294,7 +299,7 @@
 
             <!-- 7. Raman Spectroscopy -->
             <div class="card">
-                <img src="assets/images/raman.webp" alt="Raman Spectroscopy" class="card-img">
+                <img src="assets/images/raman.webp" alt="Raman Spectroscopy" class="card-img" loading="lazy">
                 <h3>Mineral Identification via Raman Spectroscopy</h3>
                 <p>Analyzed Raman spectroscopy measurements to identify mineral composition using peak detection, spectral fitting, and comparison to reference signatures.</p>
                 <ul>
@@ -338,6 +343,13 @@
             if (isDark) { root.removeAttribute('data-theme'); localStorage.setItem('theme', 'light'); }
             else { root.setAttribute('data-theme', 'dark'); localStorage.setItem('theme', 'dark'); }
         });
+
+        // Fade-in on scroll
+        document.querySelectorAll('.card').forEach(el => el.classList.add('fade-in'));
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>

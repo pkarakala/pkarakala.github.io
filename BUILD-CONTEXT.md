@@ -426,3 +426,16 @@ This section captures every significant prompt and action from the build session
 - Coursework page has 4 categories: Quantum & Photonics, ML Systems & Signals, Hardware Architecture, Systems Programming
 - ECE 154A, ECE 154B, and CS 160 are listed as Fall 2026 (upcoming)
 - Projects page has 7 cards in order: CQEC → ML Systems → ECE 136C → ECE 135 → Lyapunov → ECE 136A → Raman
+
+---
+
+## Session Updates (2026-04-04 / 2026-04-05)
+
+32. **Resume consolidation** — Merged two-page resume into single page: removed duplicate Education, Pando.AI, and Quantum Codesign Lab sections from page 2; moved Real-Time Quantum Error Decoding after AccelSim on page 1; combined Education + Course Work before Skills & Leadership; merged Skills & Leadership sections
+33. **Resume description update** — Changed emphasis line to "Photonics, ML System Accelerators, High Performance Computing, Computer Architecture, Quantum Error Correction, ML/AI optimizations"
+34. **LinkedIn link** — Made LinkedIn clickable in resume.html pointing to https://www.linkedin.com/in/pranav-reddy-98bb962b9/
+35. **Course Work styling** — Reduced font to 9pt, gap to 10px, added white-space: nowrap to prevent overflow in 3-column grid
+36. **File renames** — resume1.html → resume.html, swapped resume.pdf ↔ resume1.pdf (original resume.pdf is now resume1.pdf, new one is resume.pdf)
+37. **Removed duplicate resume.html** — Deleted root-level resume.html; canonical version is assets/pdfs/resume.html
+38. **Updated resume links** — contact.html and coursework.html now link to assets/pdfs/resume.html
+39. **PDF generation** — Using `/opt/homebrew/bin/python3.12` with weasyprint to convert resume.html → resume.pdf

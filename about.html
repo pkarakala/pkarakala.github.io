@@ -3,8 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="About Pranav Reddy — ML accelerator systems, quantum error correction, photonics, and computer architecture at UC Santa Barbara.">
+    <meta property="og:title" content="About — Pranav Reddy">
+    <meta property="og:description" content="ML accelerator systems, quantum error correction, photonics, and computer architecture at UC Santa Barbara.">
+    <meta property="og:type" content="website">
     <title>About — Pranav Reddy</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' stop-color='%230d9488'/><stop offset='100%25' stop-color='%237c3aed'/></linearGradient></defs><rect width='100' height='100' rx='20' fill='url(%23g)'/><text x='50' y='68' font-family='system-ui' font-size='50' font-weight='700' fill='white' text-anchor='middle'>PR</text></svg>">
     <style>
         .about-hero {
             display: grid;
@@ -324,9 +329,38 @@
             </div>
         </div>
 
+        <!-- Engineering Output -->
+        <div class="values-strip" style="margin-top: 2rem;">
+            <div class="value-item">
+                <span class="value-emoji"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 11v4"/><path d="M20 13h4"/></svg></span>
+                <h4>6+ Repos</h4>
+                <p>Open-source projects</p>
+            </div>
+            <div class="value-item">
+                <span class="value-emoji"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span>
+                <h4>244 Tests</h4>
+                <p>CQEC pipeline coverage</p>
+            </div>
+            <div class="value-item">
+                <span class="value-emoji"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg></span>
+                <h4>3-Layer Stack</h4>
+                <p>ML accelerator pipeline</p>
+            </div>
+            <div class="value-item">
+                <span class="value-emoji"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
+                <h4>40+ Cores</h4>
+                <p>Parallel simulation infra</p>
+            </div>
+        </div>
+
         <!-- Personal Note -->
         <div class="personal-note">
             <p>Outside the lab, I'm an outgoing person who thrives in collaborative environments. I play tennis, I'm a huge Warriors fan, and I genuinely enjoy bouncing ideas around and learning from the people I work with. I bring energy, curiosity, and a strong drive to every team I join.</p>
+        </div>
+
+        <!-- What's Next -->
+        <div class="personal-note" style="border-left-color: var(--secondary);">
+            <p><strong style="color: var(--text-dark);">What I'm building toward:</strong> Fall 2026 I'm taking ECE 154A/B (Computer Architecture) and CS 160 (Compilers) to formalize the systems knowledge I've been applying in the ML accelerator stack. The goal is to close the loop between the compiler IR work I've done in TensorDescent and real hardware pipeline design.</p>
         </div>
 
         <!-- CTA -->
@@ -334,6 +368,7 @@
             <h2>Working on ML Accelerators, HPC systems, next-gen hardware, or a tough engineering problem?</h2>
             <p>I'm looking for opportunities in ML accelerator systems, hardware-focused software engineering, computer architecture, HPC, and performance-critical systems.</p>
             <a href="contact.html" class="btn">Let's Connect</a>
+            <button onclick="window.print()" class="btn" style="background: transparent; color: white; border: 2px solid rgba(255,255,255,0.8); margin-left: 0.5rem; cursor: pointer;">Save as PDF</button>
         </div>
     </section>
 
@@ -361,6 +396,13 @@
             if (isDark) { root.removeAttribute('data-theme'); localStorage.setItem('theme', 'light'); }
             else { root.setAttribute('data-theme', 'dark'); localStorage.setItem('theme', 'dark'); }
         });
+
+        // Fade-in on scroll
+        document.querySelectorAll('.impact-card, .value-item, .personal-note').forEach(el => el.classList.add('fade-in'));
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>

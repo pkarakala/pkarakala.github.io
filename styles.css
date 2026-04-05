@@ -680,7 +680,7 @@ footer .social-links a:hover {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 2rem;
-    margin-bottom: 3rem;
+    margin-bottom: 0;
 }
 
 .research-card {
@@ -1079,4 +1079,45 @@ nav.scrolled .hamburger { color: white; }
     .card-icon svg { width: 22px; height: 22px; }
     .btn { padding: 0.7rem 1.4rem; font-size: 0.85rem; }
     .contact-grid { grid-template-columns: 1fr; }
+}
+
+/* Fade-in on scroll */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Print styles */
+@media print {
+    nav, footer, .scroll-indicator, .cta-buttons, .theme-toggle, .hamburger { display: none; }
+    .hero { min-height: auto; padding: 2rem; }
+    section { padding: 1rem 0; }
+    .page-header { padding: 2rem 0 1rem; }
+    body { background: white; color: black; }
+    .research-card, .project-card, .card, .impact-card, .timeline-item {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+}
+
+/* Featured badge */
+.featured-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0.2rem 0.7rem;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-left: 0.6rem;
+    vertical-align: middle;
 }

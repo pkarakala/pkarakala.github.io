@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 — Pranav Reddy</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' stop-color='%230d9488'/><stop offset='100%25' stop-color='%237c3aed'/></linearGradient></defs><rect width='100' height='100' rx='20' fill='url(%23g)'/><text x='50' y='68' font-family='system-ui' font-size='50' font-weight='700' fill='white' text-anchor='middle'>PR</text></svg>">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li class="nav-logo"><a href="index.html">PR</a></li>
+            <div class="nav-links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="index.html#research">Research</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            </div>
+        </ul>
+    </nav>
+    <div class="page-header" style="min-height: 60vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+        <h1 style="font-size: 5rem; margin-bottom: 0.5rem;">404</h1>
+        <p style="font-size: 1.3rem; margin-bottom: 2rem;">This page doesn't exist — but my work does.</p>
+        <a href="index.html" class="btn" style="background: white; color: #042f2e; font-weight: 700;">Back to Home</a>
+    </div>
+    <footer>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/pranav-reddy-98bb962b9/" aria-label="LinkedIn">in</a>
+            <a href="mailto:preddy@ucsb.edu" aria-label="Email">✉</a>
+        </div>
+        <p>&copy; 2026 Pranav Reddy. All rights reserved.</p>
+    </footer>
+    <script>
+        const root = document.documentElement;
+        const saved = localStorage.getItem('theme');
+        if (saved === 'dark') root.setAttribute('data-theme', 'dark');
+        else if (!saved) root.setAttribute('data-theme', 'dark');
+    </script>
+</body>
+</html>
