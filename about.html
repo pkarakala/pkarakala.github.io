@@ -253,7 +253,7 @@
 
     <div class="page-header">
         <h1>About</h1>
-        <p>Quantum Computing, Photonics, ML Accelerator Systems, and Fiber Optics — building systems that scale under real hardware constraints</p>
+        <p>Quantum Computing, Photonics, ML Accelerator Systems, and Performance Engineering — building systems that scale under real hardware constraints</p>
     </div>
 
     <section>
@@ -263,7 +263,7 @@
             <div class="about-intro">
                 <h2>Pranav Reddy</h2>
                 <p class="tagline"><a href="https://www.ece.ucsb.edu/" target="_blank" rel="noopener noreferrer" class="hover-link" style="color: inherit;">Electrical &amp; Computer Engineering</a> · <a href="https://www.ucsb.edu/" target="_blank" rel="noopener noreferrer" class="hover-link" style="color: inherit;">UC Santa Barbara</a></p>
-                <p>I build systems where performance actually matters — from ML-based quantum error correction decoders that outperform Bayesian methods at 96% accuracy, to a full ML accelerator software stack covering graph compilation, kernel optimization, and cycle-accurate hardware simulation, to parallel simulation infrastructure distributed across 40+ CPU cores.</p>
+                <p>I build systems where performance actually matters — from ML-based quantum error correction decoders that outperform Bayesian methods at 96% accuracy, to a full ML accelerator software stack covering graph compilation, kernel optimization, and cycle-accurate hardware simulation, to roofline-based performance modeling that classifies transformer inference ops as compute-bound or memory-bound, to parallel simulation infrastructure distributed across 40+ CPU cores.</p>
                 <p>My work spans quantum control, photonics, ML systems, and computer architecture — from torch.fx graph compilers and CUDA kernel codegen to anti-resonant hollow-core fiber analysis and real-time RAG pipelines in production. I'm drawn to the kind of engineering where latency, scalability, and hardware constraints shape every design decision.</p>
             </div>
         </div>
@@ -280,12 +280,12 @@
                 <div class="impact-card">
                     <div class="impact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h.01"/><path d="M10 12h.01"/><path d="M14 12h.01"/><path d="M18 12h.01"/><path d="M6 16h.01"/><path d="M10 16h.01"/><path d="M14 16h.01"/><path d="M18 16h.01"/><path d="M2 10h20"/></svg></div>
                     <h3>Engineering Scalable Systems</h3>
-                    <p>Built a full ML accelerator software stack from scratch — graph compilation via torch.fx, Triton-style kernel optimization with loop tiling, and cycle-accurate hardware simulation that identifies compute vs memory bottlenecks. Also designed simulation pipelines handling thousands of quantum trajectories with proper train/test isolation and reproducible benchmarking.</p>
+                    <p>Built a full ML accelerator software stack from scratch — graph compilation via torch.fx, Triton-style kernel optimization with loop tiling, and cycle-accurate hardware simulation. Extended this with roofline analysis for transformer inference, classifying attention, MLP, and KV-cache ops as compute-bound or memory-bound across prefill and decode phases. Also designed simulation pipelines handling thousands of quantum trajectories with reproducible benchmarking.</p>
                 </div>
                 <div class="impact-card">
                     <div class="impact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 16l4-8 4 4 4-6"/><circle cx="7" cy="16" r="1.5" fill="white"/><circle cx="11" cy="8" r="1.5" fill="white"/><circle cx="15" cy="12" r="1.5" fill="white"/><circle cx="19" cy="6" r="1.5" fill="white"/></svg></div>
                     <h3>Bridging Theory and Practice</h3>
-                    <p>From Wonham filters to GRU networks, from brute-force fiber simulation to analytic models that predict confinement loss from geometry alone — I benchmark principled baselines against data-driven approaches, identifying exactly where and why one outperforms the other. Research that translates to engineering decisions.</p>
+                    <p>From Wonham filters to GRU networks, from brute-force fiber simulation to analytic confinement-loss models, from full numerical simulation to first-order roofline estimates that predict which transformer ops hit the memory wall — I benchmark principled baselines against data-driven approaches, identifying exactly where and why one outperforms the other. Research that translates to engineering decisions.</p>
                 </div>
                 <div class="impact-card">
                     <div class="impact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18h8"/><path d="M3 22h18"/><path d="M14 22a7 7 0 1 0 0-14h-1"/><path d="M9 14h2"/><path d="M9 12a2 2 0 0 1-2-2V6"/><path d="M7 6h4"/></svg></div>
@@ -333,7 +333,7 @@
         <div class="values-strip" style="margin-top: 2rem;">
             <div class="value-item">
                 <span class="value-emoji"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 11v4"/><path d="M20 13h4"/></svg></span>
-                <h4>6+ Repos</h4>
+                <h4>7+ Repos</h4>
                 <p>Open-source projects</p>
             </div>
             <div class="value-item">
@@ -360,7 +360,7 @@
 
         <!-- What's Next -->
         <div class="personal-note" style="border-left-color: var(--secondary);">
-            <p><strong style="color: var(--text-dark);">What I'm building toward:</strong> Fall 2026 I'm taking ECE 154A/B (Computer Architecture) and CS 160 (Compilers) to formalize the systems knowledge I've been applying in the ML accelerator stack. The goal is to close the loop between the compiler IR work I've done in TensorDescent and real hardware pipeline design.</p>
+            <p><strong style="color: var(--text-dark);">What I'm building toward:</strong> Fall 2026 I'm taking ECE 154A/B (Computer Architecture) and CS 160 (Compilers) to formalize the systems knowledge I've been applying across the ML accelerator stack and roofline performance modeling. The goal is to close the loop between compiler IR design, hardware pipeline architecture, and the kind of bottleneck analysis that tells you where optimization actually matters.</p>
         </div>
 
         <!-- CTA -->
