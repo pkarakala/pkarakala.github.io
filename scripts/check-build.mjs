@@ -81,6 +81,7 @@ const home = documents.get(join(root, 'index.html'));
 const normalize = text => text.replace(/\s+/g, ' ').trim();
 const expectedAbout = normalize((await readFile('src/data/about.md', 'utf8')).replace(/\*/g, ''));
 assert(normalize(home('.about-copy > p').map((_, e) => home(e).text()).get().join(' ')) === expectedAbout, 'About copy changed during rendering');
+assert(home('.hero-intro > p').text() === 'I build and evaluate ML systems, with a hardware-first interest in compilers, accelerators, and quantum technologies.', 'Approved hero statement missing');
 assert(!/graduation|December 2027|Fall 2027/i.test(home('main').text()), 'Graduation date or unapproved wording in homepage');
 assert(home('#research').length && home('#skills').length && home('#labs').length, 'Legacy homepage anchors missing');
 assert(!existsSync(join(root, 'INTERVIEW-PREP.html')) && !existsSync(join(root, 'career.md')) && !existsSync(join(root, 'cqec-ml-decoder')), 'Repository-only material leaked into output');
@@ -89,6 +90,11 @@ const archiveLinks = new Set(archive('a[href]').map((_, e) => archive(e).attr('h
 const selectedWork = home('#work article.project-row').map((_, e) => home(e).attr('id')).get();
 assert(JSON.stringify(selectedWork) === JSON.stringify(['kernel-relay', 'continuous-qec', 'ml-systems-lab', 'photonic-fiber']), 'Selected work order changed');
 assert(home('#kernel-relay a[href="https://github.com/pkarakala/kernel-relay"]').length === 2, 'KernelRelay repository link missing from homepage');
+assert(home('#kernel-relay .project-summary').text().includes('fixed mock, not a trained agent'), 'KernelRelay mock limitation missing from homepage');
+assert(home('#kernel-relay .project-evidence').text().includes('0.053 ms versus 0.120 ms'), 'Qualified T4 result missing from homepage');
+assert(home('#kernel-relay a[href="https://github.com/pkarakala/kernel-relay/blob/main/results/agent-eval/README.md"]').length === 1, 'KernelRelay timing methodology link missing');
+assert(home('#continuous-qec .project-cover figcaption').text().includes('Illustrative'), 'QEC schematic is unlabeled on homepage');
+assert(home('#continuous-qec a[href="https://github.com/pkarakala/cqec-ml-decoder/blob/main/outputs/figures/robustness_vs_noise.png"]').length === 1, 'QEC results plot link missing');
 const lab = archive('article#ml-systems-lab');
 for (const [slug, url] of Object.entries({
   'tensor-descent': 'https://github.com/pkarakala/FX2Accel',

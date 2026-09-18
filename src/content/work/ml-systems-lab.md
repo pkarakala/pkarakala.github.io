@@ -1,7 +1,7 @@
 ---
 title: ML Systems Lab
 slug: ml-systems-lab
-summary: A suite of experiments in PyTorch graph lowering, kernel generation, and cycle-level accelerator simulation.
+summary: 'Three linked prototypes spanning PyTorch FX graph lowering, kernel IR and fusion experiments, and cycle-level accelerator simulation.'
 category: Independent project
 date: January to April 2026
 order: 3

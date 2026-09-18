@@ -33,6 +33,8 @@ reports:
 
 The title points directly to the repository or, when there is exactly one report, to that report. All report links remain visible in the archive. `related` accepts a list of `{ label, url }` for related external evidence. `date`, `context`, `role`, and `status` are optional; omit unknown details. The project Markdown body is for authoring notes and is not rendered as a case study.
 
+For a measured result or reproducible figure, add optional `evidence: { statement, label, url }`. The statement appears on both Home and Work, with a direct link to the methods, raw timings, or figure. Qualify device, workload, simulation conditions, and variability as needed; do not imply a one-device measurement is a general speedup. A conceptual cover image remains labeled with its caption on both pages.
+
 For a collection of reports, add `reportHeading` so the archive presents them as one labeled group. A title with multiple reports does not link arbitrarily to the first PDF; readers choose the report they want. ECE 136C is one work entry with eight report links. Its `anchorAliases` preserve the former `#quantum-optics` and `#xanadu-x8` fragments on the combined card.
 
 Optional real images appear in the archive and, when featured, on the homepage with `cover: { src, alt, caption, width, height }`. Use a root-relative `/assets/` URL and accurate alt text/caption and dimensions. Avoid generic or invented project imagery. The six restored covers are the images from the previous portfolio; the other projects remain text-only instead of using filler artwork. The header mark is the owner-supplied image at `public/assets/images/house-circuit-mark.png`.

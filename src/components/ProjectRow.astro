@@ -14,13 +14,15 @@ const credit = p.attribution ?? (p.collaborators.length ? `With ${p.collaborator
   <div class="project-copy">
     <Heading id={`${p.slug}-title`}>{destination ? <a href={destination}>{p.title}</a> : p.title}</Heading>
     <p class="project-summary">{p.summary}</p>
+    {p.evidence && <p class="project-evidence">{p.evidence.statement}</p>}
     {credit && <p class="project-credit">{credit}</p>}
     {archive && p.status && <p class="project-credit">{p.status}</p>}
     {archive && p.related.length > 0 && <ul class="related-links" aria-label={`${p.title} components`}>{p.related.map(link => <li><a href={link.url}>{link.label} <Arrow /></a></li>)}</ul>}
   </div>
-  {p.cover && <figure class="project-cover"><a href={p.cover.src} aria-label={`View full-size image: ${p.title}`}><img src={p.cover.src} alt={p.cover.alt} width={p.cover.width} height={p.cover.height} loading="lazy" decoding="async" /></a>{archive && <figcaption>{p.cover.caption}</figcaption>}</figure>}
+  {p.cover && <figure class="project-cover"><a href={p.cover.src} aria-label={`View full-size image: ${p.title}`}><img src={p.cover.src} alt={p.cover.alt} width={p.cover.width} height={p.cover.height} loading="lazy" decoding="async" /></a><figcaption>{p.cover.caption}</figcaption></figure>}
   <div class:list={['project-actions', { 'grouped-reports': archive && Boolean(p.reportHeading) }]}>
     {p.repository && <a class="action-link" href={p.repository} aria-label={`View on GitHub: ${p.title}`}>View on GitHub <Arrow /></a>}
+    {p.evidence && <a class="action-link" href={p.evidence.url}>{p.evidence.label} <Arrow /></a>}
     {archive && p.reportHeading && <p class="report-heading">{p.reportHeading}</p>}
     {(archive ? p.reports : p.reports.slice(0, 1)).map(report => <a class="action-link" href={report.url} aria-label={`${report.label} PDF — ${p.title}`}>{report.label} <span class="file-kind">PDF</span><Arrow /></a>)}
     {!p.repository && p.reports.length === 0 && <span class="muted">Summary only</span>}
