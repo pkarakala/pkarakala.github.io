@@ -34,6 +34,7 @@ for (const [file, $] of documents) {
   assert(ids.length === new Set(ids).size, `${name}: duplicate IDs`);
   assert($('a.skip-link[href="#main"]').length === 1, `${name}: missing skip link`);
   assert($('link[rel="canonical"]').attr('href')?.startsWith(site), `${name}: incorrect canonical`);
+  assert($('meta[property="og:image"]').attr('content') === `${site}/assets/images/linkedin-portfolio-card.png`, `${name}: outdated social preview`);
   for (const image of $('img').toArray()) {
     assert($(image).attr('alt') !== undefined && $(image).attr('width') && $(image).attr('height'), `${name}: image needs alt text and dimensions`);
   }
@@ -76,6 +77,15 @@ for (const [url, originalHash] of Object.entries(inventory.assets)) {
 for (const url of [...Object.keys(inventory.pages), '/assets/pdfs/resume.html']) assert(existsSync(resolve(root, '.' + url)), `Legacy page missing: ${url}`);
 const resume = JSON.parse(await readFile('docs/resume-source.json', 'utf8'));
 assert(hash(await readFile(join(root, resume.publicUrl))) === resume.sha256, 'Canonical resume differs from approved PDF');
+for (const [name, path, width, height, maxBytes] of [
+  ['LinkedIn website preview', 'assets/images/linkedin-portfolio-card.png', 1200, 627, 5 * 1024 * 1024],
+  ['LinkedIn profile background', 'assets/images/linkedin-profile-banner.png', 1584, 396, 8 * 1024 * 1024],
+]) {
+  const bytes = await readFile(join(root, path));
+  assert(bytes.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10])), `${name}: expected PNG`);
+  assert(bytes.readUInt32BE(16) === width && bytes.readUInt32BE(20) === height, `${name}: incorrect dimensions`);
+  assert(bytes.length < maxBytes, `${name}: image exceeds LinkedIn size limit`);
+}
 for (const file of output.filter(file => file.endsWith('.pdf'))) assert((await readFile(file)).subarray(0, 5).toString() === '%PDF-', `Invalid PDF: ${file}`);
 const home = documents.get(join(root, 'index.html'));
 const contact = documents.get(join(root, 'contact.html'));
