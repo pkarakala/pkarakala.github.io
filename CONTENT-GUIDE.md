@@ -57,7 +57,7 @@ The script copies the exact bytes into `public/assets/pdfs/resume.pdf` and updat
 ## Update experience, education, or contact details
 
 - `src/data/experience.ts`: organization, role, and displayed dates.
-- `src/data/profile.ts`: name, exact program/university wording, introduction, email, GitHub, LinkedIn, and canonical resume URL.
+- `src/data/profile.ts`: name, exact program/university wording, introduction, human-readable obfuscated email display, GitHub, LinkedIn, and canonical resume URL. Home and Contact render it as text, without a `mailto:` link. This deters simple page scrapers but is not a guarantee against sophisticated scraping or the address appearing in public PDFs/repositories.
 - `src/data/coursework.json`: course groups, course titles, catalog links, and explicitly documented terms.
 - `src/data/about.md`: the verbatim owner-approved About prose. Edit only when the owner approves new copy. It is rendered once on the homepage; `/about.html` takes visitors there.
 
