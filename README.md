@@ -26,6 +26,6 @@ See [CONTENT-GUIDE.md](CONTENT-GUIDE.md) for routine edits and [BUILD-CONTEXT.md
 
 `astro.config.mjs` uses `https://pkarakala.github.io` with **no repository base path** and emits literal `.html` pages to `dist/`. Only `dist/` is deployed. Reports and images retain their original root-relative URLs.
 
-The `.github/workflows/pages.yml` workflow validates pull requests and deploys the built `dist/` directory on `main` pushes or a manual run on `main`. The repository's Pages source must be set to **GitHub Actions**; the repository root is not the published website.
+The `.github/workflows/pages.yml` workflow validates pull requests and deploys the built `dist/` directory on `main` pushes or a manual run on `main`. The repository's Pages source is **GitHub Actions**; the repository root is not the published website.
 
 Public files belong in `public/`. Supporting source and documentation remain outside the generated website.

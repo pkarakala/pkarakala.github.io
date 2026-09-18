@@ -1,8 +1,14 @@
 # Implementation review
 
-Local review: September 17, 2026 (America/Los_Angeles). Original baseline: `0e25c9d`. No push, merge, remote setting change, or publication was performed.
+Local review began September 17, 2026 (America/Los_Angeles). Original baseline: `0e25c9d`. Initial review passes were local; the Astro portfolio was subsequently published through PR #1 and the GitHub Pages Actions workflow.
 
 The sections below record successive local review passes; their counts describe the pass in which they were measured. The latest content revision is recorded first.
+
+## Live deployment and responsive follow-up
+
+PR #1 merged as `d65a2865fc8d270c74874e6cd028d261cdd57b3d`. GitHub Pages was changed from legacy branch publishing to the Actions workflow. The `main` build and deploy run completed successfully, and direct requests to the public Home and Work pages returned the expected KernelRelay-first selection, nine archive entries, and ML Systems Lab component links.
+
+A live browser review at a 629px viewport exposed overly narrow project copy beside cover images. The follow-up CSS stacks covered cards at 800px and below and limits image width at intermediate desktop sizes. Local browser checks at 629px, 768px, and 390px show full-width project copy with no document-level horizontal overflow.
 
 ## KernelRelay and selected-work revision
 
@@ -76,7 +82,7 @@ The initial home audit was 94 performance / 100 accessibility. Font preloads and
 - The original ECE 10 catalog URL returned 404. Its destination was replaced with the verified official UCSB ECE 10 series overview. Original course wording is retained rather than guessing a different course taken by the owner.
 - LinkedIn returned HTTP 999 to the automated checker. The exact owner-provided URL is retained; its live profile could not be independently verified by that check.
 - The existing `banner.png` and social-image metadata are preserved. This image still carries the previous visual style and wording; the visible portfolio uses the new identity. No replacement social image was generated.
-- Current GitHub Pages settings still use legacy `main:/` publishing. When publication is explicitly approved, switch the Pages source to GitHub Actions before deploying the prepared workflow. This has not been changed or tested by a remote deployment.
+- GitHub Pages initially used legacy `main:/` publishing. The source was switched to GitHub Actions for the Astro launch, and the `main` deployment completed successfully.
 - Cross-browser, physical-device, screen-reader-user, and field performance testing were not performed. Automated scores do not substitute for those checks.
 
 ## Preview and maintenance
