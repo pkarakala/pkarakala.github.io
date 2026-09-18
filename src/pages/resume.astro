@@ -1,0 +1,8 @@
+---
+import Base from '../layouts/Base.astro';
+import { profile } from '../data/profile';
+import Arrow from '../components/Arrow.astro';
+---
+<Base title="Resume — Pranav Reddy" description="View or download Pranav Reddy’s current resume as a PDF." canonical="/resume.html">
+  <section class="page-intro document-section"><p class="eyebrow">Background & experience</p><h1>Resume</h1><p>{profile.degree}<br />{profile.university}</p><div class="resume-actions"><a class="button" href={profile.resume} download="Pranav_Reddy_Resume.pdf">Download resume <Arrow direction="down" /></a><a class="text-link" href={profile.resume}>View PDF <Arrow /></a></div></section>
+</Base>

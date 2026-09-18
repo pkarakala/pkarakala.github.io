@@ -1,0 +1,9 @@
+---
+import Base from '../layouts/Base.astro';
+import courses from '../data/coursework.json';
+import { profile } from '../data/profile';
+---
+<Base title="Coursework — Pranav Reddy" description="Coursework and separately labeled planned courses in photonics, signals, materials, hardware, and programming at UC Santa Barbara." canonical="/coursework.html">
+  <header class="page-intro"><p class="eyebrow">Education</p><h1>Coursework</h1><p>{profile.degree}<br />{profile.university}<br /><span class="coursework-note">Planned courses are listed separately below.</span></p></header>
+  <section class="section" aria-label="Courses by subject">{courses.map(group => <div class="course-group"><h2>{group.title}</h2><ul class="course-list">{group.courses.map(course => <li><a href={course.url}>{course.code}</a><span>{course.title}{course.term && <span class="course-term"> · {course.term}</span>}</span></li>)}</ul></div>)}</section>
+</Base>

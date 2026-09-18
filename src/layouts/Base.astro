@@ -1,0 +1,47 @@
+---
+import { getCollection } from 'astro:content';
+import '@fontsource/manrope/latin-400.css';
+import '@fontsource/manrope/latin-500.css';
+import '@fontsource/fraunces/latin-400.css';
+import bodyFont from '@fontsource/manrope/files/manrope-latin-400-normal.woff2?url';
+import displayFont from '@fontsource/fraunces/files/fraunces-latin-400-normal.woff2?url';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+interface Props { title: string; description: string; current?: string; canonical?: string; noindex?: boolean }
+const { title, description, current, canonical = Astro.url.pathname, noindex = false } = Astro.props;
+const notes = await getCollection('notes', ({ data }) => !data.draft);
+const canonicalUrl = new URL(canonical, Astro.site);
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#EDF1F2" />
+    <link rel="preload" as="font" type="font/woff2" href={bodyFont} crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href={displayFont} crossorigin />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    {noindex && <meta name="robots" content="noindex" />}
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content="https://pkarakala.github.io/banner.png" />
+    <meta property="og:image:alt" content="Pranav Reddy — portfolio" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://pkarakala.github.io/banner.png" />
+    <slot name="head" />
+  </head>
+  <body id="top">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <Header current={current} hasNotes={notes.length > 0} />
+    <main id="main" tabindex="-1" class="shell page-frame"><slot /></main>
+    <Footer />
+  </body>
+</html>

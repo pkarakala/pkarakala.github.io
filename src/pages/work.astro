@@ -1,0 +1,16 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import ProjectRow from '../components/ProjectRow.astro';
+const projects = (await getCollection('work', ({ data }) => !data.draft)).sort((a, b) => a.data.order - b.data.order || a.data.title.localeCompare(b.data.title));
+for (const key of ['slug', 'featuredOrder'] as const) {
+  const values = projects.map(p => p.data[key]).filter(v => v !== undefined);
+  if (new Set(values).size !== values.length) throw new Error(`Work entries must have unique ${key} values.`);
+}
+const anchors = projects.flatMap(project => [project.data.slug, ...project.data.anchorAliases]);
+if (new Set(anchors).size !== anchors.length) throw new Error('Work entry slugs and anchor aliases must be unique.');
+---
+<Base title="Work — Pranav Reddy" description="An archive of Pranav Reddy’s research, independent projects, and coursework, with original repositories, reports, and collaborator credits." current="work" canonical="/work.html">
+  <header class="page-intro"><p class="eyebrow">The archive</p><h1>Work</h1><p>Research, independent projects, and coursework. A collection of things I’ve built, studied, and explored.</p></header>
+  <section class="section archive-section" aria-label="All projects"><div class="project-list archive-list">{projects.map((project, index) => <ProjectRow project={project} index={index} archive />)}</div></section>
+</Base>

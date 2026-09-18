@@ -1,0 +1,11 @@
+import { readFile, copyFile, writeFile } from 'node:fs/promises';
+import { basename, resolve } from 'node:path';
+import { createHash } from 'node:crypto';
+const source = process.argv[2];
+if (!source) throw new Error('Usage: npm run resume:set -- "/absolute/path/to/resume.pdf"');
+const bytes = await readFile(source);
+if (bytes.subarray(0, 5).toString() !== '%PDF-') throw new Error('The source must be a PDF.');
+const destination = 'public/assets/pdfs/resume.pdf';
+if (resolve(source) !== resolve(destination)) await copyFile(source, destination);
+await writeFile('docs/resume-source.json', JSON.stringify({ filename: basename(source), publicUrl: '/assets/pdfs/resume.pdf', sha256: createHash('sha256').update(bytes).digest('hex') }, null, 2) + '\n');
+console.log('Resume copied unchanged to /assets/pdfs/resume.pdf; source preserved and integrity record updated.');

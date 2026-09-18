@@ -1,0 +1,8 @@
+---
+import { profile } from '../data/profile';
+import Arrow from './Arrow.astro';
+---
+<section class="section contact-section" id="contact" aria-labelledby="contact-title">
+  <div><p class="eyebrow">Contact</p><h2 id="contact-title">Get in touch.</h2></div>
+  <div class="contact-links"><a class="email-link" href={`mailto:${profile.email}`}>{profile.email} <Arrow /></a><div class="social-links"><a href={profile.github}>GitHub <Arrow /></a><a href={profile.linkedin}>LinkedIn <Arrow /></a></div></div>
+</section>

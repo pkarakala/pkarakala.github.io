@@ -1,0 +1,135 @@
+[
+  {
+    "title": "Quantum & Photonics",
+    "courses": [
+      {
+        "code": "ECE 135",
+        "url": "https://catalog.ucsb.edu/courses/ECE%20135",
+        "title": "Fiber Optic Communication Systems",
+        "term": null
+      },
+      {
+        "code": "ECE 136A",
+        "url": "https://catalog.ucsb.edu/courses/ECE%20136A",
+        "title": "Optical Systems & Photonics",
+        "term": null
+      },
+      {
+        "code": "ECE 136C",
+        "url": "https://catalog.ucsb.edu/courses/ECE%20136C",
+        "title": "Quantum Computing & Photonics",
+        "term": null
+      },
+      {
+        "code": "ECE 144",
+        "url": "https://catalog.ucsb.edu/courses/ECE%20144",
+        "title": "Waveguide Physics",
+        "term": null
+      }
+    ]
+  },
+  {
+    "title": "ML Systems & Signals",
+    "courses": [
+      {
+        "code": "ECE 130A",
+        "url": "https://catalog.ucsb.edu/courses/ECE%20130A",
+        "title": "Signal Processing & Linear Systems",
+        "term": null
+      },
+      {
+        "code": "ECE 130B",
+        "url": "https://catalog.ucsb.edu/courses/ECE%20130B",
+        "title": "Discrete-Time Signals & Systems",
+        "term": null
+      },
+      {
+        "code": "ECE 133",
+        "url": "https://catalog.ucsb.edu/courses/ECE%20133",
+        "title": "Optimization & Machine Learning",
+        "term": null
+      },
+      {
+        "code": "ECE 139",
+        "url": "https://catalog.ucsb.edu/courses/ECE%20139",
+        "title": "Probability & Statistics",
+        "term": null
+      }
+    ]
+  },
+  {
+    "title": "Hardware Architecture",
+    "courses": [
+      {
+        "code": "ECE 152A",
+        "url": "https://catalog.ucsb.edu/courses/ECE%20152A",
+        "title": "Digital Design Principles",
+        "term": null
+      },
+      {
+        "code": "ECE 132",
+        "url": "https://catalog.ucsb.edu/courses/ECE%20132",
+        "title": "Semiconductor Devices",
+        "term": null
+      },
+      {
+        "code": "ECE 134",
+        "url": "https://catalog.ucsb.edu/courses/ECE%20134",
+        "title": "Electromagnetics & Wave Phenomena",
+        "term": null
+      },
+      {
+        "code": "ECE 153B",
+        "url": "https://catalog.ucsb.edu/courses/ECE%20153B",
+        "title": "Interface Design",
+        "term": null
+      },
+      {
+        "code": "ECE 10",
+        "url": "https://www.ce.ucsb.edu/spotlights/course-10-series-kit",
+        "title": "Digital Circuit Design",
+        "term": null
+      }
+    ]
+  },
+  {
+    "title": "Systems Programming",
+    "courses": [
+      {
+        "code": "CS 16",
+        "url": "https://catalog.ucsb.edu/courses/CMPSC%2016",
+        "title": "Problem Solving with Computers I",
+        "term": null
+      },
+      {
+        "code": "CS 24",
+        "url": "https://catalog.ucsb.edu/courses/CMPSC%2024",
+        "title": "Problem Solving with Computers II (C++)",
+        "term": null
+      }
+    ]
+  },
+  {
+    "title": "Planned coursework",
+    "courses": [
+      {
+        "code": "ECE 162A",
+        "url": "https://catalog.ucsb.edu/courses/ECE%20162A",
+        "title": "The Quantum Description of Electronic Materials",
+        "term": null
+      },
+      {
+        "code": "ECE 162B",
+        "url": "https://catalog.ucsb.edu/courses/ECE%20162B",
+        "title": "Fundamentals of the Solid State",
+        "term": null
+      },
+      {
+        "code": "ECE 162C",
+        "url": "https://catalog.ucsb.edu/courses/ECE%20162C",
+        "title": "Optoelectronic Materials and Devices",
+        "term": null
+      }
+    ]
+  }
+]
