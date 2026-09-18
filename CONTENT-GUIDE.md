@@ -83,6 +83,8 @@ npm run check:links
 
 Review homepage and Work at 1440, 1024, 768, 390, and 320px; follow keyboard focus, open a report and the resume, and check collaborator credits. The production build fails on missing local links/assets and draft leaks. External checks report blocked destinations separately; a bot-blocked response is not proof a URL is broken.
 
+The LinkedIn-ready graphics are `public/assets/images/linkedin-portfolio-card.png` (1200×627 website preview) and `public/assets/images/linkedin-profile-banner.png` (1584×396 profile cover). Their editable HTML source is `scripts/linkedin-art.html`, using the same local fonts, palette, and owner-supplied logo as the site. The website preview is used for Open Graph and Twitter metadata; the old `/banner.png` remains available for legacy links but is no longer promoted. Re-render both PNGs and run `npm run build` after changing the source; the build verifies their PNG format, dimensions, and size limits. LinkedIn may crop the cover differently by device, so its left side contains no critical text.
+
 ## Compatibility and assets
 
 - `/index.html` and `/` serve the homepage.

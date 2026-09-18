@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Pranav Reddy — LinkedIn graphics source</title>
+  <style>
+    @font-face {
+      font-family: Fraunces;
+      src: url('../node_modules/@fontsource/fraunces/files/fraunces-latin-400-normal.woff2');
+      font-weight: 400;
+    }
+    @font-face {
+      font-family: Manrope;
+      src: url('../node_modules/@fontsource/manrope/files/manrope-latin-400-normal.woff2');
+      font-weight: 400;
+    }
+    @font-face {
+      font-family: Manrope;
+      src: url('../node_modules/@fontsource/manrope/files/manrope-latin-500-normal.woff2');
+      font-weight: 500;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; overflow: hidden; }
+    body { color: #173a38; background: #edf1f2; font-family: Manrope, sans-serif; }
+    .card, .banner { position: relative; overflow: hidden; background: #edf1f2; }
+    .card { width: 1200px; height: 627px; }
+    .banner { width: 1584px; height: 396px; }
+    body:not(.show-banner) .banner, body.show-banner .card { display: none; }
+    .card::before { content: ''; position: absolute; inset: 0 0 0 auto; width: 292px; border-left: 1px solid #bfcecb; background: #e7edec; }
+    .card::after { content: ''; position: absolute; left: 78px; right: 78px; top: 143px; border-top: 1px solid #bfcecb; }
+    .card-mark { position: absolute; top: 47px; left: 78px; width: 82px; height: 70px; object-fit: contain; mix-blend-mode: multiply; }
+    .card-kicker { position: absolute; top: 73px; left: 180px; font-size: 19px; letter-spacing: .14em; font-weight: 500; color: #a34027; }
+    .card-name { position: absolute; top: 190px; left: 77px; margin: 0; font: 400 103px/1 Fraunces, Georgia, serif; letter-spacing: -.06em; white-space: nowrap; }
+    .card-name span { color: #a34027; }
+    .card-focus { position: absolute; top: 339px; left: 82px; margin: 0; font-size: 28px; line-height: 1.55; }
+    .card-footer { position: absolute; left: 82px; bottom: 55px; width: 750px; padding-top: 24px; border-top: 1px solid #bfcecb; display: flex; justify-content: space-between; font-size: 20px; color: #526461; }
+    .card-footer strong { color: #a34027; font-weight: 500; }
+    .card-rings { position: absolute; left: 938px; top: 205px; width: 240px; height: 240px; }
+    .card-rings i { position: absolute; border: 1.5px solid #bfcecb; border-radius: 50%; }
+    .card-rings i:nth-child(1) { inset: 0; }
+    .card-rings i:nth-child(2) { inset: 36px; }
+    .card-rings i:nth-child(3) { inset: 72px; }
+    .card-rings b { position: absolute; width: 16px; height: 16px; right: 14px; top: 50px; border-radius: 50%; background: #a34027; }
+    .card-rings::after { content: ''; position: absolute; left: 118px; top: -72px; height: 384px; border-left: 1px solid #bfcecb; transform: rotate(32deg); }
+    .banner::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, #e4ebea 0 29%, transparent 29%); }
+    .banner::after { content: ''; position: absolute; top: 38px; bottom: 38px; left: 395px; border-left: 2px solid #a34027; }
+    .banner-kicker { position: absolute; top: 65px; left: 440px; font-size: 18px; font-weight: 500; letter-spacing: .14em; color: #a34027; }
+    .banner-headline { position: absolute; top: 110px; left: 435px; margin: 0; font: 400 70px/1.15 Fraunces, Georgia, serif; letter-spacing: -.045em; white-space: nowrap; }
+    .banner-headline span { color: #a34027; }
+    .banner-focus { position: absolute; top: 224px; left: 441px; margin: 0; font-size: 26px; }
+    .banner-url { position: absolute; top: 321px; left: 442px; margin: 0; font-size: 19px; color: #526461; }
+    .banner-mark { position: absolute; top: 91px; right: 62px; width: 120px; height: 98px; object-fit: contain; mix-blend-mode: multiply; }
+    .banner-rule { position: absolute; left: 440px; right: 65px; top: 297px; border-top: 1px solid #bfcecb; }
+  </style>
+  <script>
+    if (new URLSearchParams(location.search).get('variant') === 'banner') {
+      document.addEventListener('DOMContentLoaded', () => document.body.classList.add('show-banner'));
+    }
+  </script>
+</head>
+<body>
+  <div class="card" aria-label="LinkedIn website preview graphic">
+    <img class="card-mark" src="../public/assets/images/house-circuit-mark.png" alt="">
+    <div class="card-kicker">PORTFOLIO / SELECTED WORK</div>
+    <h1 class="card-name">Pranav <span>Reddy</span></h1>
+    <p class="card-focus">ML systems · Compilers · Accelerators<br>Quantum technologies &amp; photonics</p>
+    <div class="card-footer"><span>Projects, research, and measured results</span><strong>pkarakala.github.io</strong></div>
+    <div class="card-rings" aria-hidden="true"><i></i><i></i><i></i><b></b></div>
+  </div>
+  <div class="banner" aria-label="LinkedIn profile background graphic">
+    <div class="banner-kicker">PRANAV REDDY / UCSB</div>
+    <h1 class="banner-headline">ML systems, <span>hardware first.</span></h1>
+    <p class="banner-focus">Compilers · Accelerators · Quantum technologies</p>
+    <div class="banner-rule" aria-hidden="true"></div>
+    <p class="banner-url">pkarakala.github.io</p>
+    <img class="banner-mark" src="../public/assets/images/house-circuit-mark.png" alt="">
+  </div>
+</body>
+</html>

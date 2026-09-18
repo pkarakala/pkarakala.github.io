@@ -81,7 +81,7 @@ The initial home audit was 94 performance / 100 accessibility. Font preloads and
 - All six external project repositories, the GitHub profile, both research links, and the working course destinations returned HTTP 200.
 - The original ECE 10 catalog URL returned 404. Its destination was replaced with the verified official UCSB ECE 10 series overview. Original course wording is retained rather than guessing a different course taken by the owner.
 - LinkedIn returned HTTP 999 to the automated checker. The exact owner-provided URL is retained; its live profile could not be independently verified by that check.
-- The existing `banner.png` and social-image metadata are preserved. This image still carries the previous visual style and wording; the visible portfolio uses the new identity. No replacement social image was generated.
+- The existing `banner.png` was preserved for legacy links. The later LinkedIn graphics pass generated a new 1200×627 portfolio preview and 1584×396 profile cover in the site's current visual identity; Open Graph and Twitter metadata now use the new preview image.
 - GitHub Pages initially used legacy `main:/` publishing. The source was switched to GitHub Actions for the Astro launch, and the `main` deployment completed successfully.
 - Cross-browser, physical-device, screen-reader-user, and field performance testing were not performed. Automated scores do not substitute for those checks.
 
