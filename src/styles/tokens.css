@@ -1,0 +1,13 @@
+:root {
+  --paper: #edf1f2;
+  --surface: #f8faf9;
+  --ink: #173a38;
+  --muted: #526461;
+  --rule: #bfcecb;
+  --accent: #a34027;
+  --accent-dark: #81321e;
+  --serif: 'Fraunces', Georgia, serif;
+  --sans: 'Manrope', system-ui, sans-serif;
+  --inner-gutter: 0px;
+  --section-space: 5rem;
+}

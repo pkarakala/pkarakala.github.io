@@ -1,0 +1,9 @@
+---
+import Base from './Base.astro';
+interface Props { title: string; target: string; label: string }
+const { title, target, label } = Astro.props;
+---
+<Base title={`${title} — Pranav Reddy`} description={`${title} in Pranav Reddy’s portfolio.`} canonical={target} noindex>
+  <meta slot="head" http-equiv="refresh" content={`0;url=${target}`} />
+  <section class="page-intro document-section"><p class="eyebrow">Pranav Reddy</p><h1>{title}</h1><p><a class="text-link" href={target}>{label} <span aria-hidden="true">→</span></a></p></section>
+</Base>

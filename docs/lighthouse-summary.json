@@ -1,0 +1,61 @@
+{
+  "homeMobile": {
+    "scores": {
+      "performance": 100,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100
+    },
+    "lighthouseVersion": "13.4.1",
+    "fetchTime": "2026-09-18T04:13:51.023Z",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+    "throttling": "simulate",
+    "formFactor": "mobile",
+    "accessibilityFailures": [
+      "label-content-name-mismatch"
+    ]
+  },
+  "workMobile": {
+    "scores": {
+      "performance": 100,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100
+    },
+    "lighthouseVersion": "13.4.1",
+    "fetchTime": "2026-09-18T04:17:43.821Z",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+    "throttling": "simulate",
+    "formFactor": "mobile",
+    "accessibilityFailures": []
+  },
+  "homeAccessibilityFinal": {
+    "scores": {
+      "accessibility": 100
+    },
+    "lighthouseVersion": "13.4.1",
+    "fetchTime": "2026-09-18T04:20:33.372Z",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+    "throttling": "simulate",
+    "formFactor": "mobile",
+    "accessibilityFailures": []
+  },
+  "homeWithLogoAndCovers": {
+    "scores": { "performance": 100, "accessibility": 100, "best-practices": 100, "seo": 100 },
+    "lighthouseVersion": "13.4.1",
+    "fetchTime": "2026-09-18T04:43:34.503Z",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+    "throttling": "simulate",
+    "formFactor": "mobile",
+    "accessibilityFailures": []
+  },
+  "workWithLogoAndCovers": {
+    "scores": { "performance": 99, "accessibility": 100, "best-practices": 100, "seo": 100 },
+    "lighthouseVersion": "13.4.1",
+    "fetchTime": "2026-09-18T04:43:51.282Z",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+    "throttling": "simulate",
+    "formFactor": "mobile",
+    "accessibilityFailures": []
+  }
+}

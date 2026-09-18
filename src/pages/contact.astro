@@ -1,0 +1,8 @@
+---
+import Base from '../layouts/Base.astro';
+import { profile } from '../data/profile';
+import Arrow from '../components/Arrow.astro';
+---
+<Base title="Contact — Pranav Reddy" description="Get in touch with Pranav Reddy by email, or find him on GitHub and LinkedIn." canonical="/contact.html">
+  <section class="page-intro document-section"><p class="eyebrow">Contact</p><h1>Get in touch.</h1><div class="standalone-contact"><a class="email-link" href={`mailto:${profile.email}`}>{profile.email}<Arrow /></a><div class="social-links"><a href={profile.github}>GitHub<Arrow /></a><a href={profile.linkedin}>LinkedIn<Arrow /></a></div></div></section>
+</Base>

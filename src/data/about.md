@@ -1,0 +1,5 @@
+A lot of my work happens before I write any code. I use agentic AI tools every day, but I start by working through the problem myself: mapping edge cases, sketching state transitions, and figuring out why a particular design makes sense. That gives me a way to evaluate what the agents produce and recognize when something is heading in the wrong direction.
+
+I’ve approached computing from the hardware up, studying materials and transistors, then registers, chips, and distributed systems. Understanding those layers has shaped how I think about software. I’m interested in how physical constraints affect design decisions, whether I’m working on quantum error correction, compiler behavior, or something unfamiliar.
+
+Outside of work, I play tennis. I enjoy figuring out how someone plays and adjusting as the match develops. I also like reading, especially books such as *The Martian* and *Ender’s Game*. Working through a difficult problem is part of what draws me to those stories, though sometimes I just want to get absorbed in a good book.

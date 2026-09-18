@@ -1,0 +1,28 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Arrow from './Arrow.astro';
+interface Props { project: CollectionEntry<'work'>; index: number; archive?: boolean }
+const { project, index, archive = false } = Astro.props;
+const p = project.data;
+const Heading = archive ? 'h2' : 'h3';
+const destination = p.repository ?? (p.reports.length === 1 ? p.reports[0].url : undefined);
+const credit = p.attribution ?? (p.collaborators.length ? `With ${p.collaborators.join(', ')}.` : null);
+---
+<article class:list={['project-row', { 'has-cover': Boolean(p.cover) }]} id={p.slug} aria-labelledby={`${p.slug}-title`}>
+  {archive && p.anchorAliases.map(alias => <span id={alias} class="project-anchor-alias" aria-hidden="true"></span>)}
+  <div class="project-meta"><span class="project-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span><span>{p.category}{p.context && <span class="project-context">{p.context}</span>}{archive && p.date && <span class="project-context project-date">{p.date}</span>}</span></div>
+  <div class="project-copy">
+    <Heading id={`${p.slug}-title`}>{destination ? <a href={destination}>{p.title}</a> : p.title}</Heading>
+    <p class="project-summary">{p.summary}</p>
+    {credit && <p class="project-credit">{credit}</p>}
+    {archive && p.status && <p class="project-credit">{p.status}</p>}
+    {archive && p.related.length > 0 && <ul class="related-links" aria-label={`${p.title} components`}>{p.related.map(link => <li><a href={link.url}>{link.label} <Arrow /></a></li>)}</ul>}
+  </div>
+  {p.cover && <figure class="project-cover"><a href={p.cover.src} aria-label={`View full-size image: ${p.title}`}><img src={p.cover.src} alt={p.cover.alt} width={p.cover.width} height={p.cover.height} loading="lazy" decoding="async" /></a>{archive && <figcaption>{p.cover.caption}</figcaption>}</figure>}
+  <div class:list={['project-actions', { 'grouped-reports': archive && Boolean(p.reportHeading) }]}>
+    {p.repository && <a class="action-link" href={p.repository} aria-label={`View on GitHub: ${p.title}`}>View on GitHub <Arrow /></a>}
+    {archive && p.reportHeading && <p class="report-heading">{p.reportHeading}</p>}
+    {(archive ? p.reports : p.reports.slice(0, 1)).map(report => <a class="action-link" href={report.url} aria-label={`${report.label} PDF — ${p.title}`}>{report.label} <span class="file-kind">PDF</span><Arrow /></a>)}
+    {!p.repository && p.reports.length === 0 && <span class="muted">Summary only</span>}
+  </div>
+</article>
