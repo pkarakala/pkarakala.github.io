@@ -90,8 +90,7 @@ h3 { line-height: 1.3; }
 .contact-section { display: flex; justify-content: space-between; gap: 2rem; align-items: center; }
 .contact-section h2 { font-size: clamp(2.5rem, 4.5vw, 3.5rem); }
 .contact-links { min-width: 36%; }
-.email-link { display: flex; align-items: center; justify-content: space-between; gap: 2rem; padding-bottom: .9rem; font-size: 1.5rem; text-decoration: none; border-bottom: 1px solid var(--rule); }
-.email-link .arrow { color: var(--accent); }
+.email-address { padding-bottom: .9rem; font-size: 1.5rem; border-bottom: 1px solid var(--rule); }
 .social-links { display: flex; gap: 1.75rem; padding-top: .5rem; }
 .site-footer { display: flex; justify-content: space-between; align-items: center; padding: 1.75rem var(--inner-gutter); border-top: 1px solid var(--rule); font-size: .8125rem; color: var(--muted); }
 .site-footer a { min-height: 44px; display: inline-flex; gap: 1rem; align-items: center; text-decoration: none; }
@@ -234,7 +233,7 @@ h3 { line-height: 1.3; }
   .about-copy { font-size: 1rem; }
   .contact-section { display: block; }
   .contact-links { margin-top: 2rem; }
-  .email-link { font-size: 1.25rem; }
+  .email-address { font-size: 1.25rem; }
   .site-footer { gap: 1rem; padding-block: 1rem; }
   .page-intro { padding-block: 3rem; }
   .page-intro h1 { font-size: 2.75rem; }

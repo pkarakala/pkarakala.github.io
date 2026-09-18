@@ -78,10 +78,16 @@ const resume = JSON.parse(await readFile('docs/resume-source.json', 'utf8'));
 assert(hash(await readFile(join(root, resume.publicUrl))) === resume.sha256, 'Canonical resume differs from approved PDF');
 for (const file of output.filter(file => file.endsWith('.pdf'))) assert((await readFile(file)).subarray(0, 5).toString() === '%PDF-', `Invalid PDF: ${file}`);
 const home = documents.get(join(root, 'index.html'));
+const contact = documents.get(join(root, 'contact.html'));
 const normalize = text => text.replace(/\s+/g, ' ').trim();
 const expectedAbout = normalize((await readFile('src/data/about.md', 'utf8')).replace(/\*/g, ''));
 assert(normalize(home('.about-copy > p').map((_, e) => home(e).text()).get().join(' ')) === expectedAbout, 'About copy changed during rendering');
 assert(home('.hero-intro > p').text() === 'I build and evaluate ML systems, with a hardware-first interest in compilers, accelerators, and quantum technologies.', 'Approved hero statement missing');
+for (const [name, page, selector] of [['Home', home, '#contact .email-address'], ['Contact', contact, '.standalone-contact .email-address']]) {
+  assert(page(selector).text() === 'preddy [at] ucsb [dot] edu', `${name}: human-readable email is missing`);
+  assert(page('a[href^="mailto:"]').length === 0, `${name}: direct mailto link remains`);
+  assert(!page.html().includes('preddy@ucsb.edu'), `${name}: literal email remains in HTML`);
+}
 assert(!/graduation|December 2027|Fall 2027/i.test(home('main').text()), 'Graduation date or unapproved wording in homepage');
 assert(home('#research').length && home('#skills').length && home('#labs').length, 'Legacy homepage anchors missing');
 assert(!existsSync(join(root, 'INTERVIEW-PREP.html')) && !existsSync(join(root, 'career.md')) && !existsSync(join(root, 'cqec-ml-decoder')), 'Repository-only material leaked into output');
