@@ -46,7 +46,7 @@ New simulated-mobile Lighthouse lab scores: Home **100/100/100/100** and Work **
 - Output: 9 HTML pages, 14 published project entries, 16 preserved PDF URLs, 158 local resource/link references checked.
 - Each original image, report, and legacy resume variant matches its baseline SHA-256. The intentionally replaced primary resume matches the selected source PDF exactly.
 - Downloaded the primary PDF from the running production preview and compared it byte-for-byte with the supplied Desktop file: identical. The original file was not edited.
-- Compared `src/data/about.md` directly with the approved paragraphs in `HOMEPAGE-COPY.md`: exact match. The rendered paragraphs also pass a whitespace-normalized comparison, preserving both italic book titles.
+- At the migration baseline, `src/data/about.md` matched the then-approved `HOMEPAGE-COPY.md` paragraphs. A later owner-approved copy revision superseded that baseline; the current build checks that the current Markdown renders without changing its text.
 - Original project evidence links remain reachable from Work. The archive includes ML stack components, older graph work, and named lab subtopics in addition to the original main project cards.
 - Notes/project templates were copied into their collections as draft examples without layout edits; build checks confirm they appear in neither production pages nor navigation. No empty Notes index is generated.
 - Titles, descriptions, canonicals, sitemap, image dimensions/alt text, local font paths, PDF signatures, skip links, IDs, and internal fragments passed automated checks.
@@ -88,3 +88,9 @@ The initial home audit was 94 performance / 100 accessibility. Font preloads and
 ## Preview and maintenance
 
 The production preview runs at http://127.0.0.1:4321. To restart later: `npm run build`, then `npm run preview -- --port 4321`. Use `npx astro preview stop` to stop the background preview. See `CONTENT-GUIDE.md` for project creation, notes, resume replacement, experience updates, and publishing preparation.
+
+## Later content pass: evidence and positioning
+
+The owner approved a hardware-first ML-systems hero statement and a shorter About section, while explicitly retaining the Experience rows unchanged. The KernelRelay card now links a qualified single-T4, same-process confirmation (0.053 ms fused versus 0.120 ms best framework, 2.26×) and names the fixed mock proposer. The co-authored QEC card links a simulation result plot and labels its retained diagram as illustrative. ML Systems Lab is described as three linked prototypes. These are content changes, not new experiments or independently reproduced measurements.
+
+The local `npm run build` pass checked 29 Astro files without errors or warnings and verified 9 HTML pages, 9 published projects, 165 local references, and 16 PDFs. The repository's benchmark and QEC figure paths were checked before linking. Home, Selected Work, QEC, and About were reviewed in the local browser at desktop width; previous responsive CSS was left unchanged.

@@ -11,6 +11,7 @@ const work = defineCollection({
     slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
     anchorAliases: z.array(z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/)).default([]),
     summary: z.string().min(1).max(400),
+    evidence: z.object({ statement: z.string().min(1).max(300), label: z.string().min(1), url: externalUrl }).optional(),
     category: z.enum(['Research', 'Coursework', 'Independent project', 'Project']),
     context: z.string().optional(),
     date: z.string().optional(),

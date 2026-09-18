@@ -9,7 +9,7 @@ import Arrow from '../components/Arrow.astro';
 import { profile } from '../data/profile';
 const projects = (await getCollection('work', ({ data }) => !data.draft && data.featuredOrder !== undefined)).sort((a, b) => a.data.featuredOrder! - b.data.featuredOrder!);
 ---
-<Base title="Pranav Reddy — Projects, research & work in progress" description="The personal portfolio of Pranav Reddy, BS/MS+1 candidate in Electronics & Photonics at UC Santa Barbara. Projects, research, and work in progress." canonical="/">
+<Base title="Pranav Reddy — Projects, research & work in progress" description="Pranav Reddy builds and evaluates ML systems, with a hardware-first interest in compilers, accelerators, and quantum technologies. Projects and research." canonical="/">
   <section class="hero" aria-labelledby="home-title">
     <div class="hero-identity"><p class="eyebrow">Personal portfolio</p><h1 id="home-title">Pranav <span>Reddy</span></h1></div>
     <div class="hero-details"><p class="education">{profile.degree}<br /><span>{profile.university}</span></p><div class="hero-intro"><p>{profile.introduction}</p><div class="hero-actions"><a class="button" href="#work">View work <Arrow direction="down" /></a><a class="text-link" href={profile.resume}>Resume <Arrow /></a></div></div></div>

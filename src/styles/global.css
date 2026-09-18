@@ -51,6 +51,7 @@ h3 { line-height: 1.3; }
 .project-copy :is(h2,h3) a { text-decoration: none; }
 .project-copy :is(h2,h3) a:hover { text-decoration: underline; }
 .project-summary { max-width: 59ch; }
+.project-evidence { max-width: 59ch; margin-top: .8rem; font-size: .875rem; color: var(--muted); }
 .project-credit { color: var(--muted); font-size: .875rem; margin-top: .65rem; }
 .project-actions { display: flex; flex-direction: column; align-items: flex-start; padding-top: .05rem; }
 .archive-list .project-row { grid-template-columns: 13rem minmax(0, 1fr); }
