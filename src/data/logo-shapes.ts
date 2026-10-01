@@ -27,7 +27,7 @@ const paths: Record<LogoShape, readonly Path[]> = {
 };
 
 export function logoNodes(shape: LogoShape) {
-  const nodes: { x: number; y: number; color: Path['color']; looseX: number; looseY: number; rotation: number }[] = [];
+  const nodes: { x: number; y: number; color: Path['color']; looseX: number; looseY: number; wanderX: number; wanderY: number; returnX: number; returnY: number; rotation: number; lag: number }[] = [];
   for (const path of paths[shape]) {
     for (let segment = 1; segment < path.points.length; segment++) {
       const [x0, y0] = path.points[segment - 1];
@@ -38,7 +38,17 @@ export function logoNodes(shape: LogoShape) {
         const y = y0 + (y1 - y0) * step / steps;
         if (nodes.some(node => Math.hypot(node.x - x, node.y - y) < 21)) continue;
         const index = nodes.length;
-        nodes.push({ x, y, color: path.color, looseX: 100 + index * 137.507 % 460, looseY: 45 + index * 83.37 % 305, rotation: (index % 7 - 3) * 9 });
+        nodes.push({
+          x, y, color: path.color,
+          looseX: 100 + index * 137.507 % 460,
+          looseY: 45 + index * 83.37 % 305,
+          wanderX: 100 + (index * 137.507 + 170) % 460,
+          wanderY: 45 + (index * 83.37 + 105) % 305,
+          returnX: 100 + (index * 137.507 + 295) % 460,
+          returnY: 45 + (index * 83.37 + 215) % 305,
+          rotation: (index % 7 - 3) * 9,
+          lag: Math.hypot(x - 330, y - 200) / 350 * .55 + index % 3 * .04,
+        });
       }
     }
   }

@@ -1,3 +1,5 @@
+import { enhanceLogoPointer } from './logo-pointer';
+
 const preferenceKey = 'portfolio-motion';
 
 /** Progressive enhancement only: the rendered document is fully usable alone. */
@@ -12,11 +14,13 @@ export function enhancePortfolio() {
   let preference: string | null = null;
   try { preference = localStorage.getItem(preferenceKey); } catch { /* Private storage may be unavailable. */ }
   const enabled = () => preference === 'on' || (preference !== 'off' && !reduced.matches);
+  const resetPointer = enhanceLogoPointer(marks, root, signal);
   const observer = 'IntersectionObserver' in window ? new IntersectionObserver(entries => {
     for (const entry of entries) entry.target.toggleAttribute('data-visible', entry.isIntersecting);
   }) : null;
 
   function sync() {
+    resetPointer();
     const on = enabled();
     root.dataset.motion = on && wide.matches && !document.hidden ? 'on' : 'off';
     observer?.disconnect();

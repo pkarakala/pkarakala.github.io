@@ -19,8 +19,8 @@ const prefix = `motif-${placement}-${shape}`;
             <feFlood class={`motif-ink motif-ink--${color}`} /><feComposite in2="ink" operator="in" />
           </filter>)}
         </defs>
-        {nodes.map(node => <g class="logo-atom" style={`--node-x: ${node.x.toFixed(2)}px; --node-y: ${node.y.toFixed(2)}px; --loose-x: ${node.looseX.toFixed(2)}px; --loose-y: ${node.looseY.toFixed(2)}px; --loose-angle: ${node.rotation}deg;`}>
-          <use href={`#${prefix}-mark`} x="-16" y="-13.02" width="32" height="26.04" filter={`url(#${prefix}-${node.color})`} />
+        {nodes.map(node => <g class="logo-atom" style={`--node-x: ${node.x.toFixed(2)}px; --node-y: ${node.y.toFixed(2)}px; --loose-x: ${node.looseX.toFixed(2)}px; --loose-y: ${node.looseY.toFixed(2)}px; --wander-x: ${node.wanderX.toFixed(2)}px; --wander-y: ${node.wanderY.toFixed(2)}px; --return-x: ${node.returnX.toFixed(2)}px; --return-y: ${node.returnY.toFixed(2)}px; --loose-angle: ${node.rotation}deg; --node-lag: ${node.lag.toFixed(3)}s;`}>
+          <g class="logo-fragment"><use href={`#${prefix}-mark`} x="-16" y="-13.02" width="32" height="26.04" filter={`url(#${prefix}-${node.color})`} /></g>
         </g>)}
       </svg>
       {(placement === 'intro' || placement === 'archive') && <span class="motif-mobile"><LogoMotif id={`${prefix}-mobile-green`} /><LogoMotif id={`${prefix}-mobile-rust`} /></span>}

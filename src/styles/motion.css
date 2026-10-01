@@ -6,10 +6,10 @@
   --motif-rust: #a86f55;
   --motif-travel-x: 12px;
   --motif-travel-y: 10px;
-  --motif-duration: 30s;
+  --motif-duration: 18s;
   --motif-delay: -4s;
-  --assembly-duration: 38s;
-  --assembly-delay: -18s;
+  --assembly-duration: 10s;
+  --assembly-delay: -.2s;
   position: absolute;
   display: block;
   width: var(--motif-width);
@@ -22,15 +22,21 @@
 .motif-ink--green { flood-color: var(--motif-green); }
 .motif-ink--rust { flood-color: var(--motif-rust); }
 .logo-atom { transform-box: view-box; transform-origin: 0 0; transform: translate(var(--node-x), var(--node-y)); }
+.logo-fragment { transform-box: view-box; transform-origin: 0 0; }
 .motif-mobile { display: none; }
 html[data-motion='on'] .floating-logo-drift {
   animation: motif-drift var(--motif-duration) ease-in-out var(--motif-delay) infinite;
   animation-play-state: paused;
 }
 html[data-motion='on'] .logo-atom {
-  animation: motif-assemble var(--assembly-duration) cubic-bezier(.45, 0, .25, 1) var(--assembly-delay) infinite;
+  animation: motif-assemble var(--assembly-duration) cubic-bezier(.4, 0, .2, 1) calc(var(--assembly-delay) - var(--node-lag)) infinite;
   animation-play-state: paused;
 }
+html[data-motion='on'] .logo-fragment {
+  transform: translate(var(--pointer-x, 0px), var(--pointer-y, 0px));
+  transition: transform 1000ms cubic-bezier(.22, 1, .36, 1);
+}
+html[data-motion='on'] [data-pointer-near] .logo-fragment { transition-duration: 180ms; }
 html[data-motion='on'] .floating-logo[data-visible] :is(.floating-logo-drift, .logo-atom) { animation-play-state: running; }
 @keyframes motif-drift {
   0%, 100% { transform: translate(calc(var(--motif-travel-x) * -.7), calc(var(--motif-travel-y) * .5)); }
@@ -38,18 +44,19 @@ html[data-motion='on'] .floating-logo[data-visible] :is(.floating-logo-drift, .l
   66% { transform: translate(calc(var(--motif-travel-x) * -.6), var(--motif-travel-y)); }
 }
 @keyframes motif-assemble {
-  0%, 12%, 100% { transform: translate(var(--loose-x), var(--loose-y)) rotate(var(--loose-angle)); }
-  32%, 72% { transform: translate(var(--node-x), var(--node-y)) rotate(0deg); }
-  92% { transform: translate(var(--loose-x), var(--loose-y)) rotate(var(--loose-angle)); }
+  0%, 7%, 90%, 100% { transform: translate(var(--node-x), var(--node-y)) rotate(0deg); }
+  28% { transform: translate(var(--loose-x), var(--loose-y)) rotate(var(--loose-angle)); }
+  48% { transform: translate(var(--wander-x), var(--wander-y)) rotate(calc(var(--loose-angle) * -1)); }
+  66% { transform: translate(var(--return-x), var(--return-y)) rotate(var(--loose-angle)); }
 }
 .floating-logo--intro { --motif-width: 430px; --motif-opacity: .65; top: .5rem; right: -1.5rem; }
 /* A grid cell follows the first text-only project, even when projects are reordered. */
 .floating-logo--project {
   --motif-width: 380px;
-  --motif-duration: 34s;
+  --motif-duration: 20s;
   --motif-delay: -14s;
-  --assembly-duration: 44s;
-  --assembly-delay: -24s;
+  --assembly-duration: 11s;
+  --assembly-delay: -.3s;
   position: relative;
   width: min(100%, var(--motif-width));
   grid-column: 2;
@@ -59,10 +66,10 @@ html[data-motion='on'] .floating-logo[data-visible] :is(.floating-logo-drift, .l
 }
 .floating-logo--experience {
   --motif-width: 300px;
-  --motif-duration: 32s;
+  --motif-duration: 22s;
   --motif-delay: -22s;
-  --assembly-duration: 48s;
-  --assembly-delay: -27s;
+  --assembly-duration: 12s;
+  --assembly-delay: -.4s;
   bottom: -.25rem;
   left: -.5rem;
 }
@@ -70,11 +77,12 @@ html[data-motion='on'] .floating-logo[data-visible] :is(.floating-logo-drift, .l
 .floating-logo--contact {
   --motif-width: 180px;
   --motif-opacity: .44;
-  --assembly-delay: -23s;
+  --assembly-duration: 10s;
+  --assembly-delay: -.25s;
   top: 2rem;
   left: 39%;
 }
-.floating-logo--archive { --motif-width: 340px; --assembly-delay: -22s; top: .5rem; right: -1rem; }
+.floating-logo--archive { --motif-width: 340px; --assembly-delay: -.3s; top: .5rem; right: -1rem; }
 @media (max-width: 1100px) {
   .floating-logo--intro { --motif-width: 280px; right: -1rem; top: 1rem; }
   .floating-logo--experience { --motif-width: 250px; bottom: -.25rem; left: -.5rem; }
