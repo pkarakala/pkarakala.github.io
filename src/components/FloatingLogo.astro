@@ -1,15 +1,29 @@
 ---
-import Logo from './Logo.astro';
+import LogoMotif from './LogoMotif.astro';
 import { brand } from '../data/brand';
+import { logoNodes, type LogoShape } from '../data/logo-shapes';
 import '../styles/motion.css';
-interface Props { placement: 'intro' | 'work' | 'experience' | 'contact' | 'archive' }
-const { placement } = Astro.props;
-const groups = placement === 'intro' || placement === 'archive' ? ['primary', 'secondary'] : ['primary'];
+interface Props { placement: 'intro' | 'project' | 'experience' | 'contact' | 'archive'; shape?: LogoShape }
+const { placement, shape = placement === 'project' ? 'initials' : placement === 'experience' || placement === 'contact' ? 'tree' : 'house' } = Astro.props;
+const nodes = logoNodes(shape);
+const prefix = `motif-${placement}-${shape}`;
 ---
-{brand.decoration && groups.map(group => (
-  <span class={`floating-logo floating-logo--${placement} floating-logo--${group}`} style={`--logo-aspect: ${brand.width} / ${brand.height}`} data-floating-logo aria-hidden="true">
+{brand.decoration && (
+  <span class={`floating-logo floating-logo--${placement}`} data-floating-logo data-logo-shape={shape} aria-hidden="true">
     <span class="floating-logo-drift">
-      {[0, 1, 2].map(() => <span class="floating-logo-member"><Logo /></span>)}
+      <svg class="logo-assembly" viewBox="0 0 660 400" width="660" height="400" focusable="false" aria-hidden="true">
+        <defs>
+          <symbol id={`${prefix}-mark`} viewBox={`0 0 ${brand.width} ${brand.height}`}><image href={brand.logo} width={brand.width} height={brand.height} /></symbol>
+          {(['green', 'rust'] as const).map(color => <filter id={`${prefix}-${color}`} x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+            <feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -.2126 -.7152 -.0722 1 0" result="ink" />
+            <feFlood class={`motif-ink motif-ink--${color}`} /><feComposite in2="ink" operator="in" />
+          </filter>)}
+        </defs>
+        {nodes.map(node => <g class="logo-atom" style={`--node-x: ${node.x.toFixed(2)}px; --node-y: ${node.y.toFixed(2)}px; --loose-x: ${node.looseX.toFixed(2)}px; --loose-y: ${node.looseY.toFixed(2)}px; --loose-angle: ${node.rotation}deg;`}>
+          <use href={`#${prefix}-mark`} x="-16" y="-13.02" width="32" height="26.04" filter={`url(#${prefix}-${node.color})`} />
+        </g>)}
+      </svg>
+      {(placement === 'intro' || placement === 'archive') && <span class="motif-mobile"><LogoMotif id={`${prefix}-mobile-green`} /><LogoMotif id={`${prefix}-mobile-rust`} /></span>}
     </span>
   </span>
-))}
+)}

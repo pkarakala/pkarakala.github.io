@@ -1,0 +1,15 @@
+---
+import { brand } from '../data/brand';
+interface Props { id: string }
+const { id } = Astro.props;
+---
+<svg class="logo-mark" viewBox={`0 0 ${brand.width} ${brand.height}`} width={brand.width} height={brand.height} aria-hidden="true" focusable="false">
+  <defs>
+    <filter id={id} x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -.2126 -.7152 -.0722 1 0" result="ink" />
+      <feFlood flood-color="currentColor" />
+      <feComposite in2="ink" operator="in" />
+    </filter>
+  </defs>
+  <image href={brand.logo} width={brand.width} height={brand.height} filter={`url(#${id})`} />
+</svg>

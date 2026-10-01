@@ -1,14 +1,16 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import Arrow from './Arrow.astro';
-interface Props { project: CollectionEntry<'work'>; index: number; archive?: boolean }
-const { project, index, archive = false } = Astro.props;
+import FloatingLogo from './FloatingLogo.astro';
+interface Props { project: CollectionEntry<'work'>; index: number; archive?: boolean; motif?: boolean }
+const { project, index, archive = false, motif = false } = Astro.props;
 const p = project.data;
 const Heading = archive ? 'h2' : 'h3';
 const destination = p.repository ?? (p.reports.length === 1 ? p.reports[0].url : undefined);
 const credit = p.attribution ?? (p.collaborators.length ? `With ${p.collaborators.join(', ')}.` : null);
 ---
 <article class:list={['project-row', { 'has-cover': Boolean(p.cover) }]} id={p.slug} aria-labelledby={`${p.slug}-title`}>
+  {motif && !p.cover && <FloatingLogo placement="project" shape="initials" />}
   {archive && p.anchorAliases.map(alias => <span id={alias} class="project-anchor-alias" aria-hidden="true"></span>)}
   <div class="project-meta"><span class="project-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span><span>{p.category}{p.context && <span class="project-context">{p.context}</span>}{archive && p.date && <span class="project-context project-date">{p.date}</span>}</span></div>
   <div class="project-copy">

@@ -1,97 +1,95 @@
-/* Each three-mark cluster moves as one unit. Keep its full travel clear of copy. */
+/* Each field has a reserved envelope. The same marks form all three silhouettes. */
 .floating-logo {
-  --logo-size: 46px;
-  --logo-opacity: .19;
-  --logo-travel-x: 12px;
-  --logo-travel-y: 10px;
-  --logo-duration: 26s;
-  --logo-delay: -8s;
+  --motif-width: 340px;
+  --motif-opacity: .58;
+  --motif-green: #4e7d6f;
+  --motif-rust: #a86f55;
+  --motif-travel-x: 12px;
+  --motif-travel-y: 10px;
+  --motif-duration: 30s;
+  --motif-delay: -4s;
+  --assembly-duration: 38s;
+  --assembly-delay: -18s;
   position: absolute;
   display: block;
-  width: calc(var(--logo-size) * 2.2);
+  width: var(--motif-width);
   pointer-events: none;
   user-select: none;
-  mix-blend-mode: multiply;
-  opacity: var(--logo-opacity);
+  opacity: var(--motif-opacity);
 }
-.floating-logo-drift {
-  display: grid;
-  grid-template-columns: repeat(2, var(--logo-size));
-  gap: 2px calc(var(--logo-size) * .2);
-  animation: logo-drift var(--logo-duration) ease-in-out var(--logo-delay) infinite;
+.floating-logo-drift { display: block; width: 100%; }
+.logo-assembly { display: block; width: 100%; height: auto; overflow: hidden; }
+.motif-ink--green { flood-color: var(--motif-green); }
+.motif-ink--rust { flood-color: var(--motif-rust); }
+.logo-atom { transform-box: view-box; transform-origin: 0 0; transform: translate(var(--node-x), var(--node-y)); }
+.motif-mobile { display: none; }
+html[data-motion='on'] .floating-logo-drift {
+  animation: motif-drift var(--motif-duration) ease-in-out var(--motif-delay) infinite;
   animation-play-state: paused;
 }
-.floating-logo-member { display: block; width: var(--logo-size); aspect-ratio: var(--logo-aspect); }
-.floating-logo-member:first-child { grid-column: 1 / -1; justify-self: center; }
-.floating-logo .logo-mark { width: 100%; }
-.floating-logo--intro.floating-logo--primary {
-  --logo-size: 58px;
-  --logo-opacity: .24;
-  --logo-duration: 24s;
-  --logo-delay: -3s;
-  top: 3rem;
-  right: 3rem;
+html[data-motion='on'] .logo-atom {
+  animation: motif-assemble var(--assembly-duration) cubic-bezier(.45, 0, .25, 1) var(--assembly-delay) infinite;
+  animation-play-state: paused;
 }
-.floating-logo--intro.floating-logo--secondary {
-  --logo-size: 44px;
-  --logo-duration: 31s;
-  --logo-delay: -17s;
-  bottom: 2rem;
-  left: 8rem;
+html[data-motion='on'] .floating-logo[data-visible] :is(.floating-logo-drift, .logo-atom) { animation-play-state: running; }
+@keyframes motif-drift {
+  0%, 100% { transform: translate(calc(var(--motif-travel-x) * -.7), calc(var(--motif-travel-y) * .5)); }
+  33% { transform: translate(var(--motif-travel-x), calc(var(--motif-travel-y) * -1)); }
+  66% { transform: translate(calc(var(--motif-travel-x) * -.6), var(--motif-travel-y)); }
 }
-.floating-logo--work {
-  --logo-size: 38px;
-  --logo-duration: 29s;
-  --logo-delay: -11s;
-  top: 2.75rem;
-  right: 15rem;
+@keyframes motif-assemble {
+  0%, 12%, 100% { transform: translate(var(--loose-x), var(--loose-y)) rotate(var(--loose-angle)); }
+  32%, 72% { transform: translate(var(--node-x), var(--node-y)) rotate(0deg); }
+  92% { transform: translate(var(--loose-x), var(--loose-y)) rotate(var(--loose-angle)); }
 }
-.floating-logo--experience { bottom: 1.75rem; left: 5rem; }
+.floating-logo--intro { --motif-width: 430px; --motif-opacity: .65; top: .5rem; right: -1.5rem; }
+/* A grid cell follows the first text-only project, even when projects are reordered. */
+.floating-logo--project {
+  --motif-width: 380px;
+  --motif-duration: 34s;
+  --motif-delay: -14s;
+  --assembly-duration: 44s;
+  --assembly-delay: -24s;
+  position: relative;
+  width: min(100%, var(--motif-width));
+  grid-column: 2;
+  grid-row: 1 / span 3;
+  align-self: center;
+  justify-self: center;
+}
+.floating-logo--experience {
+  --motif-width: 300px;
+  --motif-duration: 32s;
+  --motif-delay: -22s;
+  --assembly-duration: 48s;
+  --assembly-delay: -27s;
+  bottom: -.25rem;
+  left: -.5rem;
+}
+.experience-section { min-height: 23rem; }
 .floating-logo--contact {
-  --logo-size: 38px;
-  --logo-duration: 23s;
-  --logo-delay: -13s;
-  top: 4rem;
-  left: 44%;
+  --motif-width: 180px;
+  --motif-opacity: .44;
+  --assembly-delay: -23s;
+  top: 2rem;
+  left: 39%;
 }
-.floating-logo--archive.floating-logo--primary {
-  --logo-size: 50px;
-  --logo-duration: 28s;
-  --logo-delay: -5s;
-  top: 4rem;
-  right: 3rem;
-}
-.floating-logo--archive.floating-logo--secondary {
-  --logo-size: 36px;
-  --logo-duration: 33s;
-  --logo-delay: -21s;
-  top: 1.5rem;
-  right: 14rem;
-}
-html[data-motion='on'] .floating-logo[data-visible] .floating-logo-drift { animation-play-state: running; }
-@keyframes logo-drift {
-  0%, 100% { transform: translate(calc(var(--logo-travel-x) * -.65), calc(var(--logo-travel-y) * .45)); }
-  33% { transform: translate(var(--logo-travel-x), calc(var(--logo-travel-y) * -1)); }
-  66% { transform: translate(calc(var(--logo-travel-x) * -.8), var(--logo-travel-y)); }
-}
+.floating-logo--archive { --motif-width: 340px; --assembly-delay: -22s; top: .5rem; right: -1rem; }
 @media (max-width: 1100px) {
-  .floating-logo--intro.floating-logo--primary { --logo-size: 48px; right: 1rem; }
-  .floating-logo--intro.floating-logo--secondary { left: 4rem; }
-  .floating-logo--work { right: 10rem; }
+  .floating-logo--intro { --motif-width: 280px; right: -1rem; top: 1rem; }
+  .floating-logo--experience { --motif-width: 250px; bottom: -.25rem; left: -.5rem; }
+  .floating-logo--archive { --motif-width: 250px; right: -1rem; }
   .floating-logo--contact { display: none; }
-  .floating-logo--archive.floating-logo--secondary { right: 11rem; top: 1rem; }
 }
-/* One small, static cluster on tablet and phone; no motion through reading areas. */
+/* Phone and tablet show one static fragment rather than a miniature particle field. */
 @media (max-width: 899px) {
+  .experience-section { min-height: 0; }
   .floating-logo { display: none; }
-  .floating-logo--intro.floating-logo--primary,
-  .floating-logo--archive.floating-logo--primary {
-    display: block;
-    --logo-size: 26px;
-    --logo-opacity: .2;
-    top: 1rem;
-    right: 0;
-  }
-  .floating-logo-drift { animation: none; }
+  .floating-logo--intro, .floating-logo--archive { display: block; width: 64px; top: .75rem; right: 0; --motif-opacity: .4; }
+  .logo-assembly { display: none; }
+  .motif-mobile { display: flex; gap: 5px; align-items: center; color: var(--motif-green); }
+  .motif-mobile .logo-mark { display: block; width: 28px; height: auto; }
+  .motif-mobile .logo-mark + .logo-mark { color: var(--motif-rust); transform: translateY(9px); }
+  html[data-motion='on'] :is(.floating-logo-drift, .logo-atom) { animation: none; }
 }
 @media print { .floating-logo { display: none !important; } }
