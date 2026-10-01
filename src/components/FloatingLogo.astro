@@ -2,7 +2,14 @@
 import Logo from './Logo.astro';
 import { brand } from '../data/brand';
 import '../styles/motion.css';
-interface Props { placement: 'intro' | 'experience' | 'contact' | 'archive' }
+interface Props { placement: 'intro' | 'work' | 'experience' | 'contact' | 'archive' }
 const { placement } = Astro.props;
+const groups = placement === 'intro' || placement === 'archive' ? ['primary', 'secondary'] : ['primary'];
 ---
-{brand.decoration && <span class={`floating-logo floating-logo--${placement}`} style={`--logo-aspect: ${brand.width} / ${brand.height}`} data-floating-logo aria-hidden="true"><span class="floating-logo-drift"><Logo /></span></span>}
+{brand.decoration && groups.map(group => (
+  <span class={`floating-logo floating-logo--${placement} floating-logo--${group}`} style={`--logo-aspect: ${brand.width} / ${brand.height}`} data-floating-logo aria-hidden="true">
+    <span class="floating-logo-drift">
+      {[0, 1, 2].map(() => <span class="floating-logo-member"><Logo /></span>)}
+    </span>
+  </span>
+))}

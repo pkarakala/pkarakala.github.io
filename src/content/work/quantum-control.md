@@ -19,5 +19,5 @@ related:
   - label: Murphy Niu · UCSB
     url: https://cs.ucsb.edu/people/faculty/murphy-niu
   - label: Research group
-    url: https://www.murphyniu.com/
+    url: https://qcd-lab.cs.ucsb.edu/
 ---

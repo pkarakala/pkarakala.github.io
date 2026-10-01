@@ -1,47 +1,72 @@
-/* Placement and motion live here, independent of project content.
-   Every position reserves the entire travel envelope, not just its center. */
+/* Each three-mark cluster moves as one unit. Keep its full travel clear of copy. */
 .floating-logo {
-  --logo-size: 72px;
-  --logo-opacity: .2;
+  --logo-size: 46px;
+  --logo-opacity: .19;
   --logo-travel-x: 12px;
-  --logo-travel-y: 14px;
+  --logo-travel-y: 10px;
   --logo-duration: 26s;
   --logo-delay: -8s;
   position: absolute;
   display: block;
-  width: var(--logo-size);
-  aspect-ratio: var(--logo-aspect);
+  width: calc(var(--logo-size) * 2.2);
   pointer-events: none;
   user-select: none;
   mix-blend-mode: multiply;
   opacity: var(--logo-opacity);
 }
-.floating-logo-drift { display: block; animation: logo-drift var(--logo-duration) ease-in-out var(--logo-delay) infinite; animation-play-state: paused; }
+.floating-logo-drift {
+  display: grid;
+  grid-template-columns: repeat(2, var(--logo-size));
+  gap: 2px calc(var(--logo-size) * .2);
+  animation: logo-drift var(--logo-duration) ease-in-out var(--logo-delay) infinite;
+  animation-play-state: paused;
+}
+.floating-logo-member { display: block; width: var(--logo-size); aspect-ratio: var(--logo-aspect); }
+.floating-logo-member:first-child { grid-column: 1 / -1; justify-self: center; }
 .floating-logo .logo-mark { width: 100%; }
-.floating-logo--intro {
-  --logo-size: 180px;
-  --logo-opacity: .22;
-  --logo-travel-x: 16px;
-  --logo-travel-y: 18px;
+.floating-logo--intro.floating-logo--primary {
+  --logo-size: 58px;
+  --logo-opacity: .24;
   --logo-duration: 24s;
   --logo-delay: -3s;
-  top: 3.25rem;
+  top: 3rem;
   right: 3rem;
 }
-.floating-logo--experience { bottom: 2.25rem; left: 6rem; }
+.floating-logo--intro.floating-logo--secondary {
+  --logo-size: 44px;
+  --logo-duration: 31s;
+  --logo-delay: -17s;
+  bottom: 2rem;
+  left: 8rem;
+}
+.floating-logo--work {
+  --logo-size: 38px;
+  --logo-duration: 29s;
+  --logo-delay: -11s;
+  top: 2.75rem;
+  right: 15rem;
+}
+.floating-logo--experience { bottom: 1.75rem; left: 5rem; }
 .floating-logo--contact {
-  --logo-size: 64px;
-  --logo-duration: 21s;
+  --logo-size: 38px;
+  --logo-duration: 23s;
   --logo-delay: -13s;
   top: 4rem;
-  left: 47%;
+  left: 44%;
 }
-.floating-logo--archive {
-  --logo-size: 96px;
+.floating-logo--archive.floating-logo--primary {
+  --logo-size: 50px;
   --logo-duration: 28s;
   --logo-delay: -5s;
-  top: 5.5rem;
-  right: 4rem;
+  top: 4rem;
+  right: 3rem;
+}
+.floating-logo--archive.floating-logo--secondary {
+  --logo-size: 36px;
+  --logo-duration: 33s;
+  --logo-delay: -21s;
+  top: 1.5rem;
+  right: 14rem;
 }
 html[data-motion='on'] .floating-logo[data-visible] .floating-logo-drift { animation-play-state: running; }
 @keyframes logo-drift {
@@ -50,11 +75,23 @@ html[data-motion='on'] .floating-logo[data-visible] .floating-logo-drift { anima
   66% { transform: translate(calc(var(--logo-travel-x) * -.8), var(--logo-travel-y)); }
 }
 @media (max-width: 1100px) {
-  .floating-logo--intro { --logo-size: 160px; right: 1.5rem; }
-  .floating-logo--archive { right: 1.5rem; }
-  /* The contact columns leave too little room for a clear motion envelope. */
+  .floating-logo--intro.floating-logo--primary { --logo-size: 48px; right: 1rem; }
+  .floating-logo--intro.floating-logo--secondary { left: 4rem; }
+  .floating-logo--work { right: 10rem; }
   .floating-logo--contact { display: none; }
+  .floating-logo--archive.floating-logo--secondary { right: 11rem; top: 1rem; }
 }
-/* No decoration in the tighter tablet/phone reading layouts. */
-@media (max-width: 899px) { .floating-logo { display: none; } }
-@media print { .floating-logo { display: none; } }
+/* One small, static cluster on tablet and phone; no motion through reading areas. */
+@media (max-width: 899px) {
+  .floating-logo { display: none; }
+  .floating-logo--intro.floating-logo--primary,
+  .floating-logo--archive.floating-logo--primary {
+    display: block;
+    --logo-size: 26px;
+    --logo-opacity: .2;
+    top: 1rem;
+    right: 0;
+  }
+  .floating-logo-drift { animation: none; }
+}
+@media print { .floating-logo { display: none !important; } }

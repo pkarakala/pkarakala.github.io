@@ -1,11 +1,12 @@
 ---
 import { experience } from '../data/experience';
 import FloatingLogo from './FloatingLogo.astro';
+import Arrow from './Arrow.astro';
 ---
 <section class="section split-section" id="experience" aria-labelledby="experience-title">
   <FloatingLogo placement="experience" />
   <div class="section-heading"><p class="eyebrow">Along the way</p><h2 id="experience-title">Experience</h2></div>
   <div class="experience-list">
-    {experience.map(item => <div class="experience-row"><div><h3>{item.organization}</h3><p>{item.role}</p></div><p class="experience-dates">{item.dates}</p></div>)}
+    {experience.map(item => <div class="experience-row"><div><h3>{item.url ? <a class="experience-link" href={item.url}>{item.organization} <Arrow /></a> : item.organization}</h3><p>{item.role}</p></div><p class="experience-dates">{item.dates}</p></div>)}
   </div>
 </section>
