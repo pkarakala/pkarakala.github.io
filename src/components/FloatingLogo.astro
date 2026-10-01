@@ -1,0 +1,8 @@
+---
+import Logo from './Logo.astro';
+import { brand } from '../data/brand';
+import '../styles/motion.css';
+interface Props { placement: 'intro' | 'experience' | 'contact' | 'archive' }
+const { placement } = Astro.props;
+---
+{brand.decoration && <span class={`floating-logo floating-logo--${placement}`} style={`--logo-aspect: ${brand.width} / ${brand.height}`} data-floating-logo aria-hidden="true"><span class="floating-logo-drift"><Logo /></span></span>}

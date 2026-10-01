@@ -1,8 +1,9 @@
 ---
-import { profile } from '../data/profile';
-import Arrow from './Arrow.astro';
+import ContactLinks from './ContactLinks.astro';
+import FloatingLogo from './FloatingLogo.astro';
 ---
 <section class="section contact-section" id="contact" aria-labelledby="contact-title">
   <div><p class="eyebrow">Contact</p><h2 id="contact-title">Get in touch.</h2></div>
-  <div class="contact-links"><p class="email-address">{profile.emailDisplay}</p><div class="social-links"><a href={profile.github}>GitHub <Arrow /></a><a href={profile.linkedin}>LinkedIn <Arrow /></a></div></div>
+  <FloatingLogo placement="contact" />
+  <div class="contact-links"><ContactLinks /></div>
 </section>

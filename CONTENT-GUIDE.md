@@ -71,6 +71,20 @@ The first published note automatically adds Notes to navigation, creates `/notes
 
 ## Design and preview
 
+### Logo and motion
+
+`src/data/brand.ts` holds the single logo asset reference and the `decoration` switch. The original `public/assets/images/house-circuit-mark.png` is unchanged: 376×306 pixels, with an opaque white background. `Logo.astro` renders it in both the stationary home link and `FloatingLogo.astro`. Multiply blending removes the white rectangle on the pale page. Keep floating copies on the pale background, away from text and images, and at or below 180 CSS pixels for crisp rendering at common display densities. There is no vector source in this repository.
+
+To replace the mark, replace that PNG (or update the reference and intrinsic dimensions in `brand.ts`), then run `node scripts/generate-favicon.mjs`. This uses Astro's existing Sharp dependency to convert the original luminance to transparency, trim empty margins, and embed the faithful pixels in `/favicon.svg`. It does not trace or redraw the logo. Check the result at 16 and 32 pixels after replacing it.
+
+All sizes, opacity, travel, timings, and section-relative positions are in `src/styles/motion.css`. There are three homepage placements (introduction, Experience margin, Contact gap) and one archive-introduction placement. Project rows never host decorations: add projects through the normal content collection without editing animation code. Reserve the full travel envelope and recheck at 1440, 1024, 900, 768, 390, and 320px when changing positions. The Contact decoration is omitted at 1100px and below to keep the email clear. All decorations are omitted below 900px and in print.
+
+Set `brand.decoration` to `false` to omit all decorative copies while retaining the header and favicon. To disable animation by default without removing the static composition, adjust `enabled()` in `src/scripts/enhancements.ts`. The footer's pressed toggle reflects the visitor's preference, saved under `portfolio-motion`; an explicit choice takes priority over the OS reduced-motion preference. Otherwise reduced motion defaults to off. CSS starts paused, so no animation runs before preference detection or without JavaScript. The preference can be on at phone widths, but decorations remain omitted there.
+
+The enhancement module observes only the decoration anchors, pauses offscreen/hidden-tab animation, and disconnects observers and scoped event listeners on page exit. It reinitializes on back/forward-cache restoration. There are no timers, scroll handlers, or animation-frame loops. If storage is unavailable, the choice lasts for the current page. If IntersectionObserver is unavailable, the composition remains static.
+
+`ContactLinks.astro` shares the obfuscated contact presentation and Copy email control. The button stays unavailable until enhanced, and status text changes only after the Clipboard API settles. A denied/unavailable clipboard produces manual-copy instructions in the polite live region. Reserved control/status space avoids shifts as controls appear or feedback changes. Essential content and navigation still work without JavaScript.
+
 Edit colors, font families, and shared spacing in `src/styles/tokens.css`. Component and responsive rules are in `src/styles/global.css`. Fonts are locally bundled from Fontsource; license copies are in `public/assets/fonts/licenses/`.
 
 ```sh

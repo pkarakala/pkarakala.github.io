@@ -1,10 +1,11 @@
 ---
 import { profile } from '../data/profile';
+import Logo from './Logo.astro';
 interface Props { current?: string; hasNotes?: boolean }
 const { current, hasNotes = false } = Astro.props;
 ---
 <header class="site-header shell">
-  <a class="wordmark" href="/" aria-label="Pranav Reddy, home"><span class="brand-symbol" aria-hidden="true"><img src="/assets/images/house-circuit-mark.png" alt="" width="376" height="306" /></span><span>Pranav Reddy</span></a>
+  <a class="wordmark" href="/" aria-label="Pranav Reddy, home"><span class="brand-symbol" aria-hidden="true"><Logo /></span><span>Pranav Reddy</span></a>
   <nav aria-label="Main navigation">
     <a href="/work.html" aria-current={current === 'work' ? 'page' : undefined}>Work</a>
     <a href="/#about">About</a>

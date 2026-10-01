@@ -1,0 +1,60 @@
+/* Placement and motion live here, independent of project content.
+   Every position reserves the entire travel envelope, not just its center. */
+.floating-logo {
+  --logo-size: 72px;
+  --logo-opacity: .2;
+  --logo-travel-x: 12px;
+  --logo-travel-y: 14px;
+  --logo-duration: 26s;
+  --logo-delay: -8s;
+  position: absolute;
+  display: block;
+  width: var(--logo-size);
+  aspect-ratio: var(--logo-aspect);
+  pointer-events: none;
+  user-select: none;
+  mix-blend-mode: multiply;
+  opacity: var(--logo-opacity);
+}
+.floating-logo-drift { display: block; animation: logo-drift var(--logo-duration) ease-in-out var(--logo-delay) infinite; animation-play-state: paused; }
+.floating-logo .logo-mark { width: 100%; }
+.floating-logo--intro {
+  --logo-size: 180px;
+  --logo-opacity: .22;
+  --logo-travel-x: 16px;
+  --logo-travel-y: 18px;
+  --logo-duration: 24s;
+  --logo-delay: -3s;
+  top: 3.25rem;
+  right: 3rem;
+}
+.floating-logo--experience { bottom: 2.25rem; left: 6rem; }
+.floating-logo--contact {
+  --logo-size: 64px;
+  --logo-duration: 21s;
+  --logo-delay: -13s;
+  top: 4rem;
+  left: 47%;
+}
+.floating-logo--archive {
+  --logo-size: 96px;
+  --logo-duration: 28s;
+  --logo-delay: -5s;
+  top: 5.5rem;
+  right: 4rem;
+}
+html[data-motion='on'] .floating-logo[data-visible] .floating-logo-drift { animation-play-state: running; }
+@keyframes logo-drift {
+  0%, 100% { transform: translate(calc(var(--logo-travel-x) * -.65), calc(var(--logo-travel-y) * .45)); }
+  33% { transform: translate(var(--logo-travel-x), calc(var(--logo-travel-y) * -1)); }
+  66% { transform: translate(calc(var(--logo-travel-x) * -.8), var(--logo-travel-y)); }
+}
+@media (max-width: 1100px) {
+  .floating-logo--intro { --logo-size: 160px; right: 1.5rem; }
+  .floating-logo--archive { right: 1.5rem; }
+  /* The contact columns leave too little room for a clear motion envelope. */
+  .floating-logo--contact { display: none; }
+}
+/* No decoration in the tighter tablet/phone reading layouts. */
+@media (max-width: 899px) { .floating-logo { display: none; } }
+@media print { .floating-logo { display: none; } }

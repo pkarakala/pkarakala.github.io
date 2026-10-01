@@ -24,7 +24,8 @@ for (const [file, $] of documents) {
   const name = relative(root, file);
   assert($('html').attr('lang') === 'en', `${name}: missing document language`);
   assert($('h1').length === 1 && $('main').length === 1, `${name}: expected one h1 and main`);
-  assert($('script:not([type="application/ld+json"])').length === 0, `${name}: unexpected client JavaScript`);
+  const scripts = $('script:not([type="application/ld+json"])').toArray();
+  assert(scripts.length <= 1 && scripts.every(e => $(e).attr('type') === 'module' && /^\/_astro\/Base\.astro_astro_type_script_index_0_lang\.[\w-]+\.js$/.test($(e).attr('src') ?? '')), `${name}: unexpected client JavaScript`);
   const title = $('title').text();
   const description = $('meta[name="description"]').attr('content');
   assert(title && !titles.has(title), `${name}: missing/duplicate title`);

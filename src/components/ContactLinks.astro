@@ -1,0 +1,12 @@
+---
+import { profile } from '../data/profile';
+import Arrow from './Arrow.astro';
+---
+<div data-email-contact>
+  <p class="email-address">{profile.emailDisplay}</p>
+  <div class="contact-tools">
+    <div class="social-links"><a href={profile.github}>GitHub <Arrow /></a><a href={profile.linkedin}>LinkedIn <Arrow /></a></div>
+    <button class="quiet-button copy-email" type="button" data-copy-email hidden>Copy email</button>
+  </div>
+  <p class="copy-status" data-copy-status role="status" aria-live="polite" aria-atomic="true"></p>
+</div>

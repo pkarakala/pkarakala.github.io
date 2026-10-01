@@ -46,5 +46,11 @@ const canonicalUrl = new URL(canonical, Astro.site);
     <Header current={current} hasNotes={notes.length > 0} />
     <main id="main" tabindex="-1" class="shell page-frame"><slot /></main>
     <Footer />
+    <script>
+      import { enhancePortfolio } from '../scripts/enhancements';
+      let cleanup = enhancePortfolio();
+      window.addEventListener('pagehide', () => cleanup());
+      window.addEventListener('pageshow', event => { if (event.persisted) cleanup = enhancePortfolio(); });
+    </script>
   </body>
 </html>

@@ -6,4 +6,6 @@ export default defineConfig({
   build: { format: 'file' },
   trailingSlash: 'never',
   devToolbar: { enabled: false },
+  // Cache the small progressive-enhancement module across page visits.
+  vite: { build: { assetsInlineLimit: 0 } },
 });

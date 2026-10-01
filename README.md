@@ -2,6 +2,8 @@
 
 A static Astro portfolio for https://pkarakala.github.io. The homepage, Work archive, coursework, and resume share layouts, components, and design tokens. Essential content and navigation use no client JavaScript.
 
+A small progressive-enhancement module adds optional logo motion and email copying. Logo replacement, motion settings, and the decoration switch are documented in [CONTENT-GUIDE.md](CONTENT-GUIDE.md#logo-and-motion).
+
 ## Local development
 
 Use Node 24 LTS and npm.
