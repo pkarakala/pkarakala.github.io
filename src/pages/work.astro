@@ -8,7 +8,7 @@ for (const key of ['slug', 'featuredOrder'] as const) {
   const values = projects.map(p => p.data[key]).filter(v => v !== undefined);
   if (new Set(values).size !== values.length) throw new Error(`Work entries must have unique ${key} values.`);
 }
-const motifIndex = projects.findIndex(project => !project.data.cover);
+const motifIndex = projects.findIndex(project => !project.data.cover && project.data.reports.length === 0);
 const anchors = projects.flatMap(project => [project.data.slug, ...project.data.anchorAliases]);
 if (new Set(anchors).size !== anchors.length) throw new Error('Work entry slugs and anchor aliases must be unique.');
 ---

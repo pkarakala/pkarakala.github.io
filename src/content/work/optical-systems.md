@@ -1,7 +1,7 @@
 ---
 title: Optical Systems and Imaging Labs
 slug: optical-systems
-summary: Lab experiments with lenses, telescopes, Fourier imaging, spatial filtering, coherence, and interference.
+summary: Tested optical imaging and interference setups. Learned how alignment and filtering affect the images and patterns we measure.
 category: Coursework
 context: ECE 136A
 date: Fall 2025

@@ -37,7 +37,7 @@ For a measured result or reproducible figure, add optional `evidence: { statemen
 
 For a collection of reports, add `reportHeading` so the archive presents them as one labeled group. A title with multiple reports does not link arbitrarily to the first PDF; readers choose the report they want. ECE 136C is one work entry with eight report links. Its `anchorAliases` preserve the former `#quantum-optics` and `#xanadu-x8` fragments on the combined card.
 
-Optional real images appear in the archive and, when featured, on the homepage with `cover: { src, alt, caption, width, height }`. Use a root-relative `/assets/` URL and accurate alt text/caption and dimensions. Avoid generic or invented project imagery. The six restored covers are the images from the previous portfolio; the other projects remain text-only instead of using filler artwork. The header mark is the owner-supplied image at `public/assets/images/house-circuit-mark.png`.
+Optional real images appear in the archive and, when featured, on the homepage with `cover: { src, alt, caption, width, height }`. Use a root-relative `/assets/` URL and accurate alt text/caption and dimensions. Avoid generic or invented project imagery. The remaining covers are images from the previous portfolio; Quantum Photonics Labs is text-only at the owner's request. Its former lab photo is no longer displayed. The header mark is the owner-supplied image at `public/assets/images/house-circuit-mark.png`.
 
 ## Choose selected work
 
@@ -74,7 +74,7 @@ The three silhouettes are defined in `src/data/logo-shapes.ts`: house, circuit c
 
 On devices with a mouse or similar precise pointer, `src/scripts/logo-pointer.ts` gently repels nearby fragments, which ease back when the pointer leaves. The nudge stays inside the decoration envelope and never intercepts clicks or replaces the cursor. Touch devices and motion-off states do not run the interaction.
 
-On the homepage the house sits beside the introduction, PR occupies a reserved right-hand grid cell of the first featured project without a figure, and the canopy sits below the Experience heading. Contact has a smaller closing motif. Work uses a house in its introduction and PR beside its first text-only entry. The first suitable project is selected automatically, so adding or reordering projects requires no motion edits. Figures never share their column with a decorative field. Experience reserves enough vertical space for every dispersed position. Do not move nodes outside the 660×400 field without reviewing its envelope.
+On the homepage the house sits beside the introduction, PR occupies a reserved right-hand grid cell of the first featured project without a figure or report PDFs, and the canopy sits below the Experience heading. Contact has a smaller closing motif. Work uses a house in its introduction and the same rule for PR placement. This keeps PR beside ML Systems Lab and avoids replacing the removed lab photo with decoration. The first suitable project is selected automatically, so adding or reordering projects requires no motion edits. Figures never share their column with a decorative field. Experience reserves enough vertical space for every dispersed position. Do not move nodes outside the 660×400 field without reviewing its envelope.
 
 Review the complete assembly and drift cycles at 1440, 1280, 1100, 1024, 900, 820, 768, 600, 390, and 320px. Contact decoration is omitted at 1100px and below. Below 900px, the fields are omitted and only a static two-mark introduction fragment remains. All decoration is omitted in print.
 

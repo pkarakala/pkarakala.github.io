@@ -9,7 +9,7 @@ import Arrow from '../components/Arrow.astro';
 import FloatingLogo from '../components/FloatingLogo.astro';
 import { profile } from '../data/profile';
 const projects = (await getCollection('work', ({ data }) => !data.draft && data.featuredOrder !== undefined)).sort((a, b) => a.data.featuredOrder! - b.data.featuredOrder!);
-const motifIndex = projects.findIndex(project => !project.data.cover);
+const motifIndex = projects.findIndex(project => !project.data.cover && project.data.reports.length === 0);
 ---
 <Base title="Pranav Reddy | Heterogeneous computing" description="Pranav Reddy’s projects in photonics, ML systems, and quantum computing. BS/MS+1 candidate in Electronics & Photonics at UC Santa Barbara." canonical="/">
   <section class="hero" aria-labelledby="home-title">

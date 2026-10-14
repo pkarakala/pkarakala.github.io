@@ -4,6 +4,12 @@ Local review began September 17, 2026 (America/Los_Angeles). Original baseline: 
 
 The sections below record successive local review passes; their counts describe the pass in which they were measured. The latest content revision is recorded first.
 
+## Approved lab summaries, October 14, 2026
+
+After reviewing the report PDFs, the owner approved concise descriptions of the work and learning outcomes for Quantum Photonics Labs, Optical Systems and Imaging Labs, Photonic Fiber Communication, and Mineral Identification via Raman Spectroscopy. Those four summaries are reproduced verbatim. The lab photo and caption are removed from Home and Work. Report links, collaborator credits, and project ordering remain intact. The PR motif stays beside ML Systems Lab rather than filling the removed photo's place.
+
+The AWS Braket and research descriptions were explicitly excluded from this revision. SHA-256 comparisons confirmed that the experience data/component and both research project source files are byte-for-byte unchanged. The build passed with no errors, warnings, or hints: seven HTML pages, nine projects, thirteen report PDFs, and 419 checked local references. Browser checks passed at ten widths from 320 to 1440px, including motion envelopes, image loading, report links, keyboard navigation, reduced motion, contact and report anchors, and resume removal. Home screenshots were visually reviewed at desktop and phone widths.
+
 ## Heterogeneous computing revision, October 14, 2026
 
 The owner approved a focus on heterogeneous computing for ML and quantum workloads. Home and Work now lead with Quantum Photonics Labs, followed by ML Systems Lab, Transformer Inference Analysis, and Continuous Quantum Error Correction. Fiber and optical systems work follow in the archive. All nine published projects, collaborator credits, report links, repository links, and the unpublished Graphs draft state are retained. The homepage lab action opens the full eight-report collection. Profile, About, project summaries, accessibility labels, and page metadata use shorter copy without dash punctuation. The website link preview matches the new focus.

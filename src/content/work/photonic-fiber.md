@@ -1,7 +1,7 @@
 ---
 title: Photonic Fiber Communication
 slug: photonic-fiber
-summary: Modeled antiresonant hollow core fibers and compared them with conventional optical fiber.
+summary: Analyzed how hollow core fiber geometry affects signal loss and transmission. Learned how physical design choices shape communication performance.
 category: Coursework
 context: ECE 135
 date: March 2026

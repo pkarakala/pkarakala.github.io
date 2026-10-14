@@ -112,7 +112,7 @@ assert(JSON.stringify(selectedWork) === JSON.stringify(['quantum-photonics', 'ml
 assert(JSON.stringify(archive('article.project-row').map((_, e) => archive(e).attr('id')).get()) === JSON.stringify(['quantum-photonics', 'ml-systems-lab', 'transformer-inference', 'continuous-qec', 'photonic-fiber', 'optical-systems', 'kernel-relay', 'quantum-control', 'raman-spectroscopy']), 'Archive project order changed');
 assert(home('#quantum-photonics h3').text() === 'Quantum Photonics Labs', 'Featured photonics title missing');
 assert(home('#quantum-photonics a[href="/work.html#quantum-photonics"]').text().includes('View lab reports'), 'Homepage lab collection link missing');
-assert(home('#quantum-photonics .project-cover img').attr('src') === '/assets/images/quantum-photonics.webp', 'Featured photonics photo missing');
+assert(home('#quantum-photonics .project-cover').length === 0 && archive('#quantum-photonics .project-cover').length === 0, 'Removed lab photo is still displayed');
 assert(archive('#kernel-relay a[href="https://github.com/pkarakala/kernel-relay"]').length === 2, 'KernelRelay repository link missing from archive');
 assert(archive('#kernel-relay .project-summary').text().includes('fixed mock'), 'KernelRelay mock limitation missing');
 assert(archive('#kernel-relay .project-evidence').text().includes('0.053 ms versus 0.120 ms') && archive('#kernel-relay .project-evidence').text().includes('Other runs varied'), 'Qualified T4 result missing');

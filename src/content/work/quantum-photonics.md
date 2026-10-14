@@ -1,7 +1,7 @@
 ---
 title: Quantum Photonics Labs
 slug: quantum-photonics
-summary: Eight labs covering quantum optics experiments and photonic quantum circuits, including Gaussian boson sampling with Xanadu X8.
+summary: Studied quantum optics through lab experiments and Python circuit programming. Learned how measurement noise and the order of circuit operations affect the results.
 category: Coursework
 context: ECE 136C
 date: Spring 2025
@@ -11,12 +11,6 @@ order: 1
 featuredOrder: 1
 anchorAliases: [quantum-optics, xanadu-x8]
 reportHeading: ECE 136C lab reports
-cover:
-  src: /assets/images/quantum-photonics.webp
-  alt: Pranav wearing laser safety glasses beside a photonics lab optical table.
-  caption: At the photonics lab optical table.
-  width: 640
-  height: 461
 reports:
   - label: Bell state measurements
     url: /assets/pdfs/ece136c/lab1.pdf
