@@ -1,10 +1,11 @@
 ---
 title: Transformer Inference Analysis
 slug: transformer-inference
-summary: Exploring compute and memory bottlenecks in transformer inference through roofline modeling.
+summary: Used roofline models to study where transformer inference is limited by computation or memory bandwidth.
 category: Independent project
 date: April 2026
-order: 5
+order: 3
+featuredOrder: 3
 repository: https://github.com/pkarakala/transformer-inference-roofline
 cover:
   src: /assets/images/roofline.webp

@@ -1,7 +1,7 @@
 ---
 title: Mineral Identification via Raman Spectroscopy
 slug: raman-spectroscopy
-summary: Comparing supervised learning models that classify mineral species and families from Raman spectra.
+summary: Compared supervised learning models for identifying mineral species and families from Raman spectra.
 category: Coursework
 context: ECE 133
 order: 9

@@ -1,6 +1,6 @@
 # Portfolio build context
 
-Updated September 17, 2026. Starting commit: `0e25c9d` (`Add files via upload`). Remote: `https://github.com/pkarakala/pkarakala.github.io.git`.
+Updated October 14, 2026. Starting commit: `0e25c9d` (`Add files via upload`). Remote: `https://github.com/pkarakala/pkarakala.github.io.git`.
 
 ## Architecture and design
 
@@ -16,7 +16,7 @@ The owner-supplied `DESIGN-BRIEF.md` and `HOMEPAGE-COPY.md` from the planning fo
 
 - AWS Braket and current Niu Group role/dates: supplied homepage copy, attributed there to the selected resume.
 - Pando.ai: appeared in the supplied homepage copy and prior portfolio, then was removed from the displayed experience section at the owner's request.
-- The original four selected projects came from approved homepage copy. The later owner-approved selection leads with KernelRelay, retains Continuous Quantum Error Correction and ML Systems Lab, adds Photonic Fiber Communication to the four featured cards, and moves Transformer Inference Analysis to the archive.
+- The October 2026 owner-approved selection is Quantum Photonics Labs, ML Systems Lab, Transformer Inference Analysis, and Continuous Quantum Error Correction. It reflects an interest in heterogeneous computing for ML and quantum workloads while recruiting at Lightmatter. Fiber and optical systems work follow in the archive; KernelRelay and all remaining published projects remain accessible. The introduction and About copy were shortened with the owner's approval.
 - Original project inventory: `index.html`, `projects.html`, and existing HTML resume at the starting commit. The archive retains the original public project evidence. TensorDescent, KernelForge, and AccelSim are linked under ML Systems Lab rather than repeated as standalone cards, with former fragments preserved there. ECE 136C subtopics are consolidated under one lab entry; the graph-algorithms summary from the old resume is retained only as an unpublished draft at the owner's request.
 - KernelRelay's public repository and documentation support an evaluation-and-feedback description, not a model-training claim: it uses fixed mock source proposals, validates candidates against eager PyTorch, records rewards and trajectories, and reports measured T4 timings. The portfolio links one same-process T4 confirmation with its variability caveat and explicitly labels the fixed mock.
 - Research control summary: original Niu Group portfolio entry, with confidential implementation details left unpublished. Original numerical claims remain in their reports/repositories instead of becoming profile statistics.
@@ -26,11 +26,11 @@ The owner-supplied `DESIGN-BRIEF.md` and `HOMEPAGE-COPY.md` from the planning fo
 - ECE 136A collaborators: Altug Ozcetinkaya, Christopher Hemsley, Dashiell Franklin, Gavin Kesler, Karl Tizon, Nicholas Shand, verified from all three report covers.
 - Coursework: 15 existing course entries remain after the owner removed ECE 136B, ECE 154A, ECE 154B, and CS 160. ECE 162A, 162B, and 162C are listed in a separate planned-coursework section, without a projected term or claim of completion. The obsolete ECE 10 catalog URL returned 404, so its link now uses UCSB’s official ECE 10 series overview; the original course wording is retained. No graduation date is displayed.
 
-`docs/migration-inventory.json` records original public page links, fragments, and asset hashes. The build checks retention of original evidence links, public assets, and legacy entry points.
+`docs/migration-inventory.json` records original public page links, fragments, and asset hashes. The build checks retention of original evidence links, public assets, and legacy entry points, except for the intentionally retired resume paths.
 
-## Resume
+## Resume removal
 
-Owner-selected source: `Pranav_Reddy_ML_Compilers_2027.pdf`, supplied from the owner’s Desktop resume directory. The original PDF was not modified. Its exact bytes are served at the stable `/assets/pdfs/resume.pdf`. `docs/resume-source.json` records the approved hash. Older resume assets remain for URL compatibility but have no promoted download links.
+In October 2026 the owner requested removal of the resume from the portfolio. The resume navigation, homepage download, both HTML routes, all three public PDFs, replacement script, and obsolete integrity record were removed. The build now requires resume paths to remain absent. This intentionally supersedes earlier compatibility requirements. The owner's original source PDF outside this repository was not modified.
 
 ## Publishing
 

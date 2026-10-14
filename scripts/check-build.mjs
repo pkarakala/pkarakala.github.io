@@ -19,6 +19,7 @@ const documents = new Map(await Promise.all(htmlFiles.map(async file => [file, l
 const titles = new Set();
 const descriptions = new Set();
 const site = 'https://pkarakala.github.io';
+const retiredResume = url => /(?:^|\/)resume\d*\.(?:pdf|html)$/i.test(url);
 let internalLinks = 0;
 for (const [file, $] of documents) {
   const name = relative(root, file);
@@ -56,10 +57,8 @@ for (const [file, $] of documents) {
       assert(documents.get(target)('[id]').toArray().some(e => documents.get(target)(e).attr('id') === decodeURIComponent(url.hash.slice(1))), `${name}: broken fragment ${ref}`);
     }
   }
-  for (const anchor of $('a[href]').toArray()) {
-    const href = $(anchor).attr('href');
-    if (/resume.*\.pdf$/.test(href)) assert(href === '/assets/pdfs/resume.pdf', `${name}: alternate resume is promoted`);
-  }
+  assert(!/résumé|resume/i.test($('body').text()), `${name}: resume copy remains`);
+  assert(!$('a[href]').toArray().some(anchor => retiredResume(new URL($(anchor).attr('href'), site).pathname)), `${name}: retired resume link remains`);
 }
 for (const file of output.filter(file => file.endsWith('.css') && !file.endsWith('/styles.css'))) {
   const css = await readFile(file, 'utf8');
@@ -71,13 +70,16 @@ for (const file of output.filter(file => file.endsWith('.css') && !file.endsWith
 }
 const inventory = JSON.parse(await readFile('docs/migration-inventory.json', 'utf8'));
 for (const [url, originalHash] of Object.entries(inventory.assets)) {
+  if (retiredResume(url)) continue;
   const path = resolve(root, '.' + url);
   assert(existsSync(path), `Legacy asset missing: ${url}`);
-  if (existsSync(path) && url !== '/assets/pdfs/resume.pdf') assert(hash(await readFile(path)) === originalHash, `Legacy asset changed: ${url}`);
+  if (existsSync(path)) assert(hash(await readFile(path)) === originalHash, `Legacy asset changed: ${url}`);
 }
-for (const url of [...Object.keys(inventory.pages), '/assets/pdfs/resume.html']) assert(existsSync(resolve(root, '.' + url)), `Legacy page missing: ${url}`);
-const resume = JSON.parse(await readFile('docs/resume-source.json', 'utf8'));
-assert(hash(await readFile(join(root, resume.publicUrl))) === resume.sha256, 'Canonical resume differs from approved PDF');
+for (const url of Object.keys(inventory.pages).filter(url => !retiredResume(url))) assert(existsSync(resolve(root, '.' + url)), `Legacy page missing: ${url}`);
+const retiredUrls = ['/resume.html', '/assets/pdfs/resume.html', ...Object.keys(inventory.assets).filter(retiredResume)];
+for (const url of retiredUrls) assert(!existsSync(resolve(root, '.' + url)), `Retired resume is still public: ${url}`);
+assert(!output.some(file => retiredResume(file)), 'A resume file remains in the deployed output');
+assert(!/resume/i.test(await readFile(join(root, 'sitemap.xml'), 'utf8')), 'Resume remains in the sitemap');
 for (const [name, path, width, height, maxBytes] of [
   ['LinkedIn website preview', 'assets/images/linkedin-portfolio-card.png', 1200, 627, 5 * 1024 * 1024],
   ['LinkedIn profile background', 'assets/images/linkedin-profile-banner.png', 1584, 396, 8 * 1024 * 1024],
@@ -93,7 +95,8 @@ const contact = documents.get(join(root, 'contact.html'));
 const normalize = text => text.replace(/\s+/g, ' ').trim();
 const expectedAbout = normalize((await readFile('src/data/about.md', 'utf8')).replace(/\*/g, ''));
 assert(normalize(home('.about-copy > p').map((_, e) => home(e).text()).get().join(' ')) === expectedAbout, 'About copy changed during rendering');
-assert(home('.hero-intro > p').text() === 'I build and evaluate ML systems, with a hardware-first interest in compilers, accelerators, and quantum technologies.', 'Approved hero statement missing');
+assert(home('.hero-intro > p').text() === 'I’m interested in heterogeneous computing for ML and quantum workloads. I build software and study the hardware it runs on.', 'Approved hero statement missing');
+assert(home('.hero-actions a[href="#contact"]').length === 1, 'Homepage contact action missing');
 for (const [name, page, selector] of [['Home', home, '#contact .email-address'], ['Contact', contact, '.standalone-contact .email-address']]) {
   assert(page(selector).text() === 'preddy [at] ucsb [dot] edu', `${name}: human-readable email is missing`);
   assert(page('a[href^="mailto:"]').length === 0, `${name}: direct mailto link remains`);
@@ -105,11 +108,15 @@ assert(!existsSync(join(root, 'INTERVIEW-PREP.html')) && !existsSync(join(root, 
 const archive = documents.get(join(root, 'work.html'));
 const archiveLinks = new Set(archive('a[href]').map((_, e) => archive(e).attr('href')).get());
 const selectedWork = home('#work article.project-row').map((_, e) => home(e).attr('id')).get();
-assert(JSON.stringify(selectedWork) === JSON.stringify(['kernel-relay', 'continuous-qec', 'ml-systems-lab', 'photonic-fiber']), 'Selected work order changed');
-assert(home('#kernel-relay a[href="https://github.com/pkarakala/kernel-relay"]').length === 2, 'KernelRelay repository link missing from homepage');
-assert(home('#kernel-relay .project-summary').text().includes('fixed mock, not a trained agent'), 'KernelRelay mock limitation missing from homepage');
-assert(home('#kernel-relay .project-evidence').text().includes('0.053 ms versus 0.120 ms'), 'Qualified T4 result missing from homepage');
-assert(home('#kernel-relay a[href="https://github.com/pkarakala/kernel-relay/blob/main/results/agent-eval/README.md"]').length === 1, 'KernelRelay timing methodology link missing');
+assert(JSON.stringify(selectedWork) === JSON.stringify(['quantum-photonics', 'ml-systems-lab', 'transformer-inference', 'continuous-qec']), 'Selected work order changed');
+assert(JSON.stringify(archive('article.project-row').map((_, e) => archive(e).attr('id')).get()) === JSON.stringify(['quantum-photonics', 'ml-systems-lab', 'transformer-inference', 'continuous-qec', 'photonic-fiber', 'optical-systems', 'kernel-relay', 'quantum-control', 'raman-spectroscopy']), 'Archive project order changed');
+assert(home('#quantum-photonics h3').text() === 'Quantum Photonics Labs', 'Featured photonics title missing');
+assert(home('#quantum-photonics a[href="/work.html#quantum-photonics"]').text().includes('View lab reports'), 'Homepage lab collection link missing');
+assert(home('#quantum-photonics .project-cover img').attr('src') === '/assets/images/quantum-photonics.webp', 'Featured photonics photo missing');
+assert(archive('#kernel-relay a[href="https://github.com/pkarakala/kernel-relay"]').length === 2, 'KernelRelay repository link missing from archive');
+assert(archive('#kernel-relay .project-summary').text().includes('fixed mock'), 'KernelRelay mock limitation missing');
+assert(archive('#kernel-relay .project-evidence').text().includes('0.053 ms versus 0.120 ms') && archive('#kernel-relay .project-evidence').text().includes('Other runs varied'), 'Qualified T4 result missing');
+assert(archive('#kernel-relay a[href="https://github.com/pkarakala/kernel-relay/blob/main/results/agent-eval/README.md"]').length === 1, 'KernelRelay timing methodology link missing');
 assert(home('#continuous-qec .project-cover figcaption').text().includes('Illustrative'), 'QEC schematic is unlabeled on homepage');
 assert(home('#continuous-qec a[href="https://github.com/pkarakala/cqec-ml-decoder/blob/main/outputs/figures/robustness_vs_noise.png"]').length === 1, 'QEC results plot link missing');
 const lab = archive('article#ml-systems-lab');
@@ -122,7 +129,7 @@ for (const [slug, url] of Object.entries({
   assert(lab.find(`#${slug}`).length === 1, `${slug} legacy fragment missing`);
   assert(lab.find(`.related-links a[href="${url}"]`).length === 1, `${slug} repository link missing from ML Systems Lab`);
 }
-const legacyEvidence = inventory.pages['/projects.html'].links.filter(url => /github\.com\/pkarakala\//.test(url) || url.endsWith('.pdf'));
+const legacyEvidence = inventory.pages['/projects.html'].links.filter(url => !retiredResume(url) && (/github\.com\/pkarakala\//.test(url) || url.endsWith('.pdf')));
 for (const url of legacyEvidence) assert(archiveLinks.has(url.startsWith('assets/') ? '/' + url : url), `Evidence missing from archive: ${url}`);
 let publishedProjects = 0;
 for (const file of await files('src/content/work')) {
@@ -148,4 +155,4 @@ for (const file of await files('src/content/notes')) {
 assert(existsSync(join(root, 'notes.html')) === (publishedNotes > 0), 'Notes index must exist only with published notes');
 assert(Boolean(home('nav a[href="/notes.html"]').length) === (publishedNotes > 0), 'Notes navigation does not match publication state');
 if (failures.length) { console.error(failures.join('\n')); process.exit(1); }
-console.log(`Build verified: ${htmlFiles.length} HTML pages, ${publishedProjects} projects, ${internalLinks} local references, ${output.filter(f => f.endsWith('.pdf')).length} PDFs. Legacy assets, approved About copy, resume integrity, metadata, and draft exclusion passed.`);
+console.log(`Build verified: ${htmlFiles.length} HTML pages, ${publishedProjects} projects, ${internalLinks} local references, ${output.filter(f => f.endsWith('.pdf')).length} PDFs. Project order, resume removal, report integrity, approved copy, metadata, and draft exclusion passed.`);

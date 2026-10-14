@@ -1,11 +1,11 @@
 ---
 title: ML Systems Lab
 slug: ml-systems-lab
-summary: 'Three linked prototypes spanning PyTorch FX graph lowering, kernel IR and fusion experiments, and cycle-level accelerator simulation.'
+summary: Built three prototypes for PyTorch FX graph compilation, kernel fusion, and accelerator simulation.
 category: Independent project
 date: January to April 2026
-order: 3
-featuredOrder: 3
+order: 2
+featuredOrder: 2
 anchorAliases: [tensor-descent, kernel-forge, accel-sim]
 repository: https://github.com/pkarakala/ml-systems-lab
 related:

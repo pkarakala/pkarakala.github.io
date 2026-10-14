@@ -4,6 +4,16 @@ Local review began September 17, 2026 (America/Los_Angeles). Original baseline: 
 
 The sections below record successive local review passes; their counts describe the pass in which they were measured. The latest content revision is recorded first.
 
+## Heterogeneous computing revision, October 14, 2026
+
+The owner approved a focus on heterogeneous computing for ML and quantum workloads. Home and Work now lead with Quantum Photonics Labs, followed by ML Systems Lab, Transformer Inference Analysis, and Continuous Quantum Error Correction. Fiber and optical systems work follow in the archive. All nine published projects, collaborator credits, report links, repository links, and the unpublished Graphs draft state are retained. The homepage lab action opens the full eight-report collection. Profile, About, project summaries, accessibility labels, and page metadata use shorter copy without dash punctuation. The website link preview matches the new focus.
+
+The resume navigation, homepage download, two HTML routes, all three public PDFs, obsolete integrity record, and replacement script were removed. The build actively rejects retired resume files and links. Historical resume references below describe earlier revisions and do not represent the current public site.
+
+`npm run build` passed with no Astro errors, warnings, or hints: seven HTML pages, nine projects, thirteen report PDFs, and 423 checked local references. Report hashes still match the original migration inventory. Browser checks passed at 1440, 1280, 1100, 1024, 900, 820, 768, 600, 390, and 320px for Home, Work, Coursework, Contact, and 404. Checks covered visible copy, project order, image loading, horizontal overflow, complete motion envelopes, contact and lab collection anchors, thirteen report downloads, five retired resume URLs, compatibility redirects, keyboard navigation, reduced motion, saved motion preference, and content without JavaScript. No browser errors were reported. Home and Work screenshots and the updated social preview were visually reviewed.
+
+The external checker initially returned 29 successes out of 31 destinations. LinkedIn blocks automated requests with status 999. The QEC results plot returned a transient 503; GitHub's API confirmed the original public file and URL, and a direct retry returned 200. No external project URL was changed.
+
 ## Live deployment and responsive follow-up
 
 PR #1 merged as `d65a2865fc8d270c74874e6cd028d261cdd57b3d`. GitHub Pages was changed from legacy branch publishing to the Actions workflow. The `main` build and deploy run completed successfully, and direct requests to the public Home and Work pages returned the expected KernelRelay-first selection, nine archive entries, and ML Systems Lab component links.

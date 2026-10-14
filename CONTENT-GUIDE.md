@@ -41,27 +41,20 @@ Optional real images appear in the archive and, when featured, on the homepage w
 
 ## Choose selected work
 
-Add a unique positive `featuredOrder` to each project to include on the homepage. Remove the field to keep it only in the archive. Lower values appear first. `order` controls the full archive. Keep the selection small enough to skim; the current selection contains four entries. Related subprojects can remain linked from a parent entry without appearing as duplicate archive cards. When consolidating entries, preserve old fragment URLs with `anchorAliases`.
+Add a unique positive `featuredOrder` to each project to include on the homepage. Remove the field to keep it only in the archive. Lower values appear first. `order` controls the full archive. The current selection is Quantum Photonics Labs, ML Systems Lab, Transformer Inference Analysis, and Continuous Quantum Error Correction, in that order. Fiber and optical systems work follow them in the archive. Related subprojects can remain linked from a parent entry without appearing as duplicate archive cards. When consolidating entries, preserve old fragment URLs with `anchorAliases`.
 
-## Replace the resume
+## Public downloads
 
-The single primary URL is **`/assets/pdfs/resume.pdf`**. To copy a replacement without changing or rewriting the source PDF:
-
-```sh
-npm run resume:set -- "/absolute/path/to/your/new-resume.pdf"
-npm run build
-```
-
-The script copies the exact bytes into `public/assets/pdfs/resume.pdf` and updates `docs/resume-source.json` with a SHA-256 integrity record. All current resume links use `src/data/profile.ts`. The original `resume1.pdf` and `resume2.pdf` are retained only to preserve old asset URLs; the website does not promote these versions.
+The owner removed the resume from the public portfolio in October 2026. The resume pages, all three resume PDFs, navigation links, and replacement utility have been removed. The build checks that these retired paths remain absent. Project and lab report PDFs remain available under their established URLs. Do not restore a public resume without a new owner request.
 
 ## Update experience, education, or contact details
 
 - `src/data/experience.ts`: organization, role, and displayed dates.
-- `src/data/profile.ts`: name, exact program/university wording, introduction, human-readable obfuscated email display, GitHub, LinkedIn, and canonical resume URL. Home and Contact render it as text, without a `mailto:` link. This deters simple page scrapers but is not a guarantee against sophisticated scraping or the address appearing in public PDFs/repositories.
+- `src/data/profile.ts`: name, exact program/university wording, introduction, human-readable obfuscated email display, GitHub, and LinkedIn. Home and Contact render the email as text, without a `mailto:` link.
 - `src/data/coursework.json`: course groups, course titles, catalog links, and explicitly documented terms.
 - `src/data/about.md`: the verbatim owner-approved About prose. Edit only when the owner approves new copy. It is rendered once on the homepage; `/about.html` takes visitors there.
 
-Do not add a graduation date unless it is explicitly approved. Resume text is not automatically imported into the website.
+Do not add a graduation date unless it is explicitly approved. Keep displayed copy concise, use plain sentences, and avoid dash punctuation. Preserve hyphens inside URLs and technical identifiers.
 
 ## Write a note
 
@@ -103,7 +96,7 @@ npm run preview
 npm run check:links
 ```
 
-Review homepage and Work at 1440, 1024, 768, 390, and 320px; follow keyboard focus, open a report and the resume, and check collaborator credits. The production build fails on missing local links/assets and draft leaks. External checks report blocked destinations separately; a bot-blocked response is not proof a URL is broken.
+Review homepage and Work at 1440, 1024, 768, 390, and 320px; follow keyboard focus, open the lab report collection and a report, and check collaborator credits. The production build fails on missing local links/assets, restored resume paths, and draft leaks. External checks report blocked destinations separately; a bot-blocked response is not proof a URL is broken.
 
 The LinkedIn-ready graphics are `public/assets/images/linkedin-portfolio-card.png` (1200×627 website preview, including the portrait from `pranav-596.webp`) and `public/assets/images/linkedin-profile-banner.png` (1584×396 profile cover). Their editable HTML source is `scripts/linkedin-art.html`, using the same local fonts, palette, and owner-supplied logo as the site. The website preview is used for Open Graph and Twitter metadata; the old `/banner.png` remains available for legacy links but is no longer promoted. Re-render the affected PNG and run `npm run build` after changing the source; the build verifies both graphics' PNG format, dimensions, and size limits. LinkedIn may crop the cover differently by device, so its left side contains no critical text.
 
@@ -111,9 +104,10 @@ The LinkedIn-ready graphics are `public/assets/images/linkedin-portfolio-card.pn
 
 - `/index.html` and `/` serve the homepage.
 - `/projects.html` forwards to `/work.html` using a static, JavaScript-free compatibility page.
-- `/about.html` forwards to `/#about`; `/assets/pdfs/resume.html` forwards to `/resume.html`.
-- `/contact.html`, `/coursework.html`, `/resume.html`, and `/404.html` remain available.
+- `/about.html` forwards to `/#about`.
+- `/contact.html`, `/coursework.html`, and `/404.html` remain available.
+- `/resume.html`, `/assets/pdfs/resume.html`, and all three former resume PDFs are deliberately retired and return 404 after deployment.
 - `#research`, `#labs`, and `#skills` still resolve from the homepage.
-- Existing PDF, image, portrait, banner, and stylesheet paths are preserved. Only the canonical resume PDF is intentionally replaced.
+- Project report, image, portrait, banner, and stylesheet paths are preserved. Resume paths are excluded from the historical asset retention check.
 
 Keep reports under their established filenames: the ECE 136C public filenames do not match the internal report numbering. Link labels now describe the actual report topics. Do not rename these assets merely to match the cover-page numbers.

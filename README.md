@@ -1,6 +1,6 @@
 # Pranav Reddy — portfolio
 
-A static Astro portfolio for https://pkarakala.github.io. The homepage, Work archive, coursework, and resume share layouts, components, and design tokens. Essential content and navigation use no client JavaScript.
+A static Astro portfolio for https://pkarakala.github.io, focused on heterogeneous computing, photonics, ML systems, and quantum workloads. The homepage, Work archive, and coursework share layouts, components, and design tokens. Essential content and navigation use no client JavaScript. The resume is no longer published.
 
 A small progressive-enhancement module adds optional logo motion and email copying. Logo replacement, motion settings, and the decoration switch are documented in [CONTENT-GUIDE.md](CONTENT-GUIDE.md#logo-and-motion).
 
@@ -20,7 +20,7 @@ npm run build
 npm run preview -- --port 4321
 ```
 
-Stop development first if you want the production preview on the same port. The build runs Astro/TypeScript validation and checks all local links, fragments, assets, PDFs, resume integrity, approved About copy, archive coverage, metadata, and draft exclusion. `npm run check:links` checks external destinations and requires network access.
+Stop development first if you want the production preview on the same port. The build runs Astro/TypeScript validation and checks all local links, fragments, assets, report PDFs, resume removal, approved copy, project order, archive coverage, metadata, and draft exclusion. `npm run check:links` checks external destinations and requires network access.
 
 See [CONTENT-GUIDE.md](CONTENT-GUIDE.md) for routine edits and [BUILD-CONTEXT.md](BUILD-CONTEXT.md) for migration decisions. Review evidence is in [docs/VERIFICATION.md](docs/VERIFICATION.md).
 

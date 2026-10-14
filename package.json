@@ -8,8 +8,7 @@
     "build": "astro check && astro build && node scripts/check-build.mjs",
     "preview": "astro preview --host 127.0.0.1",
     "check": "astro check",
-    "check:links": "node scripts/check-external-links.mjs",
-    "resume:set": "node scripts/replace-resume.mjs"
+    "check:links": "node scripts/check-external-links.mjs"
   },
   "engines": {
     "node": ">=22.12.0"

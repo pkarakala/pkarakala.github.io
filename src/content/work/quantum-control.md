@@ -1,18 +1,18 @@
 ---
-title: Feedback-Based Quantum Control
+title: Quantum Control with Feedback
 slug: quantum-control
-summary: Studying time-dependent Lyapunov control for ground-state preparation in the Transverse Field Ising Model.
+summary: Studying Lyapunov feedback control for ground state preparation in the transverse field Ising model.
 category: Research
 context: Niu Group, UCSB
 role: Undergraduate Researcher
 date: June 2025 to present
-attribution: Advised by Professor Murphy Niu, Quantum Codesign Lab.
+attribution: Advised by Professor Murphy Niu, Quantum CoDesign Lab.
 status: Unpublished lab work. Implementation details are confidential.
-order: 7
+order: 8
 cover:
   src: /assets/images/lyapunov.webp
-  alt: Conceptual schematic of spin states and feedback-based quantum control.
-  caption: Conceptual quantum-control schematic.
+  alt: Conceptual schematic of spin states and quantum control with feedback.
+  caption: Conceptual quantum control schematic.
   width: 317
   height: 159
 related:
