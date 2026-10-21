@@ -4,8 +4,8 @@ slug: transformer-inference
 summary: Used roofline models to study where transformer inference is limited by computation or memory bandwidth.
 category: Independent project
 date: April 2026
-order: 3
-featuredOrder: 3
+order: 4
+featuredOrder: 4
 repository: https://github.com/pkarakala/transformer-inference-roofline
 cover:
   src: /assets/images/roofline.webp

@@ -7,8 +7,8 @@ context: ECE 136C
 date: Spring 2025
 collaborators: [Nate Barnaby, Gavin Kesler, Bryan Fernandez]
 attribution: "With Nate Barnaby, Gavin Kesler, and Bryan Fernandez (Group 7)."
-order: 1
-featuredOrder: 1
+order: 2
+featuredOrder: 2
 anchorAliases: [quantum-optics, xanadu-x8]
 reportHeading: ECE 136C lab reports
 reports:

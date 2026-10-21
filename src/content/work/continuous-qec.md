@@ -9,8 +9,7 @@ evidence:
 category: Research
 date: January 2026 to present
 collaborators: [Clark Enge]
-order: 4
-featuredOrder: 4
+order: 5
 repository: https://github.com/pkarakala/cqec-ml-decoder
 cover:
   src: /assets/images/qec.webp

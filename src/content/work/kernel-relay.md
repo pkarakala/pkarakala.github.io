@@ -8,7 +8,7 @@ evidence:
   url: https://github.com/pkarakala/kernel-relay/blob/main/results/agent-eval/README.md
 category: Independent project
 date: September 2026
-order: 7
+order: 8
 repository: https://github.com/pkarakala/kernel-relay
 status: The mock proposer does not learn from feedback. These timings apply to the tested workload and GPU.
 ---
