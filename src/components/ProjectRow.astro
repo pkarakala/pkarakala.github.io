@@ -29,4 +29,5 @@ const credit = p.attribution ?? (p.collaborators.length ? `With ${p.collaborator
     {!archive && p.reports.length > 1 ? <a class="action-link" href={`/work.html#${p.slug}`}>View lab reports <Arrow direction="right" /></a> : p.reports.map(report => <a class="action-link" href={report.url} aria-label={`${report.label} PDF, ${p.title}`}>{report.label} <span class="file-kind">PDF</span><Arrow /></a>)}
     {!p.repository && p.reports.length === 0 && <span class="muted">Summary only</span>}
   </div>
+  {p.video && <details class="project-video"><summary class="action-link">Watch the walkthrough <span class="file-kind">{p.video.duration}</span></summary><figure><video controls muted playsinline preload="none" poster={p.video.poster} width={p.video.width} height={p.video.height} aria-label={`${p.title} walkthrough, ${p.video.duration}, no audio`} aria-describedby={`${p.slug}-video-description`}><source src={p.video.src} type="video/mp4" /><a href={p.video.src}>Download the walkthrough video</a></video><figcaption id={`${p.slug}-video-description`}>{p.video.description}</figcaption></figure></details>}
 </article>

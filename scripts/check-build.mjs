@@ -108,8 +108,8 @@ assert(!existsSync(join(root, 'INTERVIEW-PREP.html')) && !existsSync(join(root, 
 const archive = documents.get(join(root, 'work.html'));
 const archiveLinks = new Set(archive('a[href]').map((_, e) => archive(e).attr('href')).get());
 const selectedWork = home('#work article.project-row').map((_, e) => home(e).attr('id')).get();
-assert(JSON.stringify(selectedWork) === JSON.stringify(['quantum-photonics', 'ml-systems-lab', 'transformer-inference', 'continuous-qec']), 'Selected work order changed');
-assert(JSON.stringify(archive('article.project-row').map((_, e) => archive(e).attr('id')).get()) === JSON.stringify(['quantum-photonics', 'ml-systems-lab', 'transformer-inference', 'continuous-qec', 'photonic-fiber', 'optical-systems', 'kernel-relay', 'quantum-control', 'raman-spectroscopy']), 'Archive project order changed');
+assert(JSON.stringify(selectedWork) === JSON.stringify(['oicd', 'quantum-photonics', 'ml-systems-lab', 'transformer-inference']), 'Selected work order changed');
+assert(JSON.stringify(archive('article.project-row').map((_, e) => archive(e).attr('id')).get()) === JSON.stringify(['oicd', 'quantum-photonics', 'ml-systems-lab', 'transformer-inference', 'continuous-qec', 'photonic-fiber', 'optical-systems', 'kernel-relay', 'quantum-control', 'raman-spectroscopy']), 'Archive project order changed');
 assert(home('#quantum-photonics h3').text() === 'Quantum Photonics Labs', 'Featured photonics title missing');
 assert(home('#quantum-photonics a[href="/work.html#quantum-photonics"]').text().includes('View lab reports'), 'Homepage lab collection link missing');
 assert(home('#quantum-photonics .project-cover').length === 0 && archive('#quantum-photonics .project-cover').length === 0, 'Removed lab photo is still displayed');
@@ -117,8 +117,15 @@ assert(archive('#kernel-relay a[href="https://github.com/pkarakala/kernel-relay"
 assert(archive('#kernel-relay .project-summary').text().includes('fixed mock'), 'KernelRelay mock limitation missing');
 assert(archive('#kernel-relay .project-evidence').text().includes('0.053 ms versus 0.120 ms') && archive('#kernel-relay .project-evidence').text().includes('Other runs varied'), 'Qualified T4 result missing');
 assert(archive('#kernel-relay a[href="https://github.com/pkarakala/kernel-relay/blob/main/results/agent-eval/README.md"]').length === 1, 'KernelRelay timing methodology link missing');
-assert(home('#continuous-qec .project-cover figcaption').text().includes('Illustrative'), 'QEC schematic is unlabeled on homepage');
-assert(home('#continuous-qec a[href="https://github.com/pkarakala/cqec-ml-decoder/blob/main/outputs/figures/robustness_vs_noise.png"]').length === 1, 'QEC results plot link missing');
+assert(archive('#continuous-qec .project-cover figcaption').text().includes('Illustrative'), 'QEC schematic is unlabeled in archive');
+assert(archive('#continuous-qec a[href="https://github.com/pkarakala/cqec-ml-decoder/blob/main/outputs/figures/robustness_vs_noise.png"]').length === 1, 'QEC results plot link missing');
+for (const [name, page] of [['Home', home], ['Work', archive]]) {
+  const video = page('#oicd .project-video video');
+  assert(video.length === 1 && video.attr('preload') === 'none' && video.attr('autoplay') === undefined && video.attr('controls') !== undefined, `${name}: OICD walkthrough must be click to play with preload none`);
+  assert(video.find('source[src="/assets/video/oicd-walkthrough.mp4"]').length === 1 && existsSync(join(root, (video.attr('poster') ?? '').slice(1))), `${name}: OICD walkthrough source or poster missing`);
+  assert(page('#oicd .project-video figcaption').text().length > 0, `${name}: OICD walkthrough needs a text description`);
+}
+for (const file of output.filter(file => file.endsWith('.mp4'))) assert((await readFile(file)).length < 8 * 1024 * 1024, `Video exceeds 8 MB: ${file}`);
 const lab = archive('article#ml-systems-lab');
 for (const [slug, url] of Object.entries({
   'tensor-descent': 'https://github.com/pkarakala/FX2Accel',

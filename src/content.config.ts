@@ -26,6 +26,7 @@ const work = defineCollection({
     reportHeading: z.string().min(1).optional(),
     related: z.array(z.object({ label: z.string().min(1), url: externalUrl })).default([]),
     cover: z.object({ src: assetPath, alt: z.string().min(1), caption: z.string().min(1), width: z.number().int().positive(), height: z.number().int().positive() }).optional(),
+    video: z.object({ src: z.string().regex(/^\/assets\/video\/[^?#]+\.mp4$/), poster: assetPath, duration: z.string().regex(/^\d+:\d{2}$/), width: z.number().int().positive(), height: z.number().int().positive(), description: z.string().min(1) }).optional(),
     draft: z.boolean().default(false),
   }),
 });

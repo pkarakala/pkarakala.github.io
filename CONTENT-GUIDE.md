@@ -35,13 +35,15 @@ The title points directly to the repository or, when there is exactly one report
 
 For a measured result or reproducible figure, add optional `evidence: { statement, label, url }`. The statement appears on both Home and Work, with a direct link to the methods, raw timings, or figure. Qualify device, workload, simulation conditions, and variability as needed; do not imply a one-device measurement is a general speedup. A conceptual cover image remains labeled with its caption on both pages.
 
+For a walkthrough video, add `video: { src, poster, duration, width, height, description }`. Put the MP4 under `public/assets/video/`, encoded with H.264, `+faststart`, and no audio track when the recording is silent; the build rejects files over 8 MB. The card shows a "Watch the walkthrough" toggle with the duration. Opening it reveals a full width player with `preload="none"`, so nothing downloads until the visitor presses play, and it never autoplays. The description is the text alternative for screen reader users, so name what the video shows. OICD is the reference example: its 91 second silent tour was re-encoded from 24.7 MB to 4.9 MB at 1080p with CRF 30.
+
 For a collection of reports, add `reportHeading` so the archive presents them as one labeled group. A title with multiple reports does not link arbitrarily to the first PDF; readers choose the report they want. ECE 136C is one work entry with eight report links. Its `anchorAliases` preserve the former `#quantum-optics` and `#xanadu-x8` fragments on the combined card.
 
 Optional real images appear in the archive and, when featured, on the homepage with `cover: { src, alt, caption, width, height }`. Use a root-relative `/assets/` URL and accurate alt text/caption and dimensions. Avoid generic or invented project imagery. The remaining covers are images from the previous portfolio; Quantum Photonics Labs is text-only at the owner's request. Its former lab photo is no longer displayed. The header mark is the owner-supplied image at `public/assets/images/house-circuit-mark.png`.
 
 ## Choose selected work
 
-Add a unique positive `featuredOrder` to each project to include on the homepage. Remove the field to keep it only in the archive. Lower values appear first. `order` controls the full archive. The current selection is Quantum Photonics Labs, ML Systems Lab, Transformer Inference Analysis, and Continuous Quantum Error Correction, in that order. Fiber and optical systems work follow them in the archive. Related subprojects can remain linked from a parent entry without appearing as duplicate archive cards. When consolidating entries, preserve old fragment URLs with `anchorAliases`.
+Add a unique positive `featuredOrder` to each project to include on the homepage. Remove the field to keep it only in the archive. Lower values appear first. `order` controls the full archive. The current selection is Optical Interconnect Co-Design (OICD), Quantum Photonics Labs, ML Systems Lab, and Transformer Inference Analysis, in that order. Continuous Quantum Error Correction follows them in the archive, then fiber and optical systems work. Related subprojects can remain linked from a parent entry without appearing as duplicate archive cards. When consolidating entries, preserve old fragment URLs with `anchorAliases`.
 
 ## Public downloads
 
