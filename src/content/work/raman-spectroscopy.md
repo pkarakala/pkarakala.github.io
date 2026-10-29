@@ -4,7 +4,7 @@ slug: raman-spectroscopy
 summary: Compared machine learning models for identifying minerals from light spectra. Learned to weigh classification accuracy against training cost.
 category: Coursework
 context: ECE 133
-order: 10
+order: 11
 cover:
   src: /assets/images/raman.webp
   alt: Raman spectrum with fitted peaks marked across Raman shift values.

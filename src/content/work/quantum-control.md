@@ -8,7 +8,7 @@ role: Undergraduate Researcher
 date: June 2025 to present
 attribution: Advised by Professor Murphy Niu, Quantum CoDesign Lab.
 status: Unpublished lab work. Implementation details are confidential.
-order: 9
+order: 10
 cover:
   src: /assets/images/lyapunov.webp
   alt: Conceptual schematic of spin states and quantum control with feedback.
