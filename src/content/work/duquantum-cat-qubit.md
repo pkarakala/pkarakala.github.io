@@ -12,6 +12,7 @@ date: October 2026
 collaborators: [Xuanyu Zhu, Halo Kwok, Harshit Aggarwal]
 attribution: "Team Von Neumann's Ghost with Xuanyu Zhu, Halo Kwok, and Harshit Aggarwal. 3rd place overall, plus the Backboard.io and Tiger Data sponsor awards."
 order: 6
+featuredOrder: 4
 repository: https://github.com/pkarakala/duquantum-cat-qubit
 cover:
   src: /assets/images/cat-qubit.webp

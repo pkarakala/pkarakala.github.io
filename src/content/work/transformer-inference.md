@@ -5,7 +5,6 @@ summary: Used roofline models to study where transformer inference is limited by
 category: Independent project
 date: April 2026
 order: 4
-featuredOrder: 4
 repository: https://github.com/pkarakala/transformer-inference-roofline
 cover:
   src: /assets/images/roofline.webp

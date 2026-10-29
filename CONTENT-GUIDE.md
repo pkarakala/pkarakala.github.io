@@ -43,7 +43,7 @@ Optional real images appear in the archive and, when featured, on the homepage w
 
 ## Choose selected work
 
-Add a unique positive `featuredOrder` to each project to include on the homepage. Remove the field to keep it only in the archive. Lower values appear first. `order` controls the full archive. The current selection is Optical Interconnect Co-Design (OICD), Quantum Photonics Labs, ML Systems Lab, and Transformer Inference Analysis, in that order. Continuous Quantum Error Correction follows them in the archive, then fiber and optical systems work. Related subprojects can remain linked from a parent entry without appearing as duplicate archive cards. When consolidating entries, preserve old fragment URLs with `anchorAliases`.
+Add a unique positive `featuredOrder` to each project to include on the homepage. Remove the field to keep it only in the archive. Lower values appear first. `order` controls the full archive. The current selection is Optical Interconnect Co-Design (OICD), Quantum Photonics Labs, ML Systems Lab, and Cat Qubits at DuQuantum, in that order. Transformer Inference Analysis and Continuous Quantum Error Correction follow them in the archive, then fiber and optical systems work. Related subprojects can remain linked from a parent entry without appearing as duplicate archive cards. When consolidating entries, preserve old fragment URLs with `anchorAliases`.
 
 ## Public downloads
 
