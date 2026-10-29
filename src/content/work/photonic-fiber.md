@@ -7,7 +7,7 @@ context: ECE 135
 date: March 2026
 collaborators: [Nicholas Shand, Dash Franklin, Gavin Kesler]
 attribution: Course project with Nicholas Shand, Dash Franklin, and Gavin Kesler.
-order: 6
+order: 7
 reports:
   - label: Read report
     url: /assets/pdfs/ece135/HCF_and_an_Analytic_Model.pdf
