@@ -1,33 +1,39 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import Arrow from './Arrow.astro';
-import FloatingLogo from './FloatingLogo.astro';
-interface Props { project: CollectionEntry<'work'>; index: number; archive?: boolean; motif?: boolean }
-const { project, index, archive = false, motif = false } = Astro.props;
+import { superscriptRuns } from '../lib/superscript';
+interface Props { project: CollectionEntry<'work'>; index: number; archive?: boolean }
+const { project, index, archive = false } = Astro.props;
 const p = project.data;
-const Heading = archive ? 'h2' : 'h3';
 const destination = p.repository ?? (p.reports.length === 1 ? p.reports[0].url : undefined);
 const credit = p.attribution ?? (p.collaborators.length ? `With ${p.collaborators.join(', ')}.` : null);
+const showReports = archive || p.reports.length <= 1;
+const notes = showReports ? p.reports.filter(report => report.hindsight) : [];
+const facts = [
+  ['Built', p.built],
+  ['Measured', p.evidence?.statement],
+  ['Limits', p.status],
+].filter((fact): fact is [string, string] => Boolean(fact[1]));
 ---
 <article class:list={['project-row', { 'has-cover': Boolean(p.cover) }]} id={p.slug} aria-labelledby={`${p.slug}-title`}>
-  {motif && !p.cover && <FloatingLogo placement="project" shape="initials" />}
   {archive && p.anchorAliases.map(alias => <span id={alias} class="project-anchor-alias" aria-hidden="true"></span>)}
-  <div class="project-meta"><span class="project-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span><span>{p.category}{p.context && <span class="project-context">{p.context}</span>}{archive && p.date && <span class="project-context project-date">{p.date}</span>}</span></div>
+  <div class="project-meta"><span class="project-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span><span>{p.category}{p.context && <span class="project-context">{p.context}</span>}{p.date && <span class="project-context project-date">{p.date}</span>}</span></div>
   <div class="project-copy">
-    <Heading id={`${p.slug}-title`}>{destination ? <a href={destination}>{p.title}</a> : p.title}</Heading>
+    <h3 id={`${p.slug}-title`}>{destination ? <a href={destination}>{p.title}</a> : p.title}</h3>
+    {p.metric && <p class="project-metric"><span class="metric-value">{superscriptRuns(p.metric.value).map(run => run.sup ? <sup>{run.text}</sup> : run.text)}</span><span class="metric-label">{p.metric.label}</span></p>}
     <p class="project-summary">{p.summary}</p>
-    {p.evidence && <p class="project-evidence">{p.evidence.statement}</p>}
+    {facts.length > 0 && <dl class="project-facts">{facts.map(([term, text]) => <div><dt>{term}</dt><dd>{text}</dd></div>)}</dl>}
     {credit && <p class="project-credit">{credit}</p>}
-    {archive && p.status && <p class="project-credit">{p.status}</p>}
     {archive && p.related.length > 0 && <ul class="related-links" aria-label={`${p.title} components`}>{p.related.map(link => <li><a href={link.url}>{link.label} <Arrow /></a></li>)}</ul>}
   </div>
   {p.cover && <figure class="project-cover"><a href={p.cover.src} aria-label={`Open image for ${p.title}`}><img src={p.cover.src} alt={p.cover.alt} width={p.cover.width} height={p.cover.height} loading="lazy" decoding="async" /></a><figcaption>{p.cover.caption}</figcaption></figure>}
   <div class:list={['project-actions', { 'grouped-reports': archive && Boolean(p.reportHeading) }]}>
     {p.repository && <a class="action-link" href={p.repository} aria-label={`View on GitHub: ${p.title}`}>View on GitHub <Arrow /></a>}
-    {p.evidence && <a class="action-link" href={p.evidence.url}>{p.evidence.label} <Arrow /></a>}
+    {p.evidence?.url && <a class="action-link" href={p.evidence.url}>{p.evidence.label ?? 'See the result'} <Arrow /></a>}
     {archive && p.reportHeading && <p class="report-heading">{p.reportHeading}</p>}
-    {!archive && p.reports.length > 1 ? <a class="action-link" href={`/work.html#${p.slug}`}>View lab reports <Arrow direction="right" /></a> : p.reports.map(report => <a class="action-link" href={report.url} aria-label={`${report.label} PDF, ${p.title}`}>{report.label} <span class="file-kind">PDF</span><Arrow /></a>)}
-    {!p.repository && p.reports.length === 0 && <span class="muted">Summary only</span>}
+    {!showReports ? <a class="action-link" href={`/work.html#${p.slug}`}>View lab reports <Arrow direction="right" /></a> : p.reports.map(report => <a class="action-link" href={report.url} aria-label={`${report.label} PDF, ${p.title}`}>{report.label} <span class="file-kind">PDF</span><Arrow /></a>)}
+    {!p.repository && p.reports.length === 0 && !p.evidence && <span class="muted">Summary only</span>}
   </div>
+  {notes.length > 0 && <aside class="hindsight" aria-label={`Notes in hindsight on the ${p.title} reports`}><p class="hindsight-title">Notes in hindsight</p>{notes.map(report => <p>{p.reports.length > 1 && <strong>{report.label}. </strong>}{report.hindsight}</p>)}</aside>}
   {p.video && <details class="project-video"><summary class="action-link">Watch the walkthrough <span class="file-kind">{p.video.duration}</span></summary><figure><video controls muted playsinline preload="none" poster={p.video.poster} width={p.video.width} height={p.video.height} aria-label={`${p.title} walkthrough, ${p.video.duration}, no audio`} aria-describedby={`${p.slug}-video-description`}><source src={p.video.src} type="video/mp4" /><a href={p.video.src}>Download the walkthrough video</a></video><figcaption id={`${p.slug}-video-description`}>{p.video.description}</figcaption></figure></details>}
 </article>

@@ -73,7 +73,6 @@ html[data-motion='on'] .floating-logo[data-visible] :is(.floating-logo-drift, .l
   bottom: -.25rem;
   left: -.5rem;
 }
-.experience-section { min-height: 23rem; }
 .floating-logo--contact {
   --motif-width: 180px;
   --motif-opacity: .44;
@@ -91,7 +90,6 @@ html[data-motion='on'] .floating-logo[data-visible] :is(.floating-logo-drift, .l
 }
 /* Phone and tablet show one static fragment rather than a miniature particle field. */
 @media (max-width: 899px) {
-  .experience-section { min-height: 0; }
   .floating-logo { display: none; }
   .floating-logo--intro, .floating-logo--archive { display: block; width: 64px; top: .75rem; right: 0; --motif-opacity: .4; }
   .logo-assembly { display: none; }
