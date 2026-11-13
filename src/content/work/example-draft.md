@@ -2,6 +2,7 @@
 title: Draft project template
 slug: draft-project-template
 summary: Replace this with one or two concrete sentences about the work.
+group: ML systems
 category: Independent project
 order: 100
 draft: true

@@ -1,14 +1,16 @@
 ---
 title: Quantum Control with Feedback
 slug: quantum-control
-summary: Studying Lyapunov feedback control for ground state preparation in the transverse field Ising model.
+group: Quantum
+summary: Using measurement feedback to steer a quantum spin system into its lowest energy state.
+built: Lyapunov feedback control for ground state preparation in the transverse field Ising model.
 category: Research
 context: Niu Group, UCSB
 role: Undergraduate Researcher
 date: June 2025 to present
 attribution: Advised by Professor Murphy Niu, Quantum CoDesign Lab.
-status: Unpublished lab work. Implementation details are confidential.
-order: 10
+status: Unpublished lab work. Implementation details and results are confidential.
+order: 12
 cover:
   src: /assets/images/lyapunov.webp
   alt: Conceptual schematic of spin states and quantum control with feedback.
