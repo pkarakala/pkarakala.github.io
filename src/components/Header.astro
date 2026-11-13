@@ -1,5 +1,6 @@
 ---
 import Logo from './Logo.astro';
+import { profile } from '../data/profile';
 interface Props { current?: string; hasNotes?: boolean }
 const { current, hasNotes = false } = Astro.props;
 ---
@@ -10,5 +11,6 @@ const { current, hasNotes = false } = Astro.props;
     <a href="/#about">About</a>
     {hasNotes && <a href="/notes.html" aria-current={current === 'notes' ? 'page' : undefined}>Notes</a>}
     <a href="/#contact">Contact</a>
+    <a class="nav-resume" href={profile.resume}>Resume (PDF)</a>
   </nav>
 </header>

@@ -56,14 +56,13 @@ export function enhancePortfolio() {
       if (button.disabled) return;
       button.disabled = true;
       status.textContent = '';
-      const address = contact.querySelector('.email-address')!.textContent!.trim()
-        .replace(/\s*\[at\]\s*/, '@').replace(/\s*\[dot\]\s*/g, '.');
+      const address = contact.querySelector<HTMLElement>('[data-email]')!.dataset.email!;
       try {
         if (!navigator.clipboard?.writeText) throw new Error('Clipboard unavailable');
         await navigator.clipboard.writeText(address);
         if (!signal.aborted) status.textContent = 'Email copied.';
       } catch {
-        if (!signal.aborted) status.textContent = 'Couldn’t copy. Use the address above, replacing [at] with @ and [dot] with a dot.';
+        if (!signal.aborted) status.textContent = 'Couldn’t copy. Select the address above to copy it.';
       } finally {
         if (!signal.aborted) button.disabled = false;
       }
