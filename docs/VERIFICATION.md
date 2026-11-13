@@ -4,6 +4,12 @@ Local review began September 17, 2026 (America/Los_Angeles). Original baseline: 
 
 The sections below record successive local review passes; their counts describe the pass in which they were measured. The latest content revision is recorded first.
 
+## Photonics focus, November 13, 2026
+
+At the owner's request the site now leads with photonics, optical interconnect, and AI compute. Homepage order: OICD, Fiber Link Simulation, Quantum Photonics Measurement Labs, KernelRelay. The capstone appears only as an Experience line (project, sponsor, role) because its work cannot be shared. Cat Qubits at DuQuantum moved to the archive. The archive is grouped into Photonics & optical links, ML systems, and Quantum; ECE 136A lab 3 became its own Michelson Interferometry entry. Every card uses one plain sentence plus Built, Measured, Limits, with a headline number taken from the evidence. The October lab summaries were rewritten in that pattern at the owner's request, and six report errors are annotated in "Notes in hindsight" boxes without editing the PDFs. Real figures replace placeholders: fiber eye diagrams from the ECE 135 report, Michelson photos from the ECE 136A report, the CQEC robustness plot, a roofline re-plotted from the repository's sweep, and an AccelSim timeline re-plotted from its README example. A resume is public again at `/resume.pdf`, with the phone number removed and neutral PDF metadata. The email is a `mailto:` link. The house motif is limited to the hero.
+
+The build passed (`npm run build`): seven HTML pages, twelve published projects, fourteen PDFs, 224 checked local references, with warnings listing the remaining `TODO(Pranav)` placeholders. Home, Work, Coursework, and Contact were screenshotted at 1440px and 390px with no horizontal overflow.
+
 ## Approved lab summaries, October 14, 2026
 
 After reviewing the report PDFs, the owner approved concise descriptions of the work and learning outcomes for Quantum Photonics Labs, Optical Systems and Imaging Labs, Photonic Fiber Communication, and Mineral Identification via Raman Spectroscopy. Those four summaries are reproduced verbatim. The lab photo and caption are removed from Home and Work. Report links, collaborator credits, and project ordering remain intact. The PR motif stays beside ML Systems Lab rather than filling the removed photo's place.

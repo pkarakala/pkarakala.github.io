@@ -1,9 +1,14 @@
 ---
-title: "Optical Interconnect Co-\u2060Design (OICD)"
+title: "Optical Interconnect Co-⁠Design (OICD)"
 slug: oicd
-summary: An open source learning tool for co-packaged optics, built for engineers, researchers, and students. It gathers slides, datasheets, and draft standards into one 3D explorer, from rack to microring, and checks each link against the math with every number traced to its source.
+group: Photonics & optical links
+summary: An open source tool that checks whether the optical links between AI chips actually close, from the rack down to a single microring, in a 3D explorer anyone can click through.
+metric:
+  value: FSR ≥ 3.2 THz
+  label: ring FSR at which interleaving buys a 16 wavelength BiDi link about 6 dB of isolation
+built: Python model of link budgets, WDM and microring physics, BiDi wavelength plans, and rack level yield, validated against the draft IEEE 802.3dj DR budget. Every number is tagged with its source.
 evidence:
-  statement: 'The same worst case rack path is −1.0 dB or +2.0 dB depending on which side of a detachable fiber connector the budget is measured.'
+  statement: 'The same worst case rack path is −1.0 dB or +2.0 dB depending on which side of a detachable fiber connector the budget is measured. A 99% yield over 8,192 links needs about 4.7σ per link.'
   label: Read the findings
   url: https://github.com/pkarakala/oicd/blob/main/docs/paper/main.md
 category: Independent project
@@ -11,7 +16,7 @@ date: October 2026
 order: 1
 featuredOrder: 1
 repository: https://github.com/pkarakala/oicd
-status: Independent model built from public information. Not affiliated with any company whose work is cited.
+status: Worst case over the modeled constraints only. BER, TDECQ, dispersion, and thermal effects are not evaluated, and draft 802.3dj values may change. Built from public information and not affiliated with any company whose work is cited.
 related:
   - label: Model card
     url: https://github.com/pkarakala/oicd/blob/main/docs/model_card.md
@@ -32,6 +37,5 @@ video:
   description: A silent tour with on screen captions. It moves from a reference rack to a switch tray, a BiDi optical engine and its photonic chip, a single microring modulator in cross section, and a photonic tensor core processor.
 ---
 
-Card copy approved by Pranav on 2026-10-21: frame OICD as an open learning tool for
-co-packaged optics. The title joins "Co-Design" with a word joiner so it never wraps at the hyphen.
-Cover rendered from the explorer's exploded BiDi engine view.
+Facts from the repository README (Findings and Limits) and the owner's resume (Nov 2026).
+The title joins "Co-Design" with a word joiner so it never wraps at the hyphen.

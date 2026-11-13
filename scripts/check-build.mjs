@@ -19,8 +19,11 @@ const documents = new Map(await Promise.all(htmlFiles.map(async file => [file, l
 const titles = new Set();
 const descriptions = new Set();
 const site = 'https://pkarakala.github.io';
-const retiredResume = url => /(?:^|\/)resume\d*\.(?:pdf|html)$/i.test(url);
+// The October 2026 resume URLs stay retired. The current resume lives only at /resume.pdf (restored November 2026).
+const currentResume = '/resume.pdf';
+const retiredResume = url => url.replace(/^\/?/, '/') !== currentResume && /(?:^|\/)resume\d*\.(?:pdf|html)$/i.test(url);
 let internalLinks = 0;
+const todoCounts = [];
 for (const [file, $] of documents) {
   const name = relative(root, file);
   assert($('html').attr('lang') === 'en', `${name}: missing document language`);
@@ -57,8 +60,10 @@ for (const [file, $] of documents) {
       assert(documents.get(target)('[id]').toArray().some(e => documents.get(target)(e).attr('id') === decodeURIComponent(url.hash.slice(1))), `${name}: broken fragment ${ref}`);
     }
   }
-  assert(!/résumé|resume/i.test($('body').text()), `${name}: resume copy remains`);
   assert(!$('a[href]').toArray().some(anchor => retiredResume(new URL($(anchor).attr('href'), site).pathname)), `${name}: retired resume link remains`);
+  assert($(`header nav a[href="${currentResume}"]`).text().trim() === 'Resume (PDF)', `${name}: header resume link missing`);
+  const todos = $('body').text().match(/TODO\(Pranav\)/g)?.length ?? 0;
+  if (todos) todoCounts.push(`${name}: ${todos}`);
 }
 for (const file of output.filter(file => file.endsWith('.css') && !file.endsWith('/styles.css'))) {
   const css = await readFile(file, 'utf8');
@@ -78,8 +83,9 @@ for (const [url, originalHash] of Object.entries(inventory.assets)) {
 for (const url of Object.keys(inventory.pages).filter(url => !retiredResume(url))) assert(existsSync(resolve(root, '.' + url)), `Legacy page missing: ${url}`);
 const retiredUrls = ['/resume.html', '/assets/pdfs/resume.html', ...Object.keys(inventory.assets).filter(retiredResume)];
 for (const url of retiredUrls) assert(!existsSync(resolve(root, '.' + url)), `Retired resume is still public: ${url}`);
-assert(!output.some(file => retiredResume(file)), 'A resume file remains in the deployed output');
-assert(!/resume/i.test(await readFile(join(root, 'sitemap.xml'), 'utf8')), 'Resume remains in the sitemap');
+assert(!output.some(file => retiredResume('/' + relative(root, file))), 'A retired resume file remains in the deployed output');
+const resumeBytes = await readFile(join(root, currentResume.slice(1)));
+assert(resumeBytes.subarray(0, 5).toString() === '%PDF-', 'Resume is not a PDF');
 for (const [name, path, width, height, maxBytes] of [
   ['LinkedIn website preview', 'assets/images/linkedin-portfolio-card.png', 1200, 627, 5 * 1024 * 1024],
   ['LinkedIn profile background', 'assets/images/linkedin-profile-banner.png', 1584, 396, 8 * 1024 * 1024],
@@ -95,12 +101,13 @@ const contact = documents.get(join(root, 'contact.html'));
 const normalize = text => text.replace(/\s+/g, ' ').trim();
 const expectedAbout = normalize((await readFile('src/data/about.md', 'utf8')).replace(/\*/g, ''));
 assert(normalize(home('.about-copy > p').map((_, e) => home(e).text()).get().join(' ')) === expectedAbout, 'About copy changed during rendering');
-assert(home('.hero-intro > p').text() === 'I’m interested in heterogeneous computing for ML and quantum workloads. I build software and study the hardware it runs on.', 'Approved hero statement missing');
+assert(home('.hero-intro > p').text() === 'I work where photonics meets AI compute: the optical links that move data between chips, the hardware they run on, and the software that has to respect their limits.', 'Hero statement changed');
+assert(home(`.hero-actions a[href="${currentResume}"]`).length === 1, 'Hero resume action missing');
+assert(home('.hero-proof li').length === 4 && home('.hero-proof a').toArray().every(a => home(home(a).attr('href')).length === 1), 'Hero results must link to cards on the homepage');
+for (const [file, $] of documents) assert($('[data-floating-logo]').length === (file === join(root, 'index.html') ? 1 : 0), `${relative(root, file)}: the house motif belongs only in the homepage hero`);
 assert(home('.hero-actions a[href="#contact"]').length === 1, 'Homepage contact action missing');
 for (const [name, page, selector] of [['Home', home, '#contact .email-address'], ['Contact', contact, '.standalone-contact .email-address']]) {
-  assert(page(selector).text() === 'preddy [at] ucsb [dot] edu', `${name}: human-readable email is missing`);
-  assert(page('a[href^="mailto:"]').length === 0, `${name}: direct mailto link remains`);
-  assert(!page.html().includes('preddy@ucsb.edu'), `${name}: literal email remains in HTML`);
+  assert(page(selector).text() === 'preddy@ucsb.edu' && page(`${selector} a[href="mailto:preddy@ucsb.edu"]`).length === 1, `${name}: email must be a mailto link`);
 }
 assert(!/graduation|December 2027|Fall 2027/i.test(home('main').text()), 'Graduation date or unapproved wording in homepage');
 assert(home('#research').length && home('#skills').length && home('#labs').length, 'Legacy homepage anchors missing');
@@ -108,16 +115,21 @@ assert(!existsSync(join(root, 'INTERVIEW-PREP.html')) && !existsSync(join(root, 
 const archive = documents.get(join(root, 'work.html'));
 const archiveLinks = new Set(archive('a[href]').map((_, e) => archive(e).attr('href')).get());
 const selectedWork = home('#work article.project-row').map((_, e) => home(e).attr('id')).get();
-assert(JSON.stringify(selectedWork) === JSON.stringify(['oicd', 'quantum-photonics', 'ml-systems-lab', 'duquantum-cat-qubit']), 'Selected work order changed');
-assert(JSON.stringify(archive('article.project-row').map((_, e) => archive(e).attr('id')).get()) === JSON.stringify(['oicd', 'quantum-photonics', 'ml-systems-lab', 'transformer-inference', 'continuous-qec', 'duquantum-cat-qubit', 'photonic-fiber', 'optical-systems', 'kernel-relay', 'quantum-control', 'raman-spectroscopy']), 'Archive project order changed');
-assert(home('#quantum-photonics h3').text() === 'Quantum Photonics Labs', 'Featured photonics title missing');
+assert(JSON.stringify(selectedWork) === JSON.stringify(['oicd', 'photonic-fiber', 'quantum-photonics', 'kernel-relay']), 'Selected work order changed');
+assert(JSON.stringify(archive('article.project-row').map((_, e) => archive(e).attr('id')).get()) === JSON.stringify(['oicd', 'photonic-fiber', 'optical-systems', 'michelson-interferometry', 'raman-spectroscopy', 'kernel-relay', 'ml-systems-lab', 'transformer-inference', 'quantum-photonics', 'continuous-qec', 'quantum-control', 'duquantum-cat-qubit']), 'Archive project order changed');
+assert(JSON.stringify(archive('section.work-group > h2').map((_, e) => archive(e).text()).get()) === JSON.stringify(['Photonics & optical links', 'ML systems', 'Quantum']), 'Archive groups changed');
+assert(archive('.group-nav a').toArray().every(a => archive(archive(a).attr('href')).length === 1), 'Archive group navigation is broken');
+assert(home('#quantum-photonics h3').text() === 'Quantum Photonics Measurement Labs', 'Featured photonics title missing');
+for (const [slug, count] of [['photonic-fiber', 1], ['optical-systems', 1], ['michelson-interferometry', 1], ['quantum-photonics', 4]]) {
+  assert(archive(`#${slug} .hindsight p:not(.hindsight-title)`).length === count, `${slug}: Notes in hindsight missing`);
+}
 assert(home('#quantum-photonics a[href="/work.html#quantum-photonics"]').text().includes('View lab reports'), 'Homepage lab collection link missing');
 assert(home('#quantum-photonics .project-cover').length === 0 && archive('#quantum-photonics .project-cover').length === 0, 'Removed lab photo is still displayed');
 assert(archive('#kernel-relay a[href="https://github.com/pkarakala/kernel-relay"]').length === 2, 'KernelRelay repository link missing from archive');
-assert(archive('#kernel-relay .project-summary').text().includes('fixed mock'), 'KernelRelay mock limitation missing');
-assert(archive('#kernel-relay .project-evidence').text().includes('0.053 ms versus 0.120 ms') && archive('#kernel-relay .project-evidence').text().includes('Other runs varied'), 'Qualified T4 result missing');
+assert(archive('#kernel-relay .project-facts').text().includes('fixed mock'), 'KernelRelay mock limitation missing');
+assert(archive('#kernel-relay .project-facts').text().includes('0.053 ms versus 0.120 ms') && archive('#kernel-relay .project-facts').text().includes('Other runs varied'), 'Qualified T4 result missing');
 assert(archive('#kernel-relay a[href="https://github.com/pkarakala/kernel-relay/blob/main/results/agent-eval/README.md"]').length === 1, 'KernelRelay timing methodology link missing');
-assert(archive('#continuous-qec .project-cover figcaption').text().includes('Illustrative'), 'QEC schematic is unlabeled in archive');
+assert(archive('#continuous-qec .project-cover img').attr('src') === '/assets/images/cqec-robustness.webp', 'QEC results plot is not the cover');
 assert(archive('#continuous-qec a[href="https://github.com/pkarakala/cqec-ml-decoder/blob/main/outputs/figures/robustness_vs_noise.png"]').length === 1, 'QEC results plot link missing');
 for (const [name, page] of [['Home', home], ['Work', archive]]) {
   const video = page('#oicd .project-video video');
@@ -161,5 +173,6 @@ for (const file of await files('src/content/notes')) {
 }
 assert(existsSync(join(root, 'notes.html')) === (publishedNotes > 0), 'Notes index must exist only with published notes');
 assert(Boolean(home('nav a[href="/notes.html"]').length) === (publishedNotes > 0), 'Notes navigation does not match publication state');
+if (todoCounts.length) console.warn(`TODO(Pranav) placeholders remain (fill before merging):\n  ${todoCounts.join('\n  ')}`);
 if (failures.length) { console.error(failures.join('\n')); process.exit(1); }
-console.log(`Build verified: ${htmlFiles.length} HTML pages, ${publishedProjects} projects, ${internalLinks} local references, ${output.filter(f => f.endsWith('.pdf')).length} PDFs. Project order, resume removal, report integrity, approved copy, metadata, and draft exclusion passed.`);
+console.log(`Build verified: ${htmlFiles.length} HTML pages, ${publishedProjects} projects, ${internalLinks} local references, ${output.filter(f => f.endsWith('.pdf')).length} PDFs. Project order, archive groups, resume, report integrity, hindsight notes, approved copy, metadata, and draft exclusion passed.`);
