@@ -14,8 +14,8 @@ context: ECE 135
 date: March 2026
 collaborators: [Nicholas Shand, Dash Franklin, Gavin Kesler]
 attribution: Course project with Nicholas Shand, Dash Franklin, and Gavin Kesler.
-order: 3
-featuredOrder: 3
+order: 2
+featuredOrder: 2
 status: Hollow core fiber was approximated with a nonlinear single mode fiber model using published hollow core parameters, and runs above 100 mW failed, which limited the sweep.
 cover:
   src: /assets/images/fiber-eye-diagrams.webp

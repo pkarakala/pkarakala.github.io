@@ -15,7 +15,7 @@ date: Spring 2025
 collaborators: [Nate Barnaby, Gavin Kesler, Bryan Fernandez]
 attribution: "With Nate Barnaby, Gavin Kesler, and Bryan Fernandez (Group 7)."
 order: 10
-featuredOrder: 4
+featuredOrder: 3
 status: Visibility was limited by path distinguishability, alignment, and accidental coincidences. Corrections to the original reports are noted under each one.
 anchorAliases: [quantum-optics, xanadu-x8]
 reportHeading: ECE 136C lab reports

@@ -13,12 +13,12 @@ const projects = (await getCollection('work', ({ data }) => !data.draft && data.
 /* Each figure is copied from a project card on this page and links to it. */
 const proof = [
   { value: '4.7σ', label: 'per link for 99% yield across 8,192 optical links, from my link model', href: '#oicd' },
-  { value: '3,750:1', label: 'extinction ratio of my best LWIR metasurface polarizer design', href: '#metasurface-polarimeter' },
   { value: '3.6 × 10⁻⁸', label: 'simulated bit error rate over 80 km of single mode fiber', href: '#photonic-fiber' },
   { value: '0.130', label: 'g²(0) for heralded single photons I measured, below the 0.5 threshold', href: '#quantum-photonics' },
+  { value: '2.26×', label: 'faster fused GPU kernel than the best PyTorch path, verified on one T4', href: '#kernel-relay' },
 ];
 ---
-<Base title="Pranav Reddy | Photonics and optical interconnect for AI compute" description="Pranav Reddy works where photonics meets AI compute: optical link budgets, metasurface and fiber link simulation, single photon measurement, and the ML systems that run on it. BS/MS+1 in Electronics & Photonics at UC Santa Barbara." canonical="/">
+<Base title="Pranav Reddy | Photonics and optical interconnect for AI compute" description="Pranav Reddy works where photonics meets AI compute: optical link budgets, fiber link simulation, single photon measurement, and the ML systems that run on it. BS/MS+1 in Electronics & Photonics at UC Santa Barbara." canonical="/">
   <section class="hero" aria-labelledby="home-title">
     <FloatingLogo placement="intro" />
     <div class="hero-identity"><p class="eyebrow">{profile.focus}</p><h1 id="home-title">Pranav <span>Reddy</span></h1></div>

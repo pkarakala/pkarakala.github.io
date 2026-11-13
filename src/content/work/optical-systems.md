@@ -10,7 +10,7 @@ category: Coursework
 context: ECE 136A
 date: Fall 2025
 collaborators: [Altug Ozcetinkaya, Christopher Hemsley, Dashiell Franklin, Gavin Kesler, Karl Tizon, Nicholas Shand]
-order: 4
+order: 3
 cover:
   src: /assets/images/optics.webp
   alt: Fourier optics diagram showing a laser, microscope objective, lenses, and observation plane.

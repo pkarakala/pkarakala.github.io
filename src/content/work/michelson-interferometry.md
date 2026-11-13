@@ -10,7 +10,7 @@ category: Coursework
 context: ECE 136A
 date: Fall 2025
 collaborators: [Altug Ozcetinkaya, Christopher Hemsley, Dashiell Franklin, Gavin Kesler, Karl Tizon, Nicholas Shand]
-order: 5
+order: 4
 status: The plate index came out well below the known value. The note under the report explains why.
 cover:
   src: /assets/images/michelson-fringes.webp

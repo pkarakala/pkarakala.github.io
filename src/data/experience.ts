@@ -7,11 +7,10 @@ export const experience = [
     summary: 'Built an optimizing quantum compiler that lowers OpenQASM through HUGR IR to device native circuits, with qubit placement, routing, gate decomposition, and dynamic circuit support.',
   },
   {
-    organization: 'LWIR metasurface polarimeter capstone',
+    organization: 'Anduril Industries capstone: LWIR metasurface polarimeter',
     role: 'Photonics Software Lead',
     dates: 'September 2026 to present',
-    url: '/work.html#metasurface-polarimeter',
-    summary: 'Swept 80 wire grid metasurface polarizer designs; the best reached a 3,750:1 extinction ratio and 64% transmission over 8 to 12 µm, 5× and 4.7× the prior year design.',
+    summary: 'Leading the photonics software for a long wave infrared polarimeter built on wire grid metasurface polarizers. The design work itself is not public.',
   },
   {
     organization: 'Quantum CoDesign Lab, Niu Group',

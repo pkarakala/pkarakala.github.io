@@ -14,7 +14,7 @@ evidence:
 category: Independent project
 date: September 2026
 order: 7
-featuredOrder: 5
+featuredOrder: 4
 repository: https://github.com/pkarakala/kernel-relay
 status: The mock proposer does not learn from feedback. These timings apply to the tested workload and GPU.
 related:
