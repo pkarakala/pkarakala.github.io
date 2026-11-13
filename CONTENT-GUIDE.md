@@ -11,6 +11,22 @@
 
 Categories: `Research`, `Coursework`, `Independent project`; use neutral `Project` when the source does not establish the context. Adding a project never requires changing a layout or page.
 
+Every entry also needs a `group`: `Photonics & optical links`, `ML systems`, or `Quantum`. The Work page renders one section per group, in that order, with a jump bar at the top; `order` sorts entries within and across groups.
+
+### Card copy: one plain sentence, then Built, Measured, Limits
+
+Cards are written for two readers at once. `summary` is one plain sentence a recruiter can follow. Then three labelled lines follow the KernelRelay pattern:
+
+- `built`: what was built, with concrete nouns (tools, devices, parameters).
+- `evidence.statement`: what was measured or simulated, with the number. Its `label` and `url` are optional; `url` may be an external https link or a `/assets/` path.
+- `status`: the conditions and limits under which the result holds.
+
+`metric: { value, label }` is the card's headline number, shown large under the title. Use only a number that appears in the evidence, report, or repository. Unicode superscripts (10⁻⁸, g²) render as real superscripts in the display face.
+
+Never write "Studied…" or "Learned how…". State the finding, or write `TODO(Pranav): <what is needed>` until the owner supplies it. The build lists every remaining `TODO(Pranav)` as a warning; do not merge while any remain.
+
+A report can carry `hindsight`: a short note naming an error in the published PDF and the correct physics. It renders in a "Notes in hindsight" box under the report links. The PDFs themselves are never edited.
+
 ```yaml
 ---
 title: Your actual project title
@@ -43,17 +59,17 @@ Optional real images appear in the archive and, when featured, on the homepage w
 
 ## Choose selected work
 
-Add a unique positive `featuredOrder` to each project to include on the homepage. Remove the field to keep it only in the archive. Lower values appear first. `order` controls the full archive. The current selection is Optical Interconnect Co-Design (OICD), Quantum Photonics Labs, ML Systems Lab, and Cat Qubits at DuQuantum, in that order. Transformer Inference Analysis and Continuous Quantum Error Correction follow them in the archive, then fiber and optical systems work. Related subprojects can remain linked from a parent entry without appearing as duplicate archive cards. When consolidating entries, preserve old fragment URLs with `anchorAliases`.
+Add a unique positive `featuredOrder` to each project to include on the homepage. Remove the field to keep it only in the archive. Lower values appear first. `order` controls the full archive. The current selection (November 2026, photonics focus) is Optical Interconnect Co-Design (OICD), LWIR Metasurface Polarimeter, Fiber Link Simulation, Quantum Photonics Measurement Labs, and KernelRelay, in that order. The archive follows the three groups. Do not name any photonics or optical interconnect company, or its products, anywhere in site copy; describe technologies generically. The capstone sponsor is not named either. Related subprojects can remain linked from a parent entry without appearing as duplicate archive cards. When consolidating entries, preserve old fragment URLs with `anchorAliases`.
 
 ## Public downloads
 
-The owner removed the resume from the public portfolio in October 2026. The resume pages, all three resume PDFs, navigation links, and replacement utility have been removed. The build checks that these retired paths remain absent. Project and lab report PDFs remain available under their established URLs. Do not restore a public resume without a new owner request.
+The owner removed the resume in October 2026 and restored it at the owner's request in November 2026, at `/resume.pdf` only. It is linked as "Resume (PDF)" in the header of every page, in the hero, and beside the contact links. The October 2026 resume URLs (`/resume.html`, `/assets/pdfs/resume*.pdf`) stay retired and the build checks they are absent. Before replacing `/resume.pdf`, remove the phone number and reset the PDF title metadata to "Pranav Reddy Resume"; the owner does not want a phone number on the site, and the metadata must not name a target employer. Project and lab report PDFs remain available under their established URLs.
 
 ## Update experience, education, or contact details
 
-- `src/data/experience.ts`: organization, role, and displayed dates.
-- `src/data/profile.ts`: name, exact program/university wording, introduction, human-readable obfuscated email display, GitHub, and LinkedIn. Home and Contact render the email as text, without a `mailto:` link.
-- `src/data/coursework.json`: course groups, course titles, catalog links, and explicitly documented terms.
+- `src/data/experience.ts`: organization, role, displayed dates, and a one line `summary` with a concrete noun and, where possible, a number.
+- `src/data/profile.ts`: name, exact program/university wording, introduction, email, resume path, GitHub, and LinkedIn. Home and Contact render the email as a `mailto:` link (owner request, November 2026).
+- `src/data/coursework.json`: course groups, course titles, catalog links, explicitly documented terms, and an optional one line `built` note on what was made in the course. "Photonics & Optical Communication" is listed first.
 - `src/data/about.md`: the verbatim owner-approved About prose. Edit only when the owner approves new copy. It is rendered once on the homepage; `/about.html` takes visitors there.
 
 Do not add a graduation date unless it is explicitly approved. Keep displayed copy concise, use plain sentences, and avoid dash punctuation. Preserve hyphens inside URLs and technical identifiers.
@@ -76,9 +92,9 @@ The three silhouettes are defined in `src/data/logo-shapes.ts`: house, circuit c
 
 On devices with a mouse or similar precise pointer, `src/scripts/logo-pointer.ts` gently repels nearby fragments, which ease back when the pointer leaves. The nudge stays inside the decoration envelope and never intercepts clicks or replaces the cursor. Touch devices and motion-off states do not run the interaction.
 
-On the homepage the house sits beside the introduction, PR occupies a reserved right-hand grid cell of the first featured project without a figure or report PDFs, and the canopy sits below the Experience heading. Contact has a smaller closing motif. Work uses a house in its introduction and the same rule for PR placement. This keeps PR beside ML Systems Lab and avoids replacing the removed lab photo with decoration. The first suitable project is selected automatically, so adding or reordering projects requires no motion edits. Figures never share their column with a decorative field. Experience reserves enough vertical space for every dispersed position. Do not move nodes outside the 660×400 field without reviewing its envelope.
+Since November 2026 the house motif appears only in the homepage hero, beside the introduction. Project cards, Experience, Contact, and Work carry no decoration, so result figures do the visual work; the build fails if a floating motif appears anywhere else. The canopy and PR shapes remain defined in `logo-shapes.ts` but are unused. Do not move nodes outside the 660×400 field without reviewing its envelope.
 
-Review the complete assembly and drift cycles at 1440, 1280, 1100, 1024, 900, 820, 768, 600, 390, and 320px. Contact decoration is omitted at 1100px and below. Below 900px, the fields are omitted and only a static two-mark introduction fragment remains. All decoration is omitted in print.
+Review the complete assembly and drift cycles at 1440, 1280, 1100, 1024, 900, 820, 768, 600, 390, and 320px. Below 900px, the field is omitted and only a static two-mark introduction fragment remains. All decoration is omitted in print.
 
 Set `brand.decoration` to `false` to omit all decorative copies while retaining the header and favicon. To disable animation by default without removing the static composition, adjust `enabled()` in `src/scripts/enhancements.ts`. The footer's pressed toggle reflects the visitor's preference, saved under `portfolio-motion`; an explicit choice takes priority over the OS reduced-motion preference. Otherwise reduced motion defaults to off. Animation is enabled only after preference detection. Motion off removes animation and restores the assembled silhouettes. The preference can be on at phone widths, but the two-mark introduction fragment remains static there.
 
