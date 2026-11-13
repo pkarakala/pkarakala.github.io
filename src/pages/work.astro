@@ -2,17 +2,21 @@
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import ProjectRow from '../components/ProjectRow.astro';
-import FloatingLogo from '../components/FloatingLogo.astro';
+import { workGroups } from '../content.config';
 const projects = (await getCollection('work', ({ data }) => !data.draft)).sort((a, b) => a.data.order - b.data.order || a.data.title.localeCompare(b.data.title));
 for (const key of ['slug', 'featuredOrder'] as const) {
   const values = projects.map(p => p.data[key]).filter(v => v !== undefined);
   if (new Set(values).size !== values.length) throw new Error(`Work entries must have unique ${key} values.`);
 }
-const motifIndex = projects.findIndex(project => !project.data.cover && project.data.reports.length === 0);
 const anchors = projects.flatMap(project => [project.data.slug, ...project.data.anchorAliases]);
 if (new Set(anchors).size !== anchors.length) throw new Error('Work entry slugs and anchor aliases must be unique.');
+const groupIds: Record<(typeof workGroups)[number], string> = { 'Photonics & optical links': 'group-photonics', 'ML systems': 'group-ml-systems', Quantum: 'group-quantum' };
+let count = 0;
+const groups = workGroups.map(name => ({ name, id: groupIds[name], projects: projects.filter(p => p.data.group === name).map(project => ({ project, index: count++ })) })).filter(group => group.projects.length);
 ---
-<Base title="Work | Pranav Reddy" description="Pranav Reddy’s projects in photonics, ML systems, and quantum computing, with repositories, lab reports, and collaborator credits." current="work" canonical="/work.html">
-  <header class="page-intro archive-intro"><FloatingLogo placement="archive" /><p class="eyebrow">The archive</p><h1>Work</h1><p>Projects and experiments in photonics, ML systems, and quantum computing.</p></header>
-  <section class="section archive-section" aria-label="All projects"><div class="project-list archive-list">{projects.map((project, index) => <ProjectRow project={project} index={index} archive motif={index === motifIndex} />)}</div></section>
+<Base title="Work | Pranav Reddy" description="Pranav Reddy’s work in photonics and optical links, ML systems, and quantum, with measured results, repositories, lab reports, and collaborator credits." current="work" canonical="/work.html">
+  <header class="page-intro archive-intro"><p class="eyebrow">The archive</p><h1>Work</h1><p>Every project, grouped by field. Each one says what was built, what was measured, and where the result stops holding.</p>
+    <nav class="group-nav" aria-label="Work groups">{groups.map(group => <a href={`#${group.id}`}>{group.name} <span class="group-count">{group.projects.length}</span></a>)}</nav>
+  </header>
+  {groups.map(group => <section class="section archive-section work-group" id={group.id} aria-labelledby={`${group.id}-title`}><h2 class="group-title" id={`${group.id}-title`}>{group.name}</h2><div class="project-list archive-list">{group.projects.map(({ project, index }) => <ProjectRow project={project} index={index} archive />)}</div></section>)}
 </Base>
