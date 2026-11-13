@@ -1,30 +1,32 @@
 [
   {
-    "title": "Quantum & Photonics",
+    "title": "Photonics & Optical Communication",
     "courses": [
       {
         "code": "ECE 135",
         "url": "https://catalog.ucsb.edu/courses/ECE%20135",
         "title": "Fiber Optic Communication Systems",
-        "term": null
+        "term": "Winter 2026",
+        "built": "Simulated an 80 km fiber link in VPIphotonics comparing standard, dispersion compensating, and hollow core fiber, plus 2.5 to 40 Gb/s WDM links."
       },
       {
         "code": "ECE 136A",
         "url": "https://catalog.ucsb.edu/courses/ECE%20136A",
         "title": "Optical Systems & Photonics",
-        "term": null
+        "term": "Fall 2025"
       },
       {
         "code": "ECE 136C",
         "url": "https://catalog.ucsb.edu/courses/ECE%20136C",
         "title": "Quantum Computing & Photonics",
-        "term": null
+        "term": "Spring 2025"
       },
       {
         "code": "ECE 144",
         "url": "https://catalog.ucsb.edu/courses/ECE%20144",
         "title": "Waveguide Physics",
-        "term": null
+        "term": null,
+        "built": "TODO(Pranav): one line on what you built or simulated in ECE 144 (for example a waveguide mode solver)."
       }
     ]
   },
@@ -128,7 +130,7 @@
         "code": "ECE 162C",
         "url": "https://catalog.ucsb.edu/courses/ECE%20162C",
         "title": "Optoelectronic Materials and Devices",
-        "term": null
+        "term": "TODO(Pranav): quarter"
       }
     ]
   }
