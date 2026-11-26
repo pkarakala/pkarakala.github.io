@@ -55,7 +55,7 @@ For a walkthrough video, add `video: { src, poster, duration, width, height, des
 
 For a collection of reports, add `reportHeading` so the archive presents them as one labeled group. A title with multiple reports does not link arbitrarily to the first PDF; readers choose the report they want. ECE 136C is one work entry with eight report links. Its `anchorAliases` preserve the former `#quantum-optics` and `#xanadu-x8` fragments on the combined card.
 
-Optional real images appear in the archive and, when featured, on the homepage with `cover: { src, alt, caption, width, height }`. Use a root-relative `/assets/` URL and accurate alt text/caption and dimensions. Avoid generic or invented project imagery. The remaining covers are images from the previous portfolio; Quantum Photonics Labs is text-only at the owner's request. Its former lab photo is no longer displayed. The header mark is the owner-supplied image at `public/assets/images/house-circuit-mark.png`.
+Optional real images appear in the archive and, when featured, on the homepage with `cover: { src, alt, caption, width, height }`. Use a root-relative `/assets/` URL and accurate alt text/caption and dimensions. Avoid generic or invented project imagery. The covers are images from the previous portfolio. The Quantum Photonics Labs lab photo was removed in October 2026 and restored at the owner's request in November 2026. The header mark is the owner-supplied image at `public/assets/images/house-circuit-mark.png`.
 
 ## Choose selected work
 

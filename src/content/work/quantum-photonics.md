@@ -19,6 +19,12 @@ featuredOrder: 3
 status: Visibility was limited by path distinguishability, alignment, and accidental coincidences. Corrections to the original reports are noted under each one.
 anchorAliases: [quantum-optics, xanadu-x8]
 reportHeading: ECE 136C lab reports
+cover:
+  src: /assets/images/quantum-photonics.webp
+  alt: Pranav wearing orange laser safety glasses beside a photonics lab optical table.
+  caption: At the photonics lab optical table.
+  width: 640
+  height: 461
 reports:
   - label: Bell state measurements
     url: /assets/pdfs/ece136c/lab1.pdf
