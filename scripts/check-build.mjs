@@ -124,7 +124,7 @@ for (const [slug, count] of [['photonic-fiber', 1], ['optical-systems', 1], ['mi
   assert(archive(`#${slug} .hindsight p:not(.hindsight-title)`).length === count, `${slug}: Notes in hindsight missing`);
 }
 assert(home('#quantum-photonics a[href="/work.html#quantum-photonics"]').text().includes('View lab reports'), 'Homepage lab collection link missing');
-assert(home('#quantum-photonics .project-cover').length === 0 && archive('#quantum-photonics .project-cover').length === 0, 'Removed lab photo is still displayed');
+assert(home('#quantum-photonics .project-cover img').attr('src') === '/assets/images/quantum-photonics.webp' && archive('#quantum-photonics .project-cover img').attr('src') === '/assets/images/quantum-photonics.webp', 'Photonics lab photo missing');
 assert(archive('#kernel-relay a[href="https://github.com/pkarakala/kernel-relay"]').length === 2, 'KernelRelay repository link missing from archive');
 assert(archive('#kernel-relay .project-facts').text().includes('fixed mock'), 'KernelRelay mock limitation missing');
 assert(archive('#kernel-relay .project-facts').text().includes('0.053 ms versus 0.120 ms') && archive('#kernel-relay .project-facts').text().includes('Other runs varied'), 'Qualified T4 result missing');
